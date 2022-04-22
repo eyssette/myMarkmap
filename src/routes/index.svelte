@@ -43,6 +43,7 @@
 	function replaceMarkdown(md) {
 		md = md.replace(/(?<!#)# (.*)\n/g,'# <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
 		md = md.replace(/(?<!#)## (.*)\n/g,'## <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n');
+		md = md.replace(/\n\n- /g, '\n\n- <br>');
 		//md = md.replace(/(?<!#)## (.*)\n- /g,'## $1\n- <br>');
 		//md = md.replace(/\n- /g,'\n- <br>');
 		return md;
