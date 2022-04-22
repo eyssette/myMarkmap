@@ -1,0 +1,22 @@
+{
+  "name": "mymarkmapapp",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview",
+    "prepare": "svelte-kit sync"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "next",
+    "@sveltejs/kit": "next",
+    "svelte": "^3.44.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "file-saver-es": "^2.0.5",
+    "markmap-lib": "^0.12.0",
+    "markmap-view": "^0.2.7"
+  }
+}
