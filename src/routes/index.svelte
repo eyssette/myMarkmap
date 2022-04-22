@@ -6,7 +6,7 @@
 	import url from './url.js';
 
 
-	let value='# Title\n\n## Subtitle\n\n### Idea\n\n### Idea\n\n## Subtitle\n\n- Idea\n- Idea';
+	let value='# Title\n\n## Subtitle\n### Idea\n### Idea\n\n## Subtitle\n\n- Idea\n- Idea';
 	//let value="# Les arguments<br>en faveur du<br>format texte\n\n## Un format<br>léger\n- Edition<br>plus rapide\n- Sauvegarde<br>plus rapide\n  - Synchronisation<br>facilitée\n  - Versionnage<br>facilité\n- Sauvegarde <br>plus économe<br> et plus écologique\n- Recherche<br>plus rapide dans<br>ses fichiers\n\n## Un format<br>ouvert\n- <br><br>On peut utiliser <br>n'importe quelle machine\n- On peut utiliser <br>n'importe quel logiciel<br> d'édition de texte\n- On peut collaborer<br>plus facilement<br>sur un même fichier\n\n## Un format<br>polyvalent\n- <br><br>On peut créer des<br>documents texte<br>complexes ...\n  - en Markdown\n    - conversion facile <br>en d'autres formats<br>avec Pandoc\n  - en Latex\n- On peut créer <br>un diaporama\n  - en Markdown\n    - avec Marp\n    - avec Remark\n    - avec Reveal\n- On peut s'organiser<br>facilement\n  - avec de simples<br>listes à puces\n  - avec une syntaxe<br>particulière\n    - todo.txt\n    - org-mode\n- On peut créer<br>des schémas,<br>des graphiques\n  - <br>avec Markmap\n  - avec Graphviz\n  - avec R\n- On peut créer<br>un site web\n  - <br><br>avec un générateur<br>de site statique\n    - Jekyll\n    - mdBook\n    - MkDocs";	
 	let markdown;
 	let mindmap;
