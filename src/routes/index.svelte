@@ -121,7 +121,7 @@ if (scripts) loadJS(scripts, { getMarkmap: () => markmap });
 		position:absolute;}
 	#menu a{margin-left:1em; text-decoration:none;}
 	textarea {
-		font-size:16px;
+		font-size:14px;
 		z-index:1;
 		margin-top:4em;
 		margin-left:1em;
