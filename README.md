@@ -1,6 +1,6 @@
 # myMarkmap
 
-[myMarkmap](https://mymarkmap.vercel.app/) is a custom editor for [Markmap](https://github.com/gera2ld/markmap).
+[myMarkmap](https://mymarkmap.vercel.app/) is a custom editor for [Markmap](https://github.com/gera2ld/markmap), build with [Svelte Kit](https://kit.svelte.dev/).
 
 ## TODO
 
