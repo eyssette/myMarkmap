@@ -41,11 +41,17 @@
 
 
 	function replaceMarkdown(md) {
+		md = md.replace(/`####/g,'`@hash@hash@hash@hash')
+		md = md.replace(/`###/g,'`@hash@hash@hash')
+		md = md.replace(/`##/g,'`@hash@hash')
+		md = md.replace(/`#/g,'`@hash')
 		md = md.replace(/(?<!#)# (.*)\n/g,'# <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
 		md = md.replace(/(?<!#)## (.*)\n/g,'## <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n');
 		md = md.replace(/\n\n- /g, '\n\n- <br>');
 		md = md.replace(/\n\n(?<!#)### /g, '\n\n### <br>');
 		md = md.replace(/`\n/g, '`<span style="display:block; height:0.2em!important"><br></span>\n');
+		md = md.replace(/@hash/g,'#')
+		//md = md.replace(/:link:/g,'<sup><img src="https://raw.githubusercontent.com/eyssette/myMarkmap/main/static/icon-link.svg" style="height:0.9em"/></sup>')
 		//md = md.replace(/(?<!#)## (.*)\n- /g,'## $1\n- <br>');
 		//md = md.replace(/\n- /g,'\n- <br>');
 		return md;
@@ -67,7 +73,7 @@ if (scripts) loadJS(scripts, { getMarkmap: () => markmap });
   //style: id => 'div{padding-bottom:0.25em!important} g g:last-of-type div{font-weight:bold; font-size:18px} foreignObject{overflow:visible!important; transform:translateX(-1%)} g g:last-of-type rect {transform:scaleX(125%) translateX(-3%)}',
 		//style: id => 'div{padding-bottom:0.3em!important} g g:last-of-type div{font-weight:bold;} foreignObject{overflow:visible!important; transform:translateX(-1%)}',
 			duration:0,
-			style: id => 'div{padding-bottom:0.12em!important}',
+			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible}',
 		spacingVertical: 8, // 5			
 		//spacingHorizontal: 100,
 	paddingX:15, // 8
@@ -108,6 +114,7 @@ if (scripts) loadJS(scripts, { getMarkmap: () => markmap });
 		{#if show}<a href="view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="edit" on:click|preventDefault={menuEdit}>🖊️</a>{/if}
 		<a href="save" on:click|preventDefault={menuSave}>💾</a>
 		<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
+		<a href="{baseURL}#https://raw.githubusercontent.com/eyssette/mindmap/main/mindmap-default-mymarkmap.md" target="_blank">❓</a>
 	</div>
 <div>
 	
@@ -119,7 +126,8 @@ if (scripts) loadJS(scripts, { getMarkmap: () => markmap });
 	div{display:flex}
 	#menu {z-index:1;
 		margin:1em;
-		position:absolute;}
+		position:absolute;
+		font-size:1.4em}
 	#menu a{margin-left:1em; text-decoration:none;}
 	textarea {
 		font-size:14px;
@@ -128,13 +136,13 @@ if (scripts) loadJS(scripts, { getMarkmap: () => markmap });
 		margin-left:1em;
   		width: 400px;
   		height: 50vh;
+		  
 	}
 	.hidden{
 		visibility: hidden;
 	}
 	svg {
 		z-index:0;
-		margin-left:-20vw;
-		
+		margin-left:-15vw;
 	}
 </style>
