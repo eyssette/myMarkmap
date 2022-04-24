@@ -126,7 +126,7 @@ if (scripts) loadJS(scripts, { getMarkmap: () => markmap });
 		z-index:1;
 		margin-top:4em;
 		margin-left:1em;
-  		min-width: 20vw!important;
+  		width: 400px;
   		height: 50vh;
 	}
 	.hidden{
