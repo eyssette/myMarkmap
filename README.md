@@ -2,6 +2,8 @@
 
 [myMarkmap](https://mymarkmap.vercel.app/) is a custom editor for [Markmap](https://github.com/gera2ld/markmap), build with [Svelte Kit](https://kit.svelte.dev/).
 
+[![](https://raw.githubusercontent.com/eyssette/myMarkmap/main/myMarkmap-explications.svg)](https://mymarkmap.vercel.app/#https://raw.githubusercontent.com/eyssette/mindmap/main/mindmap-default-mymarkmap.md)
+
 ## TODO
 
 [TODO](https://github.com/eyssette/myMarkmap/projects/1)
