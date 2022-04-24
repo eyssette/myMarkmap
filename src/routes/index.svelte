@@ -16,6 +16,7 @@
 	let encodageHash;
 	let mindmapData;
 	let baseURL;
+	let urlToShare;
 	
 	onMount(async () => {
 		if ($url) {
@@ -105,7 +106,9 @@ if (scripts) loadJS(scripts, { getMarkmap: () => markmap });
 	
 	function menuShare() {
 		encodageHash = encodeURI(value);
-		history.replaceState(null, null, baseURL+'#' + encodageHash);
+		urlToShare=baseURL+'#' + encodageHash
+		history.replaceState(null, null, urlToShare);
+		navigator.clipboard.writeText(urlToShare);
 	}
 
 </script>
