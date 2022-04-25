@@ -50,19 +50,28 @@
 		md = md.replace(/`###/g, '`@hash@hash@hash')
 		md = md.replace(/`##/g, '`@hash@hash')
 		md = md.replace(/`#/g, '`@hash')
-		// Gestion Titre niveau 1
-		md = md.replace(/(?<!#)# (.*)\n/g, '# <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
+		// Gestion Titre niveau 3 et plus
+		md = md.replace(/\n\n###### /g, '\n\n@hash@hash@hash@hash@hash@hash <br>');
+		md = md.replace(/\n###### /g, '\n\n@hash@hash@hash@hash@hash@hash ');
+		md = md.replace(/\n\n##### /g, '\n\n@hash@hash@hash@hash@hash <br>');
+		md = md.replace(/\n##### /g, '\n\n@hash@hash@hash@hash@hash ');
+		md = md.replace(/\n\n#### /g, '\n\n@hash@hash@hash@hash <br>');
+		md = md.replace(/\n#### /g, '\n\n@hash@hash@hash@hash ');
+		md = md.replace(/\n\n### /g, '\n\n@hash@hash@hash <br>');
+		md = md.replace(/\n### /g, '\n\n@hash@hash@hash ');
 		// Gestion Titre niveau 2
-		md = md.replace(/(?<!#)## (.*)\n/g, '## <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n');
+		md = md.replace(/## (.*)\n/g, '@hash@hash <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n');
+		// Gestion Titre niveau 1
+		md = md.replace(/# (.*)\n/g, '@hash <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
 		// Gestion Listes à puces
 		md = md.replace(/\n\n- /g, '\n\n- <br>');
 		md = md.replace(/\n\n\* /g, '\n\n\* <br>');
-		// Gestion Titre niveau 3
-		md = md.replace(/\n\n(?<!#)### /g, '\n\n### <br>');
 		// Gestion des lignes qui se terminent par une balise code
 		md = md.replace(/`\n/g, '`<span style="display:block; height:0.2em!important"><br></span>\n');
-		// Gestion du markdown dans les balises codes
+		// Remplacement de @hash par #
 		md = md.replace(/@hash/g, '#');
+
+		// Autres regex - essais
 		//md = md.replace(/:link:/g,'<sup><img src="https://raw.githubusercontent.com/eyssette/myMarkmap/main/static/icon-link.svg" style="height:0.9em"/></sup>')
 		//md = md.replace(/(?<!#)## (.*)\n- /g,'## $1\n- <br>');
 		//md = md.replace(/\n- /g,'\n- <br>');
