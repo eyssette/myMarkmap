@@ -23,6 +23,7 @@
 	let mindmapData;
 	let baseURL;
 	let urlToShare;
+	let textArea;
 
 	onMount(async () => {
 		if ($url) {
@@ -55,12 +56,13 @@
 		md = md.replace(/(?<!#)## (.*)\n/g, '## <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n');
 		// Gestion Listes à puces
 		md = md.replace(/\n\n- /g, '\n\n- <br>');
+		md = md.replace(/\n\n\* /g, '\n\n\* <br>');
 		// Gestion Titre niveau 3
 		md = md.replace(/\n\n(?<!#)### /g, '\n\n### <br>');
 		// Gestion des lignes qui se terminent par une balise code
 		md = md.replace(/`\n/g, '`<span style="display:block; height:0.2em!important"><br></span>\n');
 		// Gestion du markdown dans les balises codes
-		md = md.replace(/@hash/g, '#')
+		md = md.replace(/@hash/g, '#');
 		//md = md.replace(/:link:/g,'<sup><img src="https://raw.githubusercontent.com/eyssette/myMarkmap/main/static/icon-link.svg" style="height:0.9em"/></sup>')
 		//md = md.replace(/(?<!#)## (.*)\n- /g,'## $1\n- <br>');
 		//md = md.replace(/\n- /g,'\n- <br>');
@@ -105,6 +107,9 @@
 
 	function menuEdit() {
 		show = true;
+		setTimeout(function() {
+			textArea.focus();
+		}, 0);
 	}
 
 	function menuView() {
@@ -132,7 +137,27 @@
 		navigator.clipboard.writeText(urlToShare);
 	}
 
+	function handleKeydown(event) {
+		if (!show) {
+			if (event.key === 'e') {
+				menuEdit();
+			}
+			if (event.key === 's') {
+				menuSave();
+			}
+			if (event.key === 'l') {
+				menuShare();
+			}
+		} else {
+			if (event.key === 'Escape') {
+				menuView();
+			}
+		}
+	}
+
 </script>
+
+<svelte:window on:keydown={handleKeydown}/>
 
 <div id="menu">
 	{#if show}<a href="view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="edit" on:click|preventDefault={menuEdit}>🖊️</a>{/if}
@@ -142,7 +167,7 @@
 	</div>
 <div>
 	
-<textarea bind:value={value} rows="20" cols="50" class:hidden={!show}></textarea>
+<textarea bind:this={textArea} bind:value={value} rows="20" cols="50" class:hidden={!show}></textarea>
 <div bind:clientWidth={w} bind:clientHeight={h} style="width:98vw; height:98vh"><svg id="markmap" bind:this={mindmap}  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%; height:100%"></svg></div>
 </div>
 
