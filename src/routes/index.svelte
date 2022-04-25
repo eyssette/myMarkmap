@@ -11,7 +11,7 @@
 		saveAs
 	} from 'file-saver-es';
 	import url from './url.js';
-
+	import emoji from 'node-emoji';
 
 	let value = '# Title\n\n## Subtitle\n### Idea\n### Idea\n\n## Subtitle\n\n- Idea\n- Idea';
 	let markdown;
@@ -78,7 +78,7 @@
 		return md;
 	}
 
-	$: markdown = replaceMarkdown(value)
+	$: markdown = replaceMarkdown(emoji.emojify(value))
 
 	afterUpdate(() => {
 		const transformer = new Transformer();
