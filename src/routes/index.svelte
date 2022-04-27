@@ -60,8 +60,10 @@
 		md = md.replace(/\n\n### /g, '\n\n@hash@hash@hash <br>');
 		md = md.replace(/\n### /g, '\n\n@hash@hash@hash ');
 		// Gestion Titre niveau 2
+		md = md.replace(/## (.*)$/g, '@hash@hash <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n');
 		md = md.replace(/## (.*)\n/g, '@hash@hash <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n');
 		// Gestion Titre niveau 1
+		md = md.replace(/# (.*)$/g, '@hash <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
 		md = md.replace(/# (.*)\n/g, '@hash <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
 		// Gestion Listes à puces
 		md = md.replace(/\n\n- /g, '\n\n- <br>');
@@ -72,10 +74,8 @@
 		md = md.replace(/@hash/g, '#');
 		// Raccourci \\ pour les sauts de ligne <br>
 		md = md.replace(/\\\\/g, '<br>');
-		// Autres regex - essais
-		//md = md.replace(/:link:/g,'<sup><img src="https://raw.githubusercontent.com/eyssette/myMarkmap/main/static/icon-link.svg" style="height:0.9em"/></sup>')
-		//md = md.replace(/(?<!#)## (.*)\n- /g,'## $1\n- <br>');
-		//md = md.replace(/\n- /g,'\n- <br>');
+		// Fonction afficher / masquer
+		md = md.replace (/class="hide"/g,'class="hide" onclick="event.preventDefault(); this.classList.toggle(\'hide\');"');
 		return md;
 	}
 
@@ -105,7 +105,10 @@
 
 		const options = {
 			duration: 0,
-			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .ml-20{margin-left:-20px}',
+			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .ml-20{margin-left:-20px} .hide{color:transparent}', 
+			// Quelques classes supplémentaires :
+			// .ml-20 pour raccourcir une branche quand le texte est court
+			// .hide pour masquer (afficher avec un clic)
 			spacingVertical: 8, // 5			
 			//spacingHorizontal: 100,
 			paddingX: 15, // 8
