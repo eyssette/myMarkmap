@@ -146,7 +146,7 @@
 
 	function menuShare() {
 		encodageHash = encodeURI(value);
-		urlToShare = baseURL + '#' + encodageHash
+		urlToShare = baseURL + '/#' + encodageHash
 		history.replaceState(null, null, urlToShare);
 		navigator.clipboard.writeText(urlToShare);
 	}
