@@ -75,6 +75,7 @@
 		// Raccourci \\ pour les sauts de ligne <br>
 		md = md.replace(/\\\\/g, '<br>');
 		// Fonction afficher / masquer
+		md = md.replace(/{{(.*?)}}/g,'<span class="hide">$1</span>')
 		md = md.replace (/class="hide"/g,'class="hide" onclick="event.preventDefault(); this.classList.toggle(\'hide\');"');
 		return md;
 	}
@@ -105,7 +106,7 @@
 
 		const options = {
 			duration: 0,
-			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .ml-20{margin-left:-20px} .hide{color:transparent}', 
+			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .ml-20{margin-left:-20px} .hide, .hide *{color:transparent!important} .hide {background-color:#FFFFEC}', 
 			// Quelques classes supplémentaires :
 			// .ml-20 pour raccourcir une branche quand le texte est court
 			// .hide pour masquer (afficher avec un clic)
