@@ -73,10 +73,16 @@
 		// Remplacement de @hash par #
 		md = md.replace(/@hash/g, '#');
 		// Raccourci \\ pour les sauts de ligne <br>
+		md = md.replace(/`\\\\`/g,'`@anti_slash@anti_slash`');
 		md = md.replace(/\\\\/g, '<br>');
+		md = md.replace(/@anti_slash/g,'\\');
 		// Fonction afficher / masquer
-		md = md.replace(/{{(.*?)}}/g,'<span class="hide">$1</span>')
+		md = md.replace(/`{{/g,'`@accolade_G@accolade_G');
+		md = md.replace(/}}`/g,'@accolade_D@accolade_D`');
+		md = md.replace(/{{(.*?)}}/g,'<span class="hide">$1</span>');
 		md = md.replace (/class="hide"/g,'class="hide" onclick="event.preventDefault(); this.classList.toggle(\'hide\');"');
+		md = md.replace(/@accolade_G/g,'{');
+		md = md.replace(/@accolade_D/g,'}');
 		return md;
 	}
 
@@ -106,7 +112,7 @@
 
 		const options = {
 			duration: 0,
-			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .ml-20{margin-left:-20px} .hide, .hide *{color:transparent!important} .hide {background-color:#FFFFEC}', 
+			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .ml-20{margin-left:-20px} .hide, .hide *{color:transparent!important} .hide {background-color:#FFFFEC} .hide img {opacity:0} img[alt=h-25]{height:25px} img[alt=h-50]{height:50px} img[alt=h-75]{height:75px} img[alt=h-100]{height:100px} img[alt=h-125]{height:125px} img[alt=h-150]{height:150px} img[alt=h-175]{height:175px} img[alt=h-200]{height:200px}', 
 			// Quelques classes supplémentaires :
 			// .ml-20 pour raccourcir une branche quand le texte est court
 			// .hide pour masquer (afficher avec un clic)
