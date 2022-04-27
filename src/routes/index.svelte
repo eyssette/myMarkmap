@@ -70,7 +70,8 @@
 		md = md.replace(/`\n/g, '`<span style="display:block; height:0.2em!important"><br></span>\n');
 		// Remplacement de @hash par #
 		md = md.replace(/@hash/g, '#');
-
+		// Raccourci \\ pour les sauts de ligne <br>
+		md = md.replace(/\\\\/g, '<br>');
 		// Autres regex - essais
 		//md = md.replace(/:link:/g,'<sup><img src="https://raw.githubusercontent.com/eyssette/myMarkmap/main/static/icon-link.svg" style="height:0.9em"/></sup>')
 		//md = md.replace(/(?<!#)## (.*)\n- /g,'## $1\n- <br>');
