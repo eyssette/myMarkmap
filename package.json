@@ -15,7 +15,9 @@
   },
   "type": "module",
   "dependencies": {
+    "@novacbn/svelte-codejar": "^0.1.2",
     "file-saver-es": "^2.0.5",
+    "highlight.js": "^11.5.1",
     "markmap-lib": "^0.12.0",
     "markmap-view": "^0.2.7",
     "node-emoji": "^1.11.0"
