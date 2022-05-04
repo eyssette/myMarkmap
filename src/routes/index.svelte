@@ -121,6 +121,8 @@
 		md = md.replace (/class="hide"/g,'class="hide" onclick="event.preventDefault(); this.classList.toggle(\'hide\');"');
 		md = md.replace(/@accolade_G/g,'{');
 		md = md.replace(/@accolade_D/g,'}');
+		// Espaces insécables
+		md = md.replace(/ /g, '&nbsp;');
 		return md;
 	}
 
