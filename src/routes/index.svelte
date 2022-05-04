@@ -168,11 +168,12 @@
 		show = true;
 		setTimeout(function() {
 			textArea.firstChild.focus();
-		}, 10);
+		}, 0);
 	}
 
 	function menuView() {
 		show = false;
+		textArea.focus();
 	}
 
 	function createSVG(mm) {
@@ -199,6 +200,7 @@
 	function handleKeydown(event) {
 		if (!show) {
 			if (event.key === 'e') {
+				event.preventDefault();
 				menuEdit();
 			}
 			if (event.key === 's') {
