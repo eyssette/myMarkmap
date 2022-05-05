@@ -231,13 +231,14 @@
 
 <svelte:window on:keydown={handleKeydown} on:beforeunload={beforeunload}/>
 
-<div id="menu">
+<nav id="menu">
 	{#if show}<a href="view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="edit" on:click|preventDefault={menuEdit}>🖊</a>{/if}
 		<a href="save" on:click|preventDefault={menuSave}>💾</a>
 		<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
 		<a href="{baseURL}#https://raw.githubusercontent.com/eyssette/mindmap/main/mindmap-default-mymarkmap.md" target="_blank">❓</a>
-	</div>
-<div>
+</nav>
+
+<main>
 	
 <div bind:this={textArea}>
 {#if CodeJar}
@@ -248,7 +249,7 @@
 </div>
 
 <div bind:clientWidth={w} bind:clientHeight={h} style="width:98vw; height:98vh"><svg id="markmap" bind:this={mindmap}  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%; height:100%"></svg></div>
-</div>
+</main>
 
 <style>
 #menu {
@@ -325,5 +326,22 @@ svg {
 	z-index: 0;
 	position:absolute;
 	top:0;
+}
+
+@media print {
+	nav {display:none;}
+	main {
+		width:31.7cm;
+		height:20cm;
+	}
+	main div:nth-of-type(1) {
+		display:none;
+	}
+
+	main svg {
+		overflow:visible;	 
+		 zoom:55%!important;
+	}
+
 }
 </style>
