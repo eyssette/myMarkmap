@@ -222,9 +222,14 @@
 		}
 	}
 
+	function beforeunload(event) {
+        event.preventDefault();
+        return event.returnValue = '';
+    }
+
 </script>
 
-<svelte:window on:keydown={handleKeydown}/>
+<svelte:window on:keydown={handleKeydown} on:beforeunload={beforeunload}/>
 
 <div id="menu">
 	{#if show}<a href="view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="edit" on:click|preventDefault={menuEdit}>🖊</a>{/if}
