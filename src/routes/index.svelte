@@ -70,6 +70,10 @@
 			baseURL = baseURL.replace("#", "");
 		}
 		if (encodageHash.startsWith('http')) {
+			if (encodageHash.startsWith('https://github.com')) {
+				encodageHash = encodageHash.replace('https://github.com','https://raw.githubusercontent.com');
+				encodageHash = encodageHash.replace('/blob/','/');
+			}
 			const response = await fetch(encodageHash);
 			mindmapData = await response.text();
 			markdownSource = mindmapData;
@@ -223,7 +227,7 @@
 <svelte:window on:keydown={handleKeydown}/>
 
 <div id="menu">
-	{#if show}<a href="view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="edit" on:click|preventDefault={menuEdit}>🖊️</a>{/if}
+	{#if show}<a href="view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="edit" on:click|preventDefault={menuEdit}>🖊</a>{/if}
 		<a href="save" on:click|preventDefault={menuSave}>💾</a>
 		<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
 		<a href="{baseURL}#https://raw.githubusercontent.com/eyssette/mindmap/main/mindmap-default-mymarkmap.md" target="_blank">❓</a>
