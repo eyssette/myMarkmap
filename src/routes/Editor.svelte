@@ -16,21 +16,11 @@
 	import {
 		show,
 		markdownSource
-		// undoEvent,
-		// redoEvent
 	} from './stores.js'
 	import url from './url.js';
 
 	let textArea;
 	let editor;
-	// import {
-	// 	createStack
-	// } from 'svelte-undo';
-	// let value = {
-	// 	source: $markdownSource
-	// };
-	// const stack = createStack(value);
-
 
 	const my = editor => {
 		let code = editor.textContent;

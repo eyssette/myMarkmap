@@ -8,5 +8,3 @@ export const baseURL = writable('');
 export const mindmapSave = writable(false);
 export const wValue = writable();
 export const hValue = writable();
-// export const undoEvent = writable(false);
-// export const redoEvent = writable(false);

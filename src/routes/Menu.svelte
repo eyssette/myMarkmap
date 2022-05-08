@@ -3,8 +3,6 @@
 		show,
 		baseURL,
 		mindmapSave
-		// undoEvent,
-		// redoEvent
 	} from './stores.js'
 	export let source;
 	import url from './url.js';

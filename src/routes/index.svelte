@@ -37,6 +37,7 @@
 			if (encodageHash != '') {
 				mindmapData = decodeURI(encodageHash);
 				markdownSource.update(n => mindmapData);
+				history.pushState(null, null, $baseURL);
 			}
 		}
 	})
