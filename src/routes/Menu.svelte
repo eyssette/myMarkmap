@@ -8,14 +8,13 @@
 	} from './stores.js'
 	export let source;
 	import url from './url.js';
-	import {
-		saveAs
-	} from 'file-saver-es';
+	import { fade, fly } from 'svelte/transition';
+
 	let urlToShare;
 	let encodageHash;
-	let file
 
 	function menuEdit() {
+		showNotification = false;
 		show.update(n => true);
 	}
 
@@ -28,9 +27,9 @@
 	}
 
 	function menuShare() {
+		toatNotification();
 		encodageHash = encodeURI(source);
 		urlToShare = $baseURL + '/#' + encodageHash
-		history.replaceState(null, null, urlToShare);
 		navigator.clipboard.writeText(urlToShare);
 	}
 
@@ -50,29 +49,21 @@
 			if (event.key === 'Escape') {
 				menuView();
 			}
-			// if (event.metaKey === true || event.ctrlKey === true) {
-			// 	let keyCode = event.keyCode;
-			// 	if (keyCode === 89) {
-			// 		// REDO
-			// 		event.preventDefault();
-			// 		redoEvent.update(n => true);
-			// 	} else if (keyCode === 90) {
-			// 		if (event.shiftKey === true) {
-			// 			// REDO special case (CTRL-SHIFT-Z)
-			// 			redoEvent.update(n => true);
-			// 		} else {
-			// 			// UNDO
-			// 			undoEvent.update(n => true);
-			// 		}
-			// 		event.preventDefault();
-			// 	}
-			// }
 		}
 	}
 
 	function beforeunload(event) {
 		event.preventDefault();
 		return event.returnValue = '';
+	}
+
+	let showNotification = false;
+
+	function toatNotification() {
+		showNotification= true
+		setTimeout(function () {
+			showNotification= false;
+		}, 3000);
 	}
 
 </script>
@@ -83,6 +74,9 @@
 	{#if $show}<a href="view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
 		<a href="save" on:click|preventDefault={menuSave}>💾</a>
 		<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
+		{#if showNotification}
+		<div id="shareNotification" in:fly="{{ y: 50, duration: 3000 }}" out:fade on:click={()=>(showNotification=false)}>Lien copié dans le presse-papier !</div>
+		{/if}
 		<a href="{$baseURL}#https://raw.githubusercontent.com/eyssette/mindmap/main/mindmap-default-mymarkmap.md" target="_blank">❓</a>
 </nav>
 
@@ -97,5 +91,21 @@
 	#menu a {
 		margin-left: 1em;
 		text-decoration: none;
+	}
+
+	#shareNotification {
+		position:absolute;
+		width:160px;
+		margin-top:1em;
+		margin-left:2em;
+		background-color: #5cb85c;
+		color:white;
+		font-size:16px;
+		text-align:center;
+		padding:10px 2px!important;
+		display:table-cell;
+		font-family: 'Roboto', 'sans-serif';
+		border-radius:5px;
+		
 	}
 </style>
