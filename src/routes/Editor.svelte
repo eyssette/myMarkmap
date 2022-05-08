@@ -55,12 +55,10 @@
 		({
 			CodeJar
 		} = await import("codejar"))
+		jar = await CodeJar(editor, my, {history:true});
 	})
 
-
-	$: if ($show == true) {
-		jar = CodeJar(editor, my);
-
+	$: if ($show == true) {		
 		setTimeout(function () {
 			textArea.firstChild.focus();
 		}, 0);
@@ -92,11 +90,13 @@
 </script>
 
 <div bind:this={textArea}>
-	{#if CodeJar}
+	{#await CodeJar}
+		<div>Éditeur en cours de chargement</div>
+	{:then}
 		<pre bind:this={editor} contenteditable="true" bind:textContent={$markdownSource} class:hidden={!$show} class="editor"></pre>
-	{:else}
+	{:catch error}
 		<textarea bind:value={$markdownSource} rows="20" cols="50" class:hidden={!$show}></textarea>
-	{/if}
+	{/await}
 </div>
 
 <style>
