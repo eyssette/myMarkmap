@@ -15,9 +15,9 @@
 
 	import {
 		show,
-		markdownSource,
-		undoEvent,
-		redoEvent
+		markdownSource
+		// undoEvent,
+		// redoEvent
 	} from './stores.js'
 	import url from './url.js';
 
@@ -68,8 +68,8 @@
 
 	// let cursorPosition;
 
-	$: if ($undoEvent && jar) {
-		undoEvent.update(n => false);
+	// $: if ($undoEvent && jar) {
+	// 	undoEvent.update(n => false);
 		// cursorPosition = jar.save();
 		// setTimeout(function () {
 		// 	markdownSource.update(n => (value = stack.undo())['source']);
@@ -77,9 +77,9 @@
 		// setTimeout(function () {
 		// 	jar.restore(cursorPosition);
 		// }, 0);
-	}
-	$: if ($redoEvent && jar) {
-		redoEvent.update(n => false);
+	// }
+	// $: if ($redoEvent && jar) {
+	// 	redoEvent.update(n => false);
 		// cursorPosition = jar.save();
 		// setTimeout(function () {
 		// 	markdownSource.update(n => (value = stack.redo())['source']);
@@ -87,7 +87,7 @@
 		// setTimeout(function () {
 		// 	jar.restore(cursorPosition);
 		// }, 0);
-	}
+	// }
 
 </script>
 

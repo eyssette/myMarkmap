@@ -2,9 +2,9 @@
 	import {
 		show,
 		baseURL,
-		mindmapSave,
-		undoEvent,
-		redoEvent
+		mindmapSave
+		// undoEvent,
+		// redoEvent
 	} from './stores.js'
 	export let source;
 	import url from './url.js';
@@ -50,23 +50,23 @@
 			if (event.key === 'Escape') {
 				menuView();
 			}
-			if (event.metaKey === true || event.ctrlKey === true) {
-				let keyCode = event.keyCode;
-				if (keyCode === 89) {
-					// REDO
-					event.preventDefault();
-					redoEvent.update(n => true);
-				} else if (keyCode === 90) {
-					if (event.shiftKey === true) {
-						// REDO special case (CTRL-SHIFT-Z)
-						redoEvent.update(n => true);
-					} else {
-						// UNDO
-						undoEvent.update(n => true);
-					}
-					event.preventDefault();
-				}
-			}
+			// if (event.metaKey === true || event.ctrlKey === true) {
+			// 	let keyCode = event.keyCode;
+			// 	if (keyCode === 89) {
+			// 		// REDO
+			// 		event.preventDefault();
+			// 		redoEvent.update(n => true);
+			// 	} else if (keyCode === 90) {
+			// 		if (event.shiftKey === true) {
+			// 			// REDO special case (CTRL-SHIFT-Z)
+			// 			redoEvent.update(n => true);
+			// 		} else {
+			// 			// UNDO
+			// 			undoEvent.update(n => true);
+			// 		}
+			// 		event.preventDefault();
+			// 	}
+			// }
 		}
 	}
 
