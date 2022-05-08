@@ -28,7 +28,7 @@
 			language: 'markdown',
 			ignoreUnescapedHTML: false
 		}).value;
-		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--fold--&gt;/g, '<span class="language-xml"><span class="hljs-tag">&lt;!--fold--&gt;</span></span>');
+		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--(.*?)--&gt;/g,'<span class="hljs-comment">&lt;!--$1--&gt;</span>').replace(/&lt;!--fold--&gt;/g, '<span class="language-xml"><span class="hljs-tag">&lt;!--fold--&gt;</span></span>');
 		editor.innerHTML = code;
 	};
 
@@ -114,7 +114,15 @@
 	}
 
 	:global(.hljs-code) {
-		color: #555;
+		color: #333!important;
+		background-color: #EDEDED;
+	}
+
+	:global(.hljs-comment) {
+		color: #777;
+		font-weight:100;
+		font-size:0.96em;
+		
 	}
 
 	:global(.hljs-link),
