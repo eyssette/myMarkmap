@@ -3,8 +3,8 @@
 		show,
 		baseURL,
 		mindmapSave,
-		wValue,
-		hValue
+		undoEvent,
+		redoEvent
 	} from './stores.js'
 	export let source;
 	import url from './url.js';
@@ -16,15 +16,15 @@
 	let file
 
 	function menuEdit() {
-		show.update(n=>true);
+		show.update(n => true);
 	}
 
 	function menuView() {
-		show.update(n=>false);
+		show.update(n => false);
 	}
 
 	function menuSave() {
-		mindmapSave.update(n=>true)
+		mindmapSave.update(n => true)
 	}
 
 	function menuShare() {
@@ -50,19 +50,34 @@
 			if (event.key === 'Escape') {
 				menuView();
 			}
+			if (event.metaKey === true || event.ctrlKey === true) {
+				let keyCode = event.keyCode;
+				if (keyCode === 89) {
+					// REDO
+					event.preventDefault();
+					redoEvent.update(n => true);
+				} else if (keyCode === 90) {
+					if (event.shiftKey === true) {
+						// REDO special case (CTRL-SHIFT-Z)
+						redoEvent.update(n => true);
+					} else {
+						// UNDO
+						undoEvent.update(n => true);
+					}
+					event.preventDefault();
+				}
+			}
 		}
 	}
 
 	function beforeunload(event) {
-        event.preventDefault();
-        return event.returnValue = '';
-    }
-
-	let showNotification=true;
+		event.preventDefault();
+		return event.returnValue = '';
+	}
 
 </script>
 
-<svelte:window on:keydown={handleKeydown} on:beforeunload={beforeunload}/>
+<svelte:window on:keydown={handleKeydown} on:beforeunload={beforeunload} />
 
 <nav id="menu">
 	{#if $show}<a href="view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
@@ -72,15 +87,15 @@
 </nav>
 
 <style>
-#menu {
-	z-index: 1;
-	margin: 1em;
-	position: absolute;
-	font-size: 1.4em
-}
-#menu a {
-	margin-left: 1em;
-	text-decoration: none;
-}
+	#menu {
+		z-index: 1;
+		margin: 1em;
+		position: absolute;
+		font-size: 1.4em
+	}
 
+	#menu a {
+		margin-left: 1em;
+		text-decoration: none;
+	}
 </style>

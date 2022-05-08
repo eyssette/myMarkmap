@@ -11,7 +11,8 @@
 	import Mindmap from './Mindmap.svelte';
 	import {
 		markdownSource,
-	baseURL} from './stores.js'
+		baseURL
+	} from './stores.js'
 	let encodageHash;
 	let yamlData;
 	let mindmapData;
@@ -20,22 +21,22 @@
 	onMount(async () => {
 		if ($url) {
 			encodageHash = $url.hash.slice(1);
-			baseURL.update(n=>$url.protocol + '//' + $url.host);
-			baseURL.update(n=>$baseURL.replace("#", ""));
+			baseURL.update(n => $url.protocol + '//' + $url.host);
+			baseURL.update(n => $baseURL.replace("#", ""));
 		}
 		if (encodageHash.startsWith('http')) {
 			if (encodageHash.startsWith('https://github.com')) {
-				encodageHash = encodageHash.replace('https://github.com','https://raw.githubusercontent.com');
-				encodageHash = encodageHash.replace('/blob/','/');
+				encodageHash = encodageHash.replace('https://github.com', 'https://raw.githubusercontent.com');
+				encodageHash = encodageHash.replace('/blob/', '/');
 			}
 			const response = await fetch(encodageHash);
 			mindmapData = await response.text();
-			markdownSource.update(n=>mindmapData);
-			
+			markdownSource.update(n => mindmapData);
+
 		} else {
 			if (encodageHash != '') {
 				mindmapData = decodeURI(encodageHash);
-				markdownSource.update(n=>mindmapData);
+				markdownSource.update(n => mindmapData);
 			}
 		}
 	})
@@ -69,29 +70,31 @@
 		// Remplacement de @hash par #
 		md = md.replace(/@hash/g, '#');
 		// Raccourci \\ pour les sauts de ligne <br>
-		md = md.replace(/`\\\\`/g,'`@anti_slash@anti_slash`');
+		md = md.replace(/`\\\\`/g, '`@anti_slash@anti_slash`');
 		md = md.replace(/\\\\/g, '<br>');
-		md = md.replace(/@anti_slash/g,'\\');
+		md = md.replace(/@anti_slash/g, '\\');
 		// Fonction afficher / masquer
-		md = md.replace(/`{{/g,'`@accolade_G@accolade_G');
-		md = md.replace(/}}`/g,'@accolade_D@accolade_D`');
-		md = md.replace(/{{(.*?)}}/g,'<span class="hide">$1</span>');
-		md = md.replace (/class="hide"/g,'class="hide" onclick="event.preventDefault(); this.classList.toggle(\'hide\');"');
-		md = md.replace(/@accolade_G/g,'{');
-		md = md.replace(/@accolade_D/g,'}');
+		md = md.replace(/`{{/g, '`@accolade_G@accolade_G');
+		md = md.replace(/}}`/g, '@accolade_D@accolade_D`');
+		md = md.replace(/{{(.*?)}}/g, '<span class="hide">$1</span>');
+		md = md.replace(/class="hide"/g, 'class="hide" onclick="event.preventDefault(); this.classList.toggle(\'hide\');"');
+		md = md.replace(/@accolade_G/g, '{');
+		md = md.replace(/@accolade_D/g, '}');
 		// Espaces insécables
 		md = md.replace(/ /g, '&nbsp;');
 		return md;
 	}
 
-	$: if ($markdownSource.split("---").length > 2){
+	$: if ($markdownSource.split("---").length > 2) {
 		try {
-		yamlData = yaml.load($markdownSource.split("---")[1]);
-		for (const property in yamlData) {
-			if (property=='maxWidth') {maxWidthFromYAML = yamlData[property]}
-		}
-		} catch(e) {
-			
+			yamlData = yaml.load($markdownSource.split("---")[1]);
+			for (const property in yamlData) {
+				if (property == 'maxWidth') {
+					maxWidthFromYAML = yamlData[property]
+				}
+			}
+		} catch (e) {
+
 		}
 	}
 
@@ -105,8 +108,8 @@
 
 <main>
 
-<Editor />
+	<Editor />
 
-<Mindmap source={mindmapSource} maxWidth ={maxWidthFromYAML} />
+	<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} />
 
 </main>
