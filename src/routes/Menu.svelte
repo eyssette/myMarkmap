@@ -8,10 +8,14 @@
 	} from './stores.js'
 	export let source;
 	import url from './url.js';
+	
 	import { fade, fly } from 'svelte/transition';
 
 	let urlToShare;
 	let encodageHash;
+	import {
+		saveAs
+	} from 'file-saver-es';
 
 	function menuEdit() {
 		showNotification = false;

@@ -67,28 +67,6 @@
 	$: if(jar) {jar.onUpdate(code=>
 		{if (jar.toString() != $markdownSource) {markdownSource.update(n=>code)}}
 	)}
-	// let cursorPosition;
-
-	// $: if ($undoEvent && jar) {
-	// 	undoEvent.update(n => false);
-		// cursorPosition = jar.save();
-		// setTimeout(function () {
-		// 	markdownSource.update(n => (value = stack.undo())['source']);
-		// }, 0);
-		// setTimeout(function () {
-		// 	jar.restore(cursorPosition);
-		// }, 0);
-	// }
-	// $: if ($redoEvent && jar) {
-	// 	redoEvent.update(n => false);
-		// cursorPosition = jar.save();
-		// setTimeout(function () {
-		// 	markdownSource.update(n => (value = stack.redo())['source']);
-		// }, 0);
-		// setTimeout(function () {
-		// 	jar.restore(cursorPosition);
-		// }, 0);
-	// }
 
 </script>
 
