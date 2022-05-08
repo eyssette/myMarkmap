@@ -63,7 +63,10 @@
 			textArea.firstChild.focus();
 		}, 0);
 	}
-
+ 
+	$: if(jar) {jar.onUpdate(code=>
+		{if (jar.toString() != $markdownSource) {markdownSource.update(n=>code)}}
+	)}
 	// let cursorPosition;
 
 	// $: if ($undoEvent && jar) {
