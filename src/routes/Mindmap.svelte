@@ -7,10 +7,6 @@
 		Transformer
 	} from 'markmap-lib';
 	import * as markmap from 'markmap-view';
-	import {
-		saveAs
-	} from 'file-saver-es';
-	let file
 	export let maxWidth;
 	import {
 		mindmapSave,
