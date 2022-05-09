@@ -24,11 +24,13 @@
 
 	const my = editor => {
 		let code = editor.textContent;
+		// code = code.replace(/\n##\s/g,'\n@hash@hash ')
 		code = hljs.highlight(code, {
 			language: 'markdown',
 			ignoreUnescapedHTML: false
 		}).value;
 		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--(.*?)--&gt;/g,'<span class="hljs-comment">&lt;!--$1--&gt;</span>').replace(/&lt;!--(\s*?)fold(\s*?)--&gt;/g, '<span class="language-xml"><span class="hljs-special-tag">&lt;!--$1fold$2--&gt;</span></span>');
+		// .replace(/@hash@hash\s(.*?)\n/g,'<span class="hljs-section hljs-header-2">## $1</span>\n')
 		editor.innerHTML = code;
 	};
 
@@ -90,10 +92,6 @@
 
 	:global(.editor) {
 		border: 1px solid rgba(0, 0, 0, 0.2);
-		resize: both;
-	}
-
-	:global(.editor) {
 		border-radius: 6px;
 		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 		font-family: 'Lucida Grande', 'Arial', 'Source Code Pro', monospace;
@@ -102,6 +100,7 @@
 		line-height: 20px;
 		padding: 10px;
 		tab-size: 2;
+		resize: both!important;
 	}
 
 	:global(.language-xml *) {
@@ -153,4 +152,17 @@
 		font-size:0.96em;
 		
 	}
+
+	/* :global(.hljs-header-2) {
+		display:inline-block;
+		width:100%;
+		background-color:#F8F8FF;
+	}
+
+	:global(.hljs-header-3) {
+		display:inline-block;
+		width:100%;
+		background-color:#F8F8FF;
+	} */
+
 </style>
