@@ -28,7 +28,7 @@
 			language: 'markdown',
 			ignoreUnescapedHTML: false
 		}).value;
-		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--(.*?)--&gt;/g,'<span class="hljs-comment">&lt;!--$1--&gt;</span>').replace(/&lt;!--fold--&gt;/g, '<span class="language-xml"><span class="hljs-tag">&lt;!--fold--&gt;</span></span>');
+		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--(.*?)--&gt;/g,'<span class="hljs-comment">&lt;!--$1--&gt;</span>').replace(/&lt;!--fold--&gt;/g, '<span class="language-xml"><span class="hljs-special-tag">&lt;!--fold--&gt;</span></span>');
 		editor.innerHTML = code;
 	};
 
@@ -113,17 +113,9 @@
 		font-size: 0.95em
 	}
 
-	:global(.hljs-code) {
-		color: #333!important;
-		background-color: #EDEDED;
-	}
 
-	:global(.hljs-comment) {
-		color: #777;
-		font-weight:100;
-		font-size:0.96em;
-		
-	}
+
+
 
 	:global(.hljs-link),
 	:global(.hljs-string) {
@@ -139,5 +131,24 @@
 
 	:global(.hljs-emphasis) {
 		color: inherit;
+	}
+
+	:global(.hljs-special-tag) {
+		color:#A52A2A!important;
+	}
+
+	:global(.hljs-code) {
+		color: #333!important;
+		background-color: #EDEDED;
+	}
+	:global(.hljs-code *) {
+		color: #333!important;
+	}
+
+	:global(.hljs-comment) {
+		color: #777!important;
+		font-weight:100;
+		font-size:0.96em;
+		
 	}
 </style>
