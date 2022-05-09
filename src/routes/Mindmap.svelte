@@ -16,6 +16,16 @@
 	let mindmap;
 	let w;
 	let h;
+	let widthBlockquote;
+	let marginLeftBlockquote='';
+	$: if (maxWidth<250) {
+		widthBlockquote = maxWidth;
+		marginLeftBlockquote='margin-left:-10px;';
+	} else {
+		widthBlockquote= 250;
+		marginLeftBlockquote='';
+	}
+	
 
 	$: wValue.update(n => w)
 	$: hValue.update(n => h)
@@ -44,7 +54,7 @@
 
 		const options = {
 			duration: 0,
-			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .hide, .hide *{color:transparent!important} .hide {background-color:#FFFFEC} .hide img {opacity:0} img[alt=h-25]{height:25px} img[alt=h-50]{height:50px} img[alt=h-75]{height:75px} img[alt=h-100]{height:100px} img[alt=h-125]{height:125px} img[alt=h-150]{height:150px} img[alt=h-175]{height:175px} img[alt=h-200]{height:200px} blockquote {width:250px!important; white-space: normal; text-align:justify; font-size:0.8em; line-height:1em; border:1px solid #aaa; padding:10px; border-radius:4px}',
+			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .hide, .hide *{color:transparent!important} .hide {background-color:#FFFFEC} .hide img {opacity:0} img[alt=h-25]{height:25px} img[alt=h-50]{height:50px} img[alt=h-75]{height:75px} img[alt=h-100]{height:100px} img[alt=h-125]{height:125px} img[alt=h-150]{height:150px} img[alt=h-175]{height:175px} img[alt=h-200]{height:200px} blockquote {width:'+widthBlockquote+'px!important; white-space: normal; text-align:justify; font-size:0.8em; line-height:1em; border:1px solid #aaa; padding:10px; border-radius:4px;'+marginLeftBlockquote+'}',
 			maxWidth: maxWidth,
 			// Quelques classes supplémentaires :
 			// .hide pour masquer (afficher avec un clic)
