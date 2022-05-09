@@ -115,7 +115,9 @@
 
 
 
-
+	:global(.hljs-section .hljs-strong) {
+		color:#032f62;
+	}
 
 	:global(.hljs-link),
 	:global(.hljs-string) {
