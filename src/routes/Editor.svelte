@@ -28,7 +28,7 @@
 			language: 'markdown',
 			ignoreUnescapedHTML: false
 		}).value;
-		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--(.*?)--&gt;/g,'<span class="hljs-comment">&lt;!--$1--&gt;</span>').replace(/&lt;!--fold--&gt;/g, '<span class="language-xml"><span class="hljs-special-tag">&lt;!--fold--&gt;</span></span>');
+		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--(.*?)--&gt;/g,'<span class="hljs-comment">&lt;!--$1--&gt;</span>').replace(/&lt;!--(\s*?)fold(\s*?)--&gt;/g, '<span class="language-xml"><span class="hljs-special-tag">&lt;!--$1fold$2--&gt;</span></span>');
 		editor.innerHTML = code;
 	};
 
