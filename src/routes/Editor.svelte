@@ -25,12 +25,16 @@
 	const my = editor => {
 		let code = editor.textContent;
 		// code = code.replace(/\n##\s/g,'\n@hash@hash ')
+		code = code.replace(/:(.*)_(.*?):/g,':$1@underscore$2:')
+		code = code.replace(/:(.*)_(.*?):/g,':$1@underscore$2:')
+		code = code.replace(/:(.*)_(.*?):/g,':$1@underscore$2:')
 		code = hljs.highlight(code, {
 			language: 'markdown',
 			ignoreUnescapedHTML: false
 		}).value;
 		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--(.*?)--&gt;/g,'<span class="hljs-comment">&lt;!--$1--&gt;</span>').replace(/&lt;!--(\s*?)fold(\s*?)--&gt;/g, '<span class="language-xml"><span class="hljs-special-tag">&lt;!--$1fold$2--&gt;</span></span>');
 		// .replace(/@hash@hash\s(.*?)\n/g,'<span class="hljs-section hljs-header-2">## $1</span>\n')
+		code = code.replace(/@underscore/g,'_')
 		editor.innerHTML = code;
 	};
 
