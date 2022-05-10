@@ -17,6 +17,7 @@
 	let yamlData;
 	let mindmapData;
 	let maxWidthFromYAML = 500;
+	let style = '';
 
 	onMount(async () => {
 		if ($url) {
@@ -93,6 +94,9 @@
 				if (property == 'maxWidth') {
 					maxWidthFromYAML = yamlData[property]
 				}
+				if (property == 'style') {
+					style = yamlData[property];
+				}
 			}
 		} catch (e) {
 
@@ -111,6 +115,6 @@
 
 	<Editor />
 
-	<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} />
+	<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} />
 
 </main>
