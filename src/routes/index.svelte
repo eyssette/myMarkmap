@@ -18,6 +18,7 @@
 	let mindmapData;
 	let maxWidthFromYAML = 500;
 	let style = '';
+	let mindmapFromURL = false;
 
 	onMount(async () => {
 		if ($url) {
@@ -33,12 +34,13 @@
 			const response = await fetch(encodageHash);
 			mindmapData = await response.text();
 			markdownSource.update(n => mindmapData);
-
+			mindmapFromURL=true;
 		} else {
 			if (encodageHash != '') {
 				mindmapData = decodeURI(encodageHash);
 				markdownSource.update(n => mindmapData);
-				history.pushState(null, null, $baseURL);
+				history.pushState(null, null, $baseURL);	
+				mindmapFromURL=true;
 			}
 		}
 	})
@@ -115,6 +117,10 @@
 
 	<Editor />
 
-	<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} />
+	{#if mindmapFromURL}
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} />
+	{:else}
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} />
+	{/if}
 
 </main>
