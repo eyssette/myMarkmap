@@ -2,7 +2,8 @@
 	import {
 		show,
 		baseURL,
-		mindmapSave
+		mindmapSaveAsSvg,
+		mindmapSaveAsHtml
 	} from './stores.js'
 	export let source;
 	import url from './url.js';
@@ -24,12 +25,16 @@
 		show.update(n => false);
 	}
 
-	function menuSave() {
-		mindmapSave.update(n => true)
+	function menuSaveAsSvg() {
+		mindmapSaveAsSvg.update(n => true)
+	}
+
+	function menuSaveAsHtml() {
+		mindmapSaveAsHtml.update(n => true)
 	}
 
 	function menuShare() {
-		toatNotification();
+		toastNotification();
 		encodageHash = encodeURI(source);
 		urlToShare = $baseURL + '/#' + encodageHash
 		navigator.clipboard.writeText(urlToShare);
@@ -42,7 +47,10 @@
 				menuEdit();
 			}
 			if (event.key === 's') {
-				menuSave();
+				menuSaveAsSvg();
+			}
+			if (event.key === 'h') {
+				menuSaveAsHtml();
 			}
 			if (event.key === 'l') {
 				menuShare();
@@ -61,7 +69,7 @@
 
 	let showNotification = false;
 
-	function toatNotification() {
+	function toastNotification() {
 		showNotification= true
 		setTimeout(function () {
 			showNotification= false;
@@ -73,13 +81,14 @@
 <svelte:window on:keydown={handleKeydown} on:beforeunload={beforeunload} />
 
 <nav id="menu">
-	{#if $show}<a href="view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
-		<a href="save" on:click|preventDefault={menuSave}>💾</a>
+	{#if $show}<a href="#view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
+		<a href="#saveHTML" on:click|preventDefault={menuSaveAsHtml}>🌐</a>
+		<a href="#saveSVG" on:click|preventDefault={menuSaveAsSvg}>💾</a>
 		<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
 		{#if showNotification}
 		<div id="shareNotification" in:fly="{{ y: 50, duration: 3000 }}" out:fade on:click={()=>(showNotification=false)}>Lien copié dans le presse-papier !</div>
 		{/if}
-		<a href="{$baseURL}#https://raw.githubusercontent.com/eyssette/mindmap/main/mindmap-default-mymarkmap.md" target="_blank">❓</a>
+		<a href="{$baseURL}" target="_blank">❓</a>
 </nav>
 
 <style>
