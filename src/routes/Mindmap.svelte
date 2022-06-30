@@ -28,7 +28,7 @@
 	let marginLeftBlockquote='';
 	let nodeTitle;
 	let description;
-	description = $markdownSource;
+	$: description = $markdownSource;
 	//let nodeDesc;
 
 	$: if (maxWidth<250) {
