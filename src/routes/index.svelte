@@ -122,9 +122,9 @@
 	<Editor />
 
 	{#if mindmapFromURL}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} description={$markdownSource} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} />
 	{:else}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} description={$markdownSource} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} />
 	{/if}
 
 </main>
