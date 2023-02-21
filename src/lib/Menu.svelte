@@ -81,7 +81,7 @@
 <svelte:window on:keydown={handleKeydown} on:beforeunload={beforeunload} />
 
 <nav id="menu">
-	{#if $show}<a href="#view" on:click|preventDefault={menuView}>👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
+	{#if $show}<a href="#edit" on:click|preventDefault={menuView}>👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
 		<a href="#saveHTML" on:click|preventDefault={menuSaveAsHtml}>🌐</a>
 		<a href="#saveSVG" on:click|preventDefault={menuSaveAsSvg}>💾</a>
 		<a href="#share" on:click|preventDefault={menuShare}>🔗</a>

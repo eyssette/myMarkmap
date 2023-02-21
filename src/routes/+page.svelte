@@ -4,15 +4,15 @@
 		afterUpdate
 	} from 'svelte';
 	import emoji from 'node-emoji';
-	import url from './url.js';
+	import url from '../lib/url.js';
 	import yaml from 'js-yaml';
-	import Menu from './Menu.svelte';
-	import Editor from './Editor.svelte';
-	import Mindmap from './Mindmap.svelte';
+	import Menu from '../lib/Menu.svelte';
+	import Editor from '../lib/Editor.svelte';
+	import Mindmap from '../lib/Mindmap.svelte';
 	import {
 		markdownSource,
 		baseURL
-	} from './stores.js'
+	} from '../lib/stores.js'
 	let encodageHash;
 	let yamlData;
 	let mindmapData;
