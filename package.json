@@ -16,7 +16,7 @@
   "type": "module",
   "dependencies": {
     "@sveltejs/adapter-static": "^1.0.6",
-    "codejar": "^3.4.0",
+    "codejar": "^3.7.0",
     "file-saver-es": "^2.0.5",
     "gh-pages": "^5.0.0",
     "highlight.js": "^11.7.0",
