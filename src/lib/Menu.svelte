@@ -73,7 +73,7 @@
 		showNotification= true
 		setTimeout(function () {
 			showNotification= false;
-		}, 3000);
+		}, 1500);
 	}
 
 </script>
@@ -86,9 +86,9 @@
 		<a href="#saveSVG" on:click|preventDefault={menuSaveAsSvg}>💾</a>
 		<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
 		{#if showNotification}
-		<div id="shareNotification" in:fly="{{ y: 50, duration: 3000 }}" out:fade on:click={()=>(showNotification=false)}>Lien copié dans le presse-papier !</div>
+		<div id="shareNotification" in:fly="{{ y: 50, duration: 1000 }}" out:fade>Lien copié dans le presse-papier !</div>
 		{/if}
-		<a href="{$baseURL}" target="_blank">❓</a>
+		<a href="{$baseURL}" target="_blank" rel="noreferrer">❓</a>
 </nav>
 
 <style>
