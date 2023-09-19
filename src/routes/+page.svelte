@@ -32,6 +32,9 @@
 				encodageHash = encodageHash.replace('https://github.com', 'https://raw.githubusercontent.com');
 				encodageHash = encodageHash.replace('/blob/', '/');
 			}
+			if (encodageHash.startsWith('https://codimd') && encodageHash.indexOf('download')=== -1 ) {
+				encodageHash = encodageHash+'/download';
+			}
 			const response = await fetch(encodageHash);
 			mindmapData = await response.text();
 			markdownSource.update(n => mindmapData);
