@@ -26,6 +26,9 @@
 			encodageHash = $url.hash.slice(1);
 			baseURL.update(n => $url.protocol + '//' + $url.host);
 			baseURL.update(n => $baseURL.replace("#", ""));
+			if ($baseURL.includes('github') || $baseURL.includes('forge')) {
+				baseURL.update(n =>$baseURL + '/myMarkmap');
+			}
 		}
 		if (encodageHash.startsWith('http')) {
 			if (encodageHash.startsWith('https://github.com')) {
