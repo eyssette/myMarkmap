@@ -33,7 +33,7 @@
 				encodageHash = encodageHash.replace('/blob/', '/');
 			}
 			if (encodageHash.startsWith('https://codimd') && encodageHash.indexOf('download')=== -1 ) {
-				encodageHash = encodageHash+'/download';
+				encodageHash = encodageHash.replace('?edit','').replace('?both','').replace('?view','')+'/download';
 			}
 			const response = await fetch(encodageHash);
 			mindmapData = await response.text();
