@@ -1,6 +1,7 @@
 <script>
 	import {
-		afterUpdate
+		afterUpdate,
+		onMount
 	} from 'svelte';
 	export let source;
 	import {
@@ -88,11 +89,17 @@
 		
 	})
 
+	function getBBox(element) {
+		const {x, y, width, height} = element.getBBox();
+		return {x: x, y: y, w: width, h: height};
+	}
+
 
 	function createSVG(mm) {
+		const boundingBox = getBBox(mindmap)
 		mm = mm.replace(/<br>/g, '<br/>')
 		mm = mm.replace(/\n/g, ' ')
-		mm = '<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"><svg id="markmap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="' + mindmap.className['baseVal'] + '" style="width:100%; height:100%;" viewBox="0 0 ' + w + ' ' + h + '">'+'<use xlink:href=""><title>'+title+'</title></use>'+'<desc>'+description.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&lt;')+'</desc>'+ mm.replace(/<title>.*<\/title>/,'') + '</svg>'
+		mm = '<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"><svg id="markmap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="' + mindmap.className['baseVal'] + '" style="width:100%; height:100%;" viewBox="' + boundingBox.x + ' ' + (boundingBox.y-5) + ' ' + (boundingBox.w) + ' ' + (boundingBox.h+30) + '">'+'<use xlink:href=""><title>'+title+'</title></use>'+'<desc>'+description.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&lt;')+'</desc>'+ mm.replace(/<title>.*<\/title>/,'') + '</svg>'
 		return mm;
 	}
 
