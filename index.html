@@ -6,21 +6,20 @@
 		<meta name="description" content="myMarkmap est un outil en ligne libre et gratuit qui permet de créer automatiquement une carte mentale à partir d'un fichier texte en markdown" />
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta http-equiv="content-security-policy" content="">
-		<link href="./_app/immutable/assets/_page.6d514837.css" rel="stylesheet">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/entry/start.ce5b23f5.mjs">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/chunks/index.a01ce26e.mjs">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/chunks/singletons.de2d8657.mjs">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/chunks/index.439aa428.mjs">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/entry/app.eb5c8bd5.mjs">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/chunks/preload-helper.41c905a7.mjs">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/entry/layout.svelte.843c0d87.mjs">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/entry/_layout.js.fb1865a6.mjs">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/chunks/_layout.da46b06b.mjs">
-		<link rel="preload" as="script" crossorigin="anonymous" href="./_app/immutable/entry/_page.svelte.a409074c.mjs">
+		
+		<link href="./_app/immutable/assets/2.674e04a4.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.b98091ed.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.39d23405.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.9b6b7971.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.d555b472.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.0caee9b0.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.a4192956.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.19fc4d3e.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.79317fa1.js">
 	</head>
 	<body>
 		<div style="display: contents">
+
 
 
 
@@ -111,19 +110,20 @@ maxWidth: 600
 			
 			<script>
 				{
-					__sveltekit_bijonm = {
-						env: {},
-						assets: new URL(".", location.href).pathname.replace(/^\/$/, ''),
-						element: document.currentScript.parentElement
+					__sveltekit_l39e5b = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
 					};
+
+					const element = document.currentScript.parentElement;
 
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.ce5b23f5.mjs"),
-						import("./_app/immutable/entry/app.eb5c8bd5.mjs")
+						import("./_app/immutable/entry/start.b98091ed.js"),
+						import("./_app/immutable/entry/app.0caee9b0.js")
 					]).then(([kit, app]) => {
-						kit.start(app, __sveltekit_bijonm.element, {
+						kit.start(app, element, {
 							node_ids: [0, 2],
 							data,
 							form: null,
