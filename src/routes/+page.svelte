@@ -20,6 +20,7 @@
 	let style = '';
 	let title = 'Mindmap'
 	let mindmapFromURL = false;
+	let colorFreezeLevel = 0;
 
 	onMount(async () => {
 		if ($url) {
@@ -109,6 +110,9 @@
 				if (property == 'title') {
 					title = yamlData[property];
 				}
+				if (property == 'colorFreezeLevel') {
+					colorFreezeLevel = yamlData[property];
+				}
 			}
 		} catch (e) {
 
@@ -128,9 +132,9 @@
 	<Editor />
 
 	{#if mindmapFromURL}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} />
 	{:else}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} />
 	{/if}
 
 </main>

@@ -8,6 +8,7 @@
 		Transformer
 	} from 'markmap-lib';
 	import * as markmap from 'markmap-view';
+	import {deriveOptions} from 'markmap-view';
 	import {
 		mindmapSaveAsSvg,
 		mindmapSaveAsHtml,
@@ -18,6 +19,7 @@
 	export let maxWidth;
 	export let style;
 	export let title;
+	export let colorFreezeLevel;
 	//let globalStyle;
 
 	//$: globalStyle = style
@@ -65,8 +67,9 @@
 		if (scripts) loadJS(scripts, {
 			getMarkmap: () => markmap
 		});
-		
-		const options = {
+
+		const options = deriveOptions({
+			color: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#8c564b", "#e377c2", "#17becf", "#bcbd22"],
 			duration: 0,
 			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .hide, .hide *{color:transparent!important} .hide {background-color:#FFFFEC} .hide img {opacity:0} img[alt=h-25]{height:25px} img[alt=h-50]{height:50px} img[alt=h-75]{height:75px} img[alt=h-100]{height:100px} img[alt=h-125]{height:125px} img[alt=h-150]{height:150px} img[alt=h-175]{height:175px} img[alt=h-200]{height:200px} blockquote {width:'+widthBlockquote+'px!important; white-space: normal; text-align:justify; font-size:0.8em; line-height:1em; border:1px solid #aaa; padding:10px; border-radius:4px;'+marginLeftBlockquote+'} aside{font-size: 0.8em; display: inline-block!important; font-weight:normal;vertical-align: top} cite {font-style:inherit; font-family:serif; font-size:0.97em}'+ style,
 			maxWidth: maxWidth,
@@ -76,7 +79,8 @@
 			//spacingHorizontal: 100,
 			paddingX: 15, // 8
 			autoFit: true,
-		}
+			colorFreezeLevel: colorFreezeLevel,
+		})
 		mindmap.innerHTML = "";
 		mindmapRoot = root;
 		nodeTitle = document.createElement("title")
