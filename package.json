@@ -8,10 +8,10 @@
     "deploy": "npm run build && touch build/.nojekyll && gh-pages -d build -t true"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^1.0.0",
-    "@sveltejs/kit": "^1.0.0",
-    "svelte": "^3.54.0",
-    "vite": "^4.0.0"
+    "@sveltejs/adapter-auto": "^1.0.3",
+    "@sveltejs/kit": "^1.30.3",
+    "svelte": "^3.59.2",
+    "vite": "^4.5.2"
   },
   "type": "module",
   "dependencies": {
@@ -19,11 +19,11 @@
     "codejar": "^3.7.0",
     "file-saver-es": "^2.0.5",
     "gh-pages": "^5.0.0",
-    "highlight.js": "^11.7.0",
+    "highlight.js": "^11.9.0",
     "js-yaml": "^4.1.0",
-    "markmap-common": "^0.14.2",
-    "markmap-lib": "^0.14.3",
-    "markmap-view": "^0.14.3",
+    "markmap-common": "^0.15.6",
+    "markmap-lib": "^0.15.8",
+    "markmap-view": "^0.15.8",
     "node-emoji": "^1.11.0"
   }
 }
