@@ -68,8 +68,8 @@
 		md = md.replace(/\n\n### /g, '\n\n@hash@hash@hash <br>');
 		md = md.replace(/\n### /g, '\n\n@hash@hash@hash ');
 		// Gestion Titre niveau 2
-		md = md.replace(/## (.*)$/g, '@hash@hash <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n');
-		md = md.replace(/## (.*)\n/g, '@hash@hash <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.4em">$1</span>\n');
+		md = md.replace(/## (.*)$/g, '@hash@hash <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.3em">$1</span>\n');
+		md = md.replace(/## (.*)\n/g, '@hash@hash <span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.3em">$1</span>\n');
 		// Gestion Titre niveau 1
 		md = md.replace(/# (.*)$/g, '@hash <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
 		md = md.replace(/# (.*)\n/g, '@hash <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
