@@ -8,14 +8,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<link href="./_app/immutable/assets/2.674e04a4.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.d648e471.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.3f1a3672.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.39d23405.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.f23b8809.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.04217b28.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.d555b472.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.ad24a65f.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.01444bd4.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.a4192956.js">
 		<link rel="modulepreload" href="./_app/immutable/nodes/0.19fc4d3e.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.11f98ae1.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.8728f19d.js">
 	</head>
 	<body>
 		<div style="display: contents">
@@ -57,11 +57,11 @@ maxWidth: 600
 - Clic sur 🔗 pour copier un **lien** \\  de **partage** de la carte mentale \\ dans le presse-papier \\ (_raccourci clavier : `l`_)
 - Clic sur les **cercles** à l'intersection \\ des différentes branches pour \\ **afficher ou masquer la suite**
 
-## Usages plus \\  avancés <!--fold-->
+## Usages plus \\  avancés  <!--fold-->
 
-### Des balises pour \\ **contrôler l'affichage** \\ de la carte
+### Des balises pour \\ **contrôler l'affichage** \\ de la carte
 
-#### **Markdown** 
+#### **Markdown**  <!--fold-->
 
 - `**texte**` : pour mettre en **gras**
 - `_texte_` : pour mettre en _italiques_
@@ -72,12 +72,12 @@ maxWidth: 600
 - `==texte==`: Pour surligner du ==texte==
 - `++texte++`: Pour souligner du ++texte++
 
-#### **HTML**
+#### **HTML** <!--fold-->
 
 - `<br>` ou `\\` pour forcer le passage à la ligne
 - `<span style="...">texte</span>` \\ pour changer le style d'un élément
   
-#### **Autres \\ balises**
+#### **Autres \\ balises** <!--fold-->
 
 - `<!--fold-->` en fin de ligne pour que les \\ sous-branches soient cachées par défaut : \\ il faut cliquer sur le cercle pour afficher la suite<!-- fold-->
     - Cette branche est cachée par défaut !
@@ -85,20 +85,23 @@ maxWidth: 600
 - `:code_emoji:` : pour insérer un code pour un emoji [:link:](https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json)
 - `{{partie masquée}}` pour masquer une partie \\ d'un texte :  voici par exemple un {{passage}} masqué \\ (cliquer dessus pour afficher / masquer à nouveau)
 
-#### **En-tête** \\ (YAML)
+### Un **en-tête** (YAML) \\ pour des options de \\configuration plus avancées <!--fold-->
 
 - Pour spécifier la largeur \\ maximale d'une branche
+	- ```maxWidth: 300```
+- Pour empêcher le changement de \\couleur des sous-branches à partir \\d'un certain niveau
+	- ```colorFreezeLevel: 2```  \\ (pour que chaque branche \\ait sa propre couleur)
 - Pour ajouter des styles \\CSS spécifiques
+	- ```style: strong{color:red}```
 - Pour ajouter un titre
-- Exemple :
-  -  `---` \\ `maxWidth: 300` \\ `style: strong{color:red}` \\ `title: Titre de la carte` \\ `---`
+	- ```title: Mon titre```
 
 
 ### Possibilité d'utiliser un \\ **fichier externe**
 
-- On peut mettre son texte \\ **sur une forge** ou sur [CodiMD](https://codimd.apps.education.fr%2F)  \\ et l'afficher avec myMarkmap
+- On peut mettre son texte \\ **sur une forge** ou sur [CodiMD](https://codimd.apps.education.fr%2F)  \\ et l'afficher avec myMarkmap <!--fold-->
 	- \\ `https://mymarkmap.vercel.app/#URL`
-	- En cas de problème : \\ `https://mymarkmap.vercel.app/#https://api.allorigins.win/raw?url=URL`
+	- En cas de problème : \\ `https://mymarkmap.vercel.app/#https://corsproxy.io/%3FURL`
 	- Sur une instance Gitlab, il faut utiliser un fichier `.gitlab-ci.yml` pour publier le fichier md sur une page publique et utiliser cette adresse comme URL</pre>
 	
 </div>
@@ -110,7 +113,7 @@ maxWidth: 600
 			
 			<script>
 				{
-					__sveltekit_1nlbbm = {
+					__sveltekit_cbdp1v = {
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -120,8 +123,8 @@ maxWidth: 600
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.d648e471.js"),
-						import("./_app/immutable/entry/app.ad24a65f.js")
+						import("./_app/immutable/entry/start.3f1a3672.js"),
+						import("./_app/immutable/entry/app.01444bd4.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2],
