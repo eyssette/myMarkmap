@@ -68,28 +68,34 @@
 			getMarkmap: () => markmap
 		});
 
-		const options = deriveOptions({
-			color: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#8c564b", "#e377c2", "#17becf", "#bcbd22"],
+		const options = {
 			duration: 0,
-			style: id => 'div{padding-bottom:0.12em!important} a {text-decoration:none} foreignObject {overflow:visible} strong{color:#333; font-size:0.98em} .hide, .hide *{color:transparent!important} .hide {background-color:#FFFFEC} .hide img {opacity:0} img[alt=h-25]{height:25px} img[alt=h-50]{height:50px} img[alt=h-75]{height:75px} img[alt=h-100]{height:100px} img[alt=h-125]{height:125px} img[alt=h-150]{height:150px} img[alt=h-175]{height:175px} img[alt=h-200]{height:200px} blockquote {width:'+widthBlockquote+'px!important; white-space: normal; text-align:justify; font-size:0.8em; line-height:1em; border:1px solid #aaa; padding:10px; border-radius:4px;'+marginLeftBlockquote+'} aside{font-size: 0.8em; display: inline-block!important; font-weight:normal;vertical-align: top} cite {font-style:inherit; font-family:serif; font-size:0.97em}'+ style,
 			maxWidth: maxWidth,
 			// Quelques classes supplémentaires :
 			// .hide pour masquer (afficher avec un clic)
-			spacingVertical: 8, // 5			
-			//spacingHorizontal: 100,
-			paddingX: 15, // 8
+			spacingVertical: 10, // 5			
+			//spacingHorizontal: 80,
+			paddingX: 20, // 8
 			autoFit: true,
+		}
+		const optionsJSON = deriveOptions({
+			color: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#8c564b", "#e377c2", "#17becf", "#bcbd22"],
 			colorFreezeLevel: colorFreezeLevel,
 		})
+		const optionsFull = colorFreezeLevel > 0 ? {...options, ...optionsJSON} : options
 		mindmap.innerHTML = "";
 		mindmapRoot = root;
 		nodeTitle = document.createElement("title")
 		nodeTitle.innerHTML=title;
 		mindmap.appendChild(nodeTitle);
+		const styleCSS = 'svg div{margin-top:-4px;} svg a {text-decoration:none} svg foreignObject {overflow:visible;} svg strong{color:#333; font-size:0.98em!important; font-weight:500!important;} svg .hide, svg .hide *{color:transparent!important} svg .hide {background-color:#FFFFEC} svg .hide img {opacity:0} svg img[alt=h-25]{height:25px} svg img[alt=h-50]{height:50px} svg img[alt=h-75]{height:75px} svg img[alt=h-100]{height:100px} svg img[alt=h-125]{height:125px} svg img[alt=h-150]{height:150px} svg img[alt=h-175]{height:175px} svg img[alt=h-200]{height:200px} svg blockquote {width:'+widthBlockquote+'px!important; white-space: normal; text-align:justify; font-size:0.8em; line-height:1em; border:1px solid #aaa; padding:10px; border-radius:4px;'+marginLeftBlockquote+'} svg aside{font-size: 0.8em; display: inline-block!important; font-weight:normal;vertical-align: top} svg cite {font-style:inherit; font-family:serif; font-size:0.97em}'+ style;
+		const styleElement = document.createElement("style")
+		styleElement.innerHTML=styleCSS;
+		mindmap.appendChild(styleElement);
 		//nodeDesc = document.createElement("desc")
 		//nodeDesc.innerHTML=description;
 		//mindmap.appendChild(nodeDesc);
-		Markmap.create('#markmap', options, root);
+		Markmap.create('#markmap', optionsFull, root);
 		
 	})
 

@@ -1,7 +1,6 @@
 <script>
 	import {
-		onMount,
-		afterUpdate
+		onMount
 	} from 'svelte';
 	import emoji from 'node-emoji';
 	import url from '../lib/url.js';
@@ -106,12 +105,16 @@
 				}
 				if (property == 'style') {
 					style = yamlData[property];
+				} else {
+					style = '';
 				}
 				if (property == 'title') {
 					title = yamlData[property];
 				}
 				if (property == 'colorFreezeLevel') {
 					colorFreezeLevel = yamlData[property];
+				} else {
+					colorFreezeLevel = 0;
 				}
 			}
 		} catch (e) {
