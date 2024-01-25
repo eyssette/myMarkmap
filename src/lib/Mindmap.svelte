@@ -20,9 +20,6 @@
 	export let style;
 	export let title;
 	export let colorFreezeLevel;
-	//let globalStyle;
-
-	//$: globalStyle = style
 
 	let mindmap;
 	let w;
@@ -32,7 +29,6 @@
 	let nodeTitle;
 	let description;
 	$: description = $markdownSource;
-	//let nodeDesc;
 
 	$: if (maxWidth<250) {
 		widthBlockquote = maxWidth;
@@ -71,11 +67,8 @@
 		const options = {
 			duration: 0,
 			maxWidth: maxWidth,
-			// Quelques classes supplémentaires :
-			// .hide pour masquer (afficher avec un clic)
-			spacingVertical: 10, // 5			
-			//spacingHorizontal: 80,
-			paddingX: 20, // 8
+			spacingVertical: 15,
+			paddingX: 20,
 			autoFit: true,
 		}
 		const optionsJSON = deriveOptions({
@@ -92,9 +85,6 @@
 		const styleElement = document.createElement("style")
 		styleElement.innerHTML=styleCSS;
 		mindmap.appendChild(styleElement);
-		//nodeDesc = document.createElement("desc")
-		//nodeDesc.innerHTML=description;
-		//mindmap.appendChild(nodeDesc);
 		Markmap.create('#markmap', optionsFull, root);
 		
 	})
