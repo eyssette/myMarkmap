@@ -16,6 +16,8 @@
 		saveAs
 	} from 'file-saver-es';
 
+	let menu;
+
 	function menuEdit() {
 		showNotification = false;
 		show.update(n => true);
@@ -33,6 +35,10 @@
 		mindmapSaveAsHtml.update(n => true)
 	}
 
+	function menuHide() {
+		menu.style.display = menu.style.display == 'none' ? 'block' : 'none';
+	}
+
 	function menuShare() {
 		toastNotification();
 		encodageHash = encodeURI(source);
@@ -44,19 +50,27 @@
 		if (!$show) {
 			if (event.key === 'e') {
 				event.preventDefault();
+				menu.style.display = 'block';
 				menuEdit();
 			}
 			if (event.key === 's') {
+				menu.style.display = 'block';
 				menuSaveAsSvg();
 			}
 			if (event.key === 'h') {
+				menu.style.display = 'block';
 				menuSaveAsHtml();
 			}
 			if (event.key === 'l') {
+				menu.style.display = 'block';
 				menuShare();
+			}
+			if (event.key == 't') {
+				menuHide();
 			}
 		} else {
 			if (event.key === 'Escape') {
+				menu.style.display = 'block';
 				menuView();
 			}
 		}
@@ -80,7 +94,7 @@
 
 <svelte:window on:keydown={handleKeydown} on:beforeunload={beforeunload} />
 
-<nav id="menu">
+<nav id="menu" bind:this={menu}>
 	{#if $show}<a href="#edit" on:click|preventDefault={menuView}>👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
 		<a href="#saveHTML" on:click|preventDefault={menuSaveAsHtml}>🌐</a>
 		<a href="#saveSVG" on:click|preventDefault={menuSaveAsSvg}>💾</a>
