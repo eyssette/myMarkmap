@@ -86,8 +86,29 @@
 		styleElement.innerHTML=styleCSS;
 		mindmap.appendChild(styleElement);
 		Markmap.create('#markmap', optionsFull, root);
-		
+
 	})
+
+	function handleHide(event) {
+			let targetElement = event.target
+			const elementType = targetElement.tagName
+			let searchDivCount = 0;
+			if (elementType == 'SVG') {
+				return
+			} else {
+				while (targetElement && targetElement.tagName !== 'DIV' && searchDivCount < 5) {
+					targetElement = targetElement.parentElement;
+					searchDivCount++;
+				}
+			}
+			if (targetElement.tagName == 'DIV') {
+				if (event.altKey) {
+					targetElement.classList.toggle('hide'); }
+				else {
+					targetElement.classList.remove('hide');
+				}
+			}
+	}
 
 	function getBBox(element) {
 		const {x, y, width, height} = element.getBBox();
@@ -133,7 +154,7 @@
 
 <div bind:clientWidth={w} bind:clientHeight={h} style="width:98vw; height:98vh">
 	<svg id="markmap" bind:this={mindmap} xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-		style="width:100%; height:100%">
+		style="width:100%; height:100%" on:click={handleHide}>
 	</svg>
 </div>
 <style>
