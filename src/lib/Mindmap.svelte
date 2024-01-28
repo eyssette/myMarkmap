@@ -20,6 +20,7 @@
 	export let style;
 	export let title;
 	export let colorFreezeLevel;
+	export let initialExpandLevel;
 
 	let mindmap;
 	let w;
@@ -70,6 +71,7 @@
 			spacingVertical: 15,
 			paddingX: 20,
 			autoFit: true,
+			initialExpandLevel: initialExpandLevel,
 		}
 		const optionsJSON = deriveOptions({
 			color: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#8c564b", "#e377c2", "#17becf", "#bcbd22"],

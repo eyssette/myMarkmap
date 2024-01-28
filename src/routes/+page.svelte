@@ -20,6 +20,7 @@
 	let title = 'Mindmap'
 	let mindmapFromURL = false;
 	let colorFreezeLevel = 0;
+	let initialExpandLevel = -1;
 
 	onMount(async () => {
 		if ($url) {
@@ -116,6 +117,11 @@
 				} else {
 					colorFreezeLevel = 0;
 				}
+				if (property == 'initialExpandLevel') {
+					initialExpandLevel = yamlData[property] ? yamlData[property] : -1;
+				} else {
+					initialExpandLevel = -1;
+				}
 			}
 		} catch (e) {
 
@@ -135,9 +141,9 @@
 	<Editor />
 
 	{#if mindmapFromURL}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} />
 	{:else}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} />
 	{/if}
 
 </main>
