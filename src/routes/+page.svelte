@@ -106,21 +106,15 @@
 				}
 				if (property == 'style') {
 					style = yamlData[property];
-				} else {
-					style = '';
 				}
 				if (property == 'title') {
 					title = yamlData[property];
 				}
 				if (property == 'colorFreezeLevel') {
 					colorFreezeLevel = yamlData[property];
-				} else {
-					colorFreezeLevel = 0;
 				}
 				if (property == 'initialExpandLevel') {
 					initialExpandLevel = yamlData[property] ? yamlData[property] : -1;
-				} else {
-					initialExpandLevel = -1;
 				}
 			}
 		} catch (e) {
