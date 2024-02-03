@@ -98,6 +98,17 @@
 			if (elementType == 'SVG') {
 				return
 			} else {
+				if (elementType =='circle' && event.altKey) {
+					const parentElement = targetElement.parentElement
+					const depth = parentElement.getAttribute('data-depth');
+					const unfoldedBranches = mindmap.querySelectorAll('g[data-depth="'+depth+'"]:not(.markmap-fold)')
+					for (const branch of unfoldedBranches) {
+						const circle = branch.querySelector('circle');
+						if (circle) {circle.dispatchEvent(new MouseEvent("click"));}
+					}
+						targetElement.dispatchEvent(new MouseEvent("click"));
+					return
+				}
 				while (targetElement && targetElement.tagName !== 'DIV' && searchDivCount < 5) {
 					targetElement = targetElement.parentElement;
 					searchDivCount++;
