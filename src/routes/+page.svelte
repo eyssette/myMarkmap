@@ -100,23 +100,10 @@
 	$: if ($markdownSource.split("---").length > 2) {
 		try {
 			yamlData = yaml.load($markdownSource.split("---")[1]);
-			for (const property in yamlData) {
-				if (property == 'maxWidth') {
-					maxWidthFromYAML = yamlData[property]
-				}
-				if (property == 'style') {
-					style = yamlData[property];
-				}
-				if (property == 'title') {
-					title = yamlData[property];
-				}
-				if (property == 'colorFreezeLevel') {
-					colorFreezeLevel = yamlData[property];
-				}
-				if (property == 'initialExpandLevel') {
-					initialExpandLevel = yamlData[property] ? yamlData[property] : -1;
-				}
-			}
+			maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 500;
+			style = yamlData.hasOwnProperty('style') ? yamlData.style : '';
+			colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 0;
+			initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : -1;
 		} catch (e) {
 
 		}
