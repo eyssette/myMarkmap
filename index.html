@@ -8,14 +8,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<link href="./_app/immutable/assets/2.674e04a4.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.00aaed1d.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.178f7458.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.39d23405.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.35bbd5b4.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.3ba9b4c8.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.d555b472.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.1fff27d6.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.11826de6.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.a4192956.js">
 		<link rel="modulepreload" href="./_app/immutable/nodes/0.19fc4d3e.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.652fb4a7.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.0b43cbd9.js">
 	</head>
 	<body>
 		<div style="display: contents">
@@ -47,15 +47,28 @@ maxWidth: 600
 
 ## Pour faire des \\  cartes mentales
 
-- Clic sur ✒️ en haut à gauche \\ (_raccourci clavier : `e`_) pour \\ **éditer** sa carte mentale.  On \\ utilise  la syntaxe **Markdown** \\ pour créer des branches
-  - `# Titre`  \\ pour le niveau 1
-  - `## Sous-titre` \\  pour le niveau 2
-  - `### Niveau 3`, \\  `#### Niveau 4` \\ … ensuite
+- Clic sur ✒️ en haut à gauche pour **éditer** \\ sa carte mentale (_raccourci clavier : `e`_) \\ On utilise le **Markdown** pour créer des branches
+  - `# Titre`  pour le niveau 1
+  - `## Sous-titre`  pour le niveau 2
+  - `### Niveau 3`,  `#### Niveau 4` …
   - Ou bien, on fait une liste à puces \\ `- Niveau 3` \\ 　`  - Niveau 4` \\ `- Niveau 3` \\ (on ajoute 2 espaces avant  \\ pour  passer à un autre niveau)
-- Clic sur 👓   pour **cacher** la \\  fenêtre d'édition et **voir**  \\ seulement la carte mentale \\ (_raccourci clavier : `Escape`_)
-- Clic sur 💾 pour **enregistrer**  \\ la carte au format _svg_ [image fixe] \\ (_raccourci clavier : `s`_) \\ Clic sur 🌐 pour **enregistrer** au \\format HTML [interactivité possible] \\(_raccourci clavier : `h`_) 
-- Clic sur 🔗 pour copier un **lien** \\  de **partage** de la carte mentale \\ dans le presse-papier \\ (_raccourci clavier : `l`_)
+- Clic sur 👓   pour **cacher** la fenêtre d'édition \\et **voir** seulement la carte mentale \\ (_raccourci clavier : `Escape`_)
+- **Enregistrer** et \\**partager** sa \\carte mentale
+  - Clic sur 💾 pour **enregistrer**  la carte au format _svg_ \\[image fixe]  (_raccourci clavier : `s`_)
+  - Clic sur 🌐 pour **enregistrer** au format HTML \\[interactivité possible] (_raccourci clavier : `h`_)
+  - Clic sur 🔗 pour copier un **lien** de **partage** \\de la carte mentale (_raccourci clavier : `l`_)
+  - Il est recommandé d'enregistrer le texte \\de sa carte mentale quelque part pour \\pouvoir modifier plus tard sa carte mentale
+    - On peut mettre son texte \\ **sur une forge** ou sur [CodiMD](https://codimd.apps.education.fr%2F)  \\ et l'afficher avec myMarkmap <!--fold-->
+      - \\ `https://mymarkmap.vercel.app/#URL`
+      - En cas de problème : \\ `https://mymarkmap.vercel.app/#https://corsproxy.io/%3FURL`
+      - Sur une instance Gitlab, il faut utiliser un fichier `.gitlab-ci.yml` pour publier le fichier md sur une page publique et utiliser cette adresse comme URL
+
+## Comment naviguer \\dans la carte ?
 - Clic sur les **cercles** à l'intersection \\ des différentes branches pour \\ **afficher ou masquer la suite**
+  - **Alt+clic** sur un cercle pour afficher \\ seulement la branche en question
+- **Autres raccourcis**
+  - **Alt+clic** sur le texte d'une \\branche pour la masquer
+  - `t` (_toggle_) pour masquer \\ou réafficher la barre de menu
 
 ## Usages plus \\  avancés  <!--fold-->
 
@@ -95,14 +108,9 @@ maxWidth: 600
 	- ```style: strong{color:red}```
 - Pour ajouter un titre
 	- ```title: Mon titre```
-
-
-### Possibilité d'utiliser un \\ **fichier externe**
-
-- On peut mettre son texte \\ **sur une forge** ou sur [CodiMD](https://codimd.apps.education.fr%2F)  \\ et l'afficher avec myMarkmap <!--fold-->
-	- \\ `https://mymarkmap.vercel.app/#URL`
-	- En cas de problème : \\ `https://mymarkmap.vercel.app/#https://corsproxy.io/%3FURL`
-	- Sur une instance Gitlab, il faut utiliser un fichier `.gitlab-ci.yml` pour publier le fichier md sur une page publique et utiliser cette adresse comme URL</pre>
+- Pour masquer par défaut \\les sous-branches à partir\\ d'un certain niveau
+	- ```initialExpandLevel: 1```
+</pre>
 	
 </div>
 
@@ -113,7 +121,7 @@ maxWidth: 600
 			
 			<script>
 				{
-					__sveltekit_4ow6cc = {
+					__sveltekit_9auv4o = {
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -123,8 +131,8 @@ maxWidth: 600
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.00aaed1d.js"),
-						import("./_app/immutable/entry/app.1fff27d6.js")
+						import("./_app/immutable/entry/start.178f7458.js"),
+						import("./_app/immutable/entry/app.11826de6.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2],
