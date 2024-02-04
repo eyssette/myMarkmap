@@ -34,8 +34,8 @@ maxWidth: 600
       - Sur une instance Gitlab, il faut utiliser un fichier \`.gitlab-ci.yml\` pour publier le fichier md sur une page publique et utiliser cette adresse comme URL
 
 ## Comment naviguer \\\\dans la carte ?
-- Clic sur les **cercles** à l'intersection \\\\ des différentes branches pour \\\\ **afficher ou masquer la suite**
-  - **Alt+clic** sur un cercle pour afficher \\\\\ seulement la branche en question
+- \\\\\\\\Clic sur les **cercles** à l'intersection \\\\ des différentes branches pour \\\\ **afficher ou masquer la suite**
+  - \\\\**Alt+clic** sur un cercle pour afficher \\\\\ seulement la branche en question
 - **Autres raccourcis**
   - **Alt+clic** sur le texte d'une \\\\branche pour la masquer
   - \`t\` (_toggle_) pour masquer \\\\ou réafficher la barre de menu
