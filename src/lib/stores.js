@@ -3,7 +3,84 @@ import {
 } from 'svelte/store';
 
 export const show = writable(false);
-export const markdownSource = writable(decodeURI("---%0AmaxWidth:%20600%0A---%0A%0A#%20myMarkmap%0A%0A##%20Un%20outil%20libre%20%5C%5C%20%20et%20gratuit%0A%0A###%20%5BSources%5D(https://forge.aeif.fr/eyssette/myMarkmap/)%20sur%20la%20Forge%20des%5C%5CCommuns%20Num%C3%A9riques%20%C3%89ducatifs%0A###%20_Auteur_%20:%20%5BC%C3%A9dric%20Eyssette%5D(https://eyssette.github.io/)%0A###%20Cr%C3%A9%C3%A9%20%C3%A0%20partir%20du%20%5C%5C%20%20logiciel%20%5Bmarkmap%5D(https://markmap.js.org/)%0A%0A##%20Pour%20faire%20des%20%5C%5C%20%20cartes%20mentales%0A%0A-%20Clic%20sur%20%E2%9C%92%EF%B8%8F%20en%20haut%20%C3%A0%20gauche%20%5C%5C%20(_raccourci%20clavier%20:%20%60e%60_)%20pour%20%5C%5C%20**%C3%A9diter**%20sa%20carte%20mentale.%20%20On%20%5C%5C%20utilise%20%20la%20syntaxe%20**Markdown**%20%5C%5C%20pour%20cr%C3%A9er%20des%20branches%0A%20%20-%20%60#%20Titre%60%20%20%5C%5C%20pour%20le%20niveau%201%0A%20%20-%20%60##%20Sous-titre%60%20%5C%5C%20%20pour%20le%20niveau%202%0A%20%20-%20%60###%20Niveau%203%60,%20%5C%5C%20%20%60####%20Niveau%204%60%20%5C%5C%20%E2%80%A6%20ensuite%0A%20%20-%20Ou%20bien,%20on%20fait%20une%20liste%20%C3%A0%20puces%20%5C%5C%20%60-%20Niveau%203%60%20%5C%5C%20%E3%80%80%60%20%20-%20Niveau%204%60%20%5C%5C%20%60-%20Niveau%203%60%20%5C%5C%20(on%20ajoute%202%20espaces%20avant%20%20%5C%5C%20pour%20%20passer%20%C3%A0%20un%20autre%20niveau)%0A-%20Clic%20sur%20%F0%9F%91%93%20%20%20pour%20**cacher**%20la%20%5C%5C%20%20fen%C3%AAtre%20d'%C3%A9dition%20et%20**voir**%20%20%5C%5C%20seulement%20la%20carte%20mentale%20%5C%5C%20(_raccourci%20clavier%20:%20%60Escape%60_)%0A-%20Clic%20sur%20%F0%9F%92%BE%20pour%20**enregistrer**%20%20%5C%5C%20la%20carte%20au%20format%20_svg_%20%5Bimage%20fixe%5D%20%5C%5C%20(_raccourci%20clavier%20:%20%60s%60_)%20%5C%5C%20Clic%20sur%20%F0%9F%8C%90%20pour%20**enregistrer**%20au%20%5C%5Cformat%20HTML%20%5Binteractivit%C3%A9%20possible%5D%20%5C%5C(_raccourci%20clavier%20:%20%60h%60_)%20%0A-%20Clic%20sur%20%F0%9F%94%97%20pour%20copier%20un%20**lien**%20%5C%5C%20%20de%20**partage**%20de%20la%20carte%20mentale%20%5C%5C%20dans%20le%20presse-papier%20%5C%5C%20(_raccourci%20clavier%20:%20%60l%60_)%0A-%20Clic%20sur%20les%20**cercles**%20%C3%A0%20l'intersection%20%5C%5C%20des%20diff%C3%A9rentes%20branches%20pour%20%5C%5C%20**afficher%20ou%20masquer%20la%20suite**%0A%0A##%20Usages%20plus%20%5C%5C%20%20avanc%C3%A9s%20%20%3C%21--fold--%3E%0A%0A###%20Des%20balises%20pour%20%5C%5C%20%2A%2Acontr%C3%B4ler%20l%27affichage%2A%2A%20%5C%5C%20de%20la%20carte%0A%0A####%20%2A%2AMarkdown%2A%2A%20%20%3C%21--fold--%3E%0A%0A-%20%60%2A%2Atexte%2A%2A%60%20:%20pour%20mettre%20en%20%2A%2Agras%2A%2A%0A-%20%60_texte_%60%20:%20pour%20mettre%20en%20_italiques_%0A-%20%60%5Blien%5D%28URL%29%60%20:%20pour%20ins%C3%A9rer%20un%20%5Blien%5D%28https://eyssette.github.io/%29%0A-%20%60%21%5B%5D%28URL%29%60%20:%20pour%20ins%C3%A9rer%20une%20image%0A%09-%20%60%21%5Bh-25%5D%28URL%29%60%20:%20pour%20sp%C3%A9cifier%20la%20hauteur%20%20%5C%5Cde%20l%27image%20%28de%20h-25,%20h-50%20%E2%80%A6%20%C3%A0%20h-200%29%0A-%20%60%60%60%20%60code%60%20%60%60%60%20:%20Pour%20ins%C3%A9rer%20du%20%60code%60%20%0A-%20%60==texte==%60:%20Pour%20surligner%20du%20==texte==%0A-%20%60++texte++%60:%20Pour%20souligner%20du%20++texte++%0A%0A####%20%2A%2AHTML%2A%2A%20%3C%21--fold--%3E%0A%0A-%20%60%3Cbr%3E%60%20ou%20%60%5C%5C%60%20pour%20forcer%20le%20passage%20%C3%A0%20la%20ligne%0A-%20%60%3Cspan%20style=%22...%22%3Etexte%3C/span%3E%60%20%5C%5C%20pour%20changer%20le%20style%20d%27un%20%C3%A9l%C3%A9ment%0A%20%20%0A####%20%2A%2AAutres%20%5C%5C%20balises%2A%2A%20%3C%21--fold--%3E%0A%0A-%20%60%3C%21--fold--%3E%60%20en%20fin%20de%20ligne%20pour%20que%20les%20%5C%5C%20sous-branches%20soient%20cach%C3%A9es%20par%20d%C3%A9faut%20:%20%5C%5C%20il%20faut%20cliquer%20sur%20le%20cercle%20pour%20afficher%20la%20suite%3C%21--%20fold--%3E%0A%20%20%20%20-%20Cette%20branche%20est%20cach%C3%A9e%20par%20d%C3%A9faut%20%21%0A%20%20%20%20-%20Cette%20branche%20aussi%20%21%0A-%20%60:code_emoji:%60%20:%20pour%20ins%C3%A9rer%20un%20code%20pour%20un%20emoji%20%5B:link:%5D%28https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json%29%0A-%20%60%7B%7Bpartie%20masqu%C3%A9e%7D%7D%60%20pour%20masquer%20une%20partie%20%5C%5C%20d%27un%20texte%20:%20%20voici%20par%20exemple%20un%20%7B%7Bpassage%7D%7D%20masqu%C3%A9%20%5C%5C%20%28cliquer%20dessus%20pour%20afficher%20/%20masquer%20%C3%A0%20nouveau%29%0A%0A###%20Un%20%2A%2Aen-t%C3%AAte%2A%2A%20%28YAML%29%20%5C%5C%20pour%20des%20options%20de%20%5C%5Cconfiguration%20plus%20avanc%C3%A9es%20%3C%21--fold--%3E%0A%0A-%20Pour%20sp%C3%A9cifier%20la%20largeur%20%5C%5C%20maximale%20d%27une%20branche%0A%09-%20%60%60%60maxWidth:%20300%60%60%60%0A-%20Pour%20emp%C3%AAcher%20le%20changement%20de%20%5C%5Ccouleur%20des%20sous-branches%20%C3%A0%20partir%20%5C%5Cd%27un%20certain%20niveau%0A%09-%20%60%60%60colorFreezeLevel:%202%60%60%60%20%20%5C%5C%20%28pour%20que%20chaque%20branche%20%5C%5Cait%20sa%20propre%20couleur%29%0A-%20Pour%20ajouter%20des%20styles%20%5C%5CCSS%20sp%C3%A9cifiques%0A%09-%20%60%60%60style:%20strong%7Bcolor:red%7D%60%60%60%0A-%20Pour%20ajouter%20un%20titre%0A%09-%20%60%60%60title:%20Mon%20titre%60%60%60%0A%0A%0A###%20Possibilit%C3%A9%20d%27utiliser%20un%20%5C%5C%20%2A%2Afichier%20externe%2A%2A%0A%0A-%20On%20peut%20mettre%20son%20texte%20%5C%5C%20%2A%2Asur%20une%20forge%2A%2A%20ou%20sur%20%5BCodiMD%5D%28https://codimd.apps.education.fr%252F%29%20%20%5C%5C%20et%20l%27afficher%20avec%20myMarkmap%20%3C%21--fold--%3E%0A%09-%20%5C%5C%20%60https://mymarkmap.vercel.app/#URL%60%0A%09-%20En%20cas%20de%20probl%C3%A8me%20:%20%5C%5C%20%60https://mymarkmap.vercel.app/#https://corsproxy.io/%3FURL%60%0A%09-%20Sur%20une%20instance%20Gitlab,%20il%20faut%20utiliser%20un%20fichier%20%60.gitlab-ci.yml%60%20pour%20publier%20le%20fichier%20md%20sur%20une%20page%20publique%20et%20utiliser%20cette%20adresse%20comme%20URL"));
+export const markdownSource = writable(decodeURI(`---
+maxWidth: 600
+---
+
+# myMarkmap
+
+## Un outil libre \\\\  et gratuit
+
+### [Sources](https://forge.aeif.fr/eyssette/myMarkmap/) sur la Forge des\\\\Communs Numériques Éducatifs
+### _Auteur_ : [Cédric Eyssette](https://eyssette.github.io/)
+### Créé à partir du \\\\  logiciel [markmap](https://markmap.js.org/)
+
+## Pour faire des \\\\  cartes mentales
+
+- Clic sur ✒️ en haut à gauche pour **éditer** \\\\ sa carte mentale (_raccourci clavier : \`e\`_) \\\\ On utilise le **Markdown** pour créer des branches
+  - \`# Titre\`  pour le niveau 1
+  - \`## Sous-titre\`  pour le niveau 2
+  - \`### Niveau 3\`,  \`#### Niveau 4\` …
+  - Ou bien, on fait une liste à puces \\\\ \`- Niveau 3\` \\\\ 　\`  - Niveau 4\` \\\\ \`- Niveau 3\` \\\\ (on ajoute 2 espaces avant  \\\\ pour  passer à un autre niveau)
+- Clic sur 👓   pour **cacher** la fenêtre d'édition \\\\et **voir** seulement la carte mentale \\\\ (_raccourci clavier : \`Escape\`_)
+- **Enregistrer** et \\\\**partager** sa \\\\carte mentale
+  - Clic sur 💾 pour **enregistrer**  la carte au format _svg_ \\\\[image fixe]  (_raccourci clavier : \`s\`_)
+  - Clic sur 🌐 pour **enregistrer** au format HTML \\\\[interactivité possible] (_raccourci clavier : \`h\`_)
+  - Clic sur 🔗 pour copier un **lien** de **partage** \\\\de la carte mentale (_raccourci clavier : \`l\`_)
+  - Il est recommandé d'enregistrer le texte \\\\de sa carte mentale quelque part pour \\\\pouvoir modifier plus tard sa carte mentale
+    - On peut mettre son texte \\\\ **sur une forge** ou sur [CodiMD](https://codimd.apps.education.fr%2F)  \\\\ et l'afficher avec myMarkmap <!--fold-->
+      - \\\\ \`https://mymarkmap.vercel.app/#URL\`
+      - En cas de problème : \\\\ \`https://mymarkmap.vercel.app/#https://corsproxy.io/%3FURL\`
+      - Sur une instance Gitlab, il faut utiliser un fichier \`.gitlab-ci.yml\` pour publier le fichier md sur une page publique et utiliser cette adresse comme URL
+
+## Comment naviguer \\\\dans la carte ?
+- Clic sur les **cercles** à l'intersection \\\\ des différentes branches pour \\\\ **afficher ou masquer la suite**
+  - **Alt+clic** sur un cercle pour afficher \\\\\ seulement la branche en question
+- **Autres raccourcis**
+  - **Alt+clic** sur le texte d'une \\\\branche pour la masquer
+  - \`t\` (_toggle_) pour masquer \\\\ou réafficher la barre de menu
+
+## Usages plus \\\\  avancés  <!--fold-->
+
+### Des balises pour \\\\ **contrôler l'affichage** \\\\ de la carte
+
+#### **Markdown**  <!--fold-->
+
+- \`**texte**\` : pour mettre en **gras**
+- \`_texte_\` : pour mettre en _italiques_
+- \`[lien](URL)\` : pour insérer un [lien](https://eyssette.github.io/)
+- \`![](URL)\` : pour insérer une image
+	- \`![h-25](URL)\` : pour spécifier la hauteur  \\\\de l'image (de h-25, h-50 … à h-200)
+- \`\`\` \`code\` \`\`\` : Pour insérer du \`code\` 
+- \`==texte==\`: Pour surligner du ==texte==
+- \`++texte++\`: Pour souligner du ++texte++
+
+#### **HTML** <!--fold-->
+
+- \`<br>\` ou \`\\\\\` pour forcer le passage à la ligne
+- \`<span style="...">texte</span>\` \\\\ pour changer le style d'un élément
+  
+#### **Autres \\\\ balises** <!--fold-->
+
+- \`<!--fold-->\` en fin de ligne pour que les \\\\ sous-branches soient cachées par défaut : \\\\ il faut cliquer sur le cercle pour afficher la suite<!-- fold-->
+    - Cette branche est cachée par défaut !
+    - Cette branche aussi !
+- \`:code_emoji:\` : pour insérer un code pour un emoji [:link:](https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json)
+- \`{{partie masquée}}\` pour masquer une partie \\\\ d'un texte :  voici par exemple un {{passage}} masqué \\\\ (cliquer dessus pour afficher / masquer à nouveau)
+
+### Un **en-tête** (YAML) \\\\ pour des options de \\\\configuration plus avancées <!--fold-->
+
+- Pour spécifier la largeur \\\\ maximale d'une branche
+	- \`\`\`maxWidth: 300\`\`\`
+- Pour empêcher le changement de \\\\couleur des sous-branches à partir \\\\d'un certain niveau
+	- \`\`\`colorFreezeLevel: 2\`\`\`  \\\\ (pour que chaque branche \\\\ait sa propre couleur)
+- Pour ajouter des styles \\\\CSS spécifiques
+	- \`\`\`style: strong{color:red}\`\`\`
+- Pour ajouter un titre
+	- \`\`\`title: Mon titre\`\`\`
+- Pour masquer par défaut \\\\les sous-branches à partir\\\\ d'un certain niveau
+	- \`\`\`initialExpandLevel: 1\`\`\`
+`));
 export const baseURL = writable('');
 export const mindmapSaveAsSvg = writable(false);
 export const mindmapSaveAsHtml = writable(false);
