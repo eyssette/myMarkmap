@@ -38,7 +38,7 @@ maxWidth: 600
   - \\\\**Alt+clic** sur un cercle pour afficher \\\\\ seulement la branche en question
 - **Autres raccourcis**
   - **Alt+clic** sur le texte d'une \\\\branche pour la masquer
-  - \`t\` (_toggle_) pour masquer \\\\ou réafficher la barre de menu
+  - \`m\` pour masquer ou \\\\réafficher la barre de menu
 
 ## Usages plus \\\\  avancés  <!--fold-->
 

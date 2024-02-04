@@ -65,7 +65,7 @@
 				menu.style.display = 'block';
 				menuShare();
 			}
-			if (event.key == 't') {
+			if (event.key == 'm') {
 				menuHide();
 			}
 		} else {
