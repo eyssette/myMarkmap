@@ -37,8 +37,9 @@ maxWidth: 600
 - \\\\\\\\Clic sur les **cercles** à l'intersection \\\\ des différentes branches pour \\\\ **afficher ou masquer la suite**
   - \\\\**Alt+clic** sur un cercle pour afficher \\\\\ seulement la branche en question
 - **Autres raccourcis**
-  - **Alt+clic** sur le texte d'une \\\\branche pour la masquer
-  - \`m\` pour masquer ou \\\\réafficher la barre de menu
+  - **Alt+clic** sur le texte d'une branche pour la masquer
+  - \`m\` pour masquer ou réafficher la barre de menu
+  - \`r\` pour désactiver ou réactiver le redimensionnement automatique
 
 ## Usages plus \\\\  avancés  <!--fold-->
 

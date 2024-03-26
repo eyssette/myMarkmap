@@ -31,6 +31,8 @@
 	let description;
 	$: description = $markdownSource;
 
+	export let automaticResize = true;
+
 	$: if (maxWidth<250) {
 		widthBlockquote = maxWidth;
 		marginLeftBlockquote='margin-left:-10px;';
@@ -70,7 +72,7 @@
 			maxWidth: maxWidth,
 			spacingVertical: 15,
 			paddingX: 20,
-			autoFit: true,
+			autoFit: automaticResize,
 			initialExpandLevel: initialExpandLevel,
 		}
 		const optionsJSON = deriveOptions({
