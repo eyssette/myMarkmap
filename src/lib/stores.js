@@ -81,6 +81,8 @@ maxWidth: 600
 	- \`\`\`title: Mon titre\`\`\`
 - Pour masquer par défaut \\\\les sous-branches à partir\\\\ d'un certain niveau
 	- \`\`\`initialExpandLevel: 1\`\`\`
+- Pour forcer l'ouverture des \\\\liens dans un nouvel onglet
+  - \`\`\`openLinksInNewTab: true\`\`\`
 `));
 export const baseURL = writable('');
 export const mindmapSaveAsSvg = writable(false);

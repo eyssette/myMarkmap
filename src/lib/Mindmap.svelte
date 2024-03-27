@@ -22,6 +22,7 @@
 	export let title;
 	export let colorFreezeLevel;
 	export let initialExpandLevel;
+	export let openLinksInNewTab;
 
 	let mindmap;
 	let w;
@@ -92,6 +93,14 @@
 		styleElement.innerHTML=styleCSS;
 		mindmap.appendChild(styleElement);
 		mm=Markmap.create('#markmap', optionsFull, root);
+
+		if(openLinksInNewTab) { 
+			const links = mindmap.querySelectorAll('a');
+			links.forEach(link => {
+				link.setAttribute('target', '_blank');
+			});
+		}
+
 	})
 
 	function handleHide(event) {
@@ -183,6 +192,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <div bind:clientWidth={w} bind:clientHeight={h} style="width:98vw; height:98vh">
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<svg id="markmap" bind:this={mindmap} xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 		style="width:100%; height:100%" on:click={handleHide}>
 	</svg>

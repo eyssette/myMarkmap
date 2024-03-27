@@ -21,6 +21,7 @@
 	let mindmapFromURL = false;
 	let colorFreezeLevel = 0;
 	let initialExpandLevel = -1;
+	let openLinksInNewTab = false;
 
 	onMount(async () => {
 		if ($url) {
@@ -104,6 +105,7 @@
 			style = yamlData.hasOwnProperty('style') ? yamlData.style : '';
 			colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 0;
 			initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : -1;
+			openLinksInNewTab = yamlData.hasOwnProperty('openLinksInNewTab') ? yamlData.openLinksInNewTab : false;
 		} catch (e) {
 
 		}
@@ -121,9 +123,9 @@
 	<Editor />
 
 	{#if mindmapFromURL}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} {openLinksInNewTab} />
 	{:else}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} {openLinksInNewTab} />
 	{/if}
 
 </main>
