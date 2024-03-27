@@ -14,7 +14,8 @@
 		mindmapSaveAsHtml,
 		wValue,
 		hValue,
-		markdownSource
+		markdownSource,
+		show
 	} from './stores.js';
 	export let maxWidth;
 	export let style;
@@ -31,7 +32,8 @@
 	let description;
 	$: description = $markdownSource;
 
-	export let automaticResize = true;
+	let automaticResize = true;
+	let mm;
 
 	$: if (maxWidth<250) {
 		widthBlockquote = maxWidth;
@@ -72,7 +74,7 @@
 			maxWidth: maxWidth,
 			spacingVertical: 15,
 			paddingX: 20,
-			autoFit: automaticResize,
+			autoFit: false,
 			initialExpandLevel: initialExpandLevel,
 		}
 		const optionsJSON = deriveOptions({
@@ -89,8 +91,7 @@
 		const styleElement = document.createElement("style")
 		styleElement.innerHTML=styleCSS;
 		mindmap.appendChild(styleElement);
-		Markmap.create('#markmap', optionsFull, root);
-
+		mm=Markmap.create('#markmap', optionsFull, root);
 	})
 
 	function handleHide(event) {
@@ -122,6 +123,9 @@
 				else {
 					targetElement.classList.remove('hide');
 				}
+			}
+			if(automaticResize) {
+				mm.fit();
 			}
 	}
 
@@ -165,7 +169,18 @@
 		mindmapSaveAsHtml.update(n => false)
 	}
 
+	function handleKeydown(event) {
+		if (!$show && event.key === 'r') {
+			automaticResize = automaticResize ? false : true;
+			if(automaticResize) {
+				mm.fit();
+			}
+		}
+	}
+
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <div bind:clientWidth={w} bind:clientHeight={h} style="width:98vw; height:98vh">
 	<svg id="markmap" bind:this={mindmap} xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

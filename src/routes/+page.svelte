@@ -10,8 +10,7 @@
 	import Mindmap from '../lib/Mindmap.svelte';
 	import {
 		markdownSource,
-		baseURL,
-		show
+		baseURL
 	} from '../lib/stores.js'
 	let encodageHash;
 	let yamlData;
@@ -22,7 +21,6 @@
 	let mindmapFromURL = false;
 	let colorFreezeLevel = 0;
 	let initialExpandLevel = -1;
-	let automaticResize = true;
 
 	onMount(async () => {
 		if ($url) {
@@ -113,16 +111,7 @@
 
 	$: mindmapSource = replaceMarkdown(emoji.emojify($markdownSource))
 
-
-	function handleKeydown(event) {
-	if (!$show && event.key === 'r') {
-		automaticResize = automaticResize ? false : true; 
-	}
-}
-
 </script>
-
-<svelte:window on:keydown={handleKeydown} />
 
 
 <Menu source={$markdownSource} />
@@ -132,9 +121,9 @@
 	<Editor />
 
 	{#if mindmapFromURL}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} {automaticResize} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} />
 	{:else}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel}  {automaticResize} />
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} />
 	{/if}
 
 </main>
