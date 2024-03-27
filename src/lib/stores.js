@@ -28,7 +28,7 @@ maxWidth: 600
   - Clic sur 🌐 pour **enregistrer** au format HTML \\\\[interactivité possible] (_raccourci clavier : \`h\`_)
   - Clic sur 🔗 pour copier un **lien** de **partage** \\\\de la carte mentale (_raccourci clavier : \`l\`_)
   - Il est recommandé d'enregistrer le texte \\\\de sa carte mentale quelque part pour \\\\pouvoir modifier plus tard sa carte mentale
-    - On peut mettre son texte \\\\ **sur une forge** ou sur [CodiMD](https://codimd.apps.education.fr%2F)  \\\\ et l'afficher avec myMarkmap <!--fold-->
+    - On peut mettre son texte \\\\ **sur une forge** ou sur [CodiMD](https://codimd.apps.education.fr)  \\\\ et l'afficher avec myMarkmap <!--fold-->
       - \\\\ \`https://mymarkmap.vercel.app/#URL\`
       - En cas de problème : \\\\ \`https://mymarkmap.vercel.app/#https://corsproxy.io/%3FURL\`
       - Sur une instance Gitlab, il faut utiliser un fichier \`.gitlab-ci.yml\` pour publier le fichier md sur une page publique et utiliser cette adresse comme URL
