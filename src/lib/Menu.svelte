@@ -12,9 +12,7 @@
 
 	let urlToShare;
 	let encodageHash;
-	import {
-		saveAs
-	} from 'file-saver-es';
+	let showMenu = false;
 
 	let menu;
 
@@ -36,7 +34,12 @@
 	}
 
 	function menuHide() {
-		menu.style.display = menu.style.display == 'none' ? 'block' : 'none';
+		showMenu = showMenu ? false : true;
+	}
+	if($url && $url.searchParams && $url.searchParams.get('m')==0) {
+		showMenu = false;
+	} else {
+		showMenu = true;
 	}
 
 	function menuShare() {
@@ -89,21 +92,22 @@
 			showNotification= false;
 		}, 1500);
 	}
-
 </script>
 
 <svelte:window on:keydown={handleKeydown} on:beforeunload={beforeunload} />
 
-<nav id="menu" bind:this={menu}>
-	{#if $show}<a href="#edit" on:click|preventDefault={menuView}>👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
-		<a href="#saveHTML" on:click|preventDefault={menuSaveAsHtml}>🌐</a>
-		<a href="#saveSVG" on:click|preventDefault={menuSaveAsSvg}>💾</a>
-		<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
-		{#if showNotification}
-		<div id="shareNotification" in:fly="{{ y: 50, duration: 1000 }}" out:fade>Lien copié dans le presse-papier !</div>
-		{/if}
-		<a href="{$baseURL}" target="_blank" rel="noreferrer">❓</a>
-</nav>
+{#if showMenu}
+	<nav id="menu" bind:this={menu}>
+		{#if $show}<a href="#edit" on:click|preventDefault={menuView}>👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
+			<a href="#saveHTML" on:click|preventDefault={menuSaveAsHtml}>🌐</a>
+			<a href="#saveSVG" on:click|preventDefault={menuSaveAsSvg}>💾</a>
+			<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
+			{#if showNotification}
+			<div id="shareNotification" in:fly="{{ y: 50, duration: 1000 }}" out:fade>Lien copié dans le presse-papier !</div>
+			{/if}
+			<a href="{$baseURL}" target="_blank" rel="noreferrer">❓</a>
+	</nav>
+{/if}
 
 <style>
 	#menu {
