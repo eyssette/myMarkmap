@@ -25,3 +25,17 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+
+Deploy
+
+```bash
+
+npm run deploy
+```
+
+
+Push to different remotes
+
+1. Checkout to `gh-pages` branch
+2. Pull
+3. Push --all

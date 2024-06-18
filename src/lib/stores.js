@@ -27,6 +27,7 @@ maxWidth: 600
   - Clic sur 💾 pour **enregistrer**  la carte au format _svg_ \\\\[image fixe]  (_raccourci clavier : \`s\`_)
   - Clic sur 🌐 pour **enregistrer** au format HTML \\\\[interactivité possible] (_raccourci clavier : \`h\`_)
   - Clic sur 🔗 pour copier un **lien** de **partage** \\\\de la carte mentale (_raccourci clavier : \`l\`_)
+    - Ajouter \`?m=0\` dans l'URL pour cacher le menu
   - Il est recommandé d'enregistrer le texte \\\\de sa carte mentale quelque part pour \\\\pouvoir modifier plus tard sa carte mentale
     - On peut mettre son texte \\\\ **sur une forge** ou sur [CodiMD](https://codimd.apps.education.fr)  \\\\ et l'afficher avec myMarkmap <!--fold-->
       - \\\\ \`https://mymarkmap.vercel.app/#URL\`
