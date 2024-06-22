@@ -22,6 +22,7 @@
 	let colorFreezeLevel = 0;
 	let initialExpandLevel = -1;
 	let openLinksInNewTab = false;
+	const corsProxy = "https://corsproxy.io/?"
 
 	onMount(async () => {
 		if ($url) {
@@ -32,21 +33,26 @@
 				baseURL.update(n =>$baseURL + '/myMarkmap');
 			}
 		}
+		let addCorsProxy = true;
 		if (encodageHash.startsWith('http')) {
 			// Gestion des fichiers hébergés sur github
 			if (encodageHash.startsWith('https://github.com')) {
+				addCorsProxy = false;
 				encodageHash = encodageHash.replace('https://github.com', 'https://raw.githubusercontent.com');
 				encodageHash = encodageHash.replace('/blob/', '/');
 			}
 			// gestion des fichiers hébergés sur codiMD / hedgedoc / digipage
 			if (encodageHash.startsWith('https://codimd') || encodageHash.includes("hedgedoc") || encodageHash.includes("digipage")) {
+				addCorsProxy = false;
 				encodageHash = encodageHash.replace('?edit','').replace('?both','').replace('?view','').replace(/#$/,'').replace(/\/$/,'');
 				encodageHash = encodageHash.indexOf("download") === -1 ? encodageHash + "/download" : encodageHash;
 			}
 			// gestion des fichiers hébergés sur framapad
 			if (encodageHash.includes('framapad') && !encodageHash.endsWith('/export/txt')) {
+				addCorsProxy = false;
 				encodageHash = encodageHash.replace(/\?.*/,'') + '/export/txt';
 			}
+			encodageHash = addCorsProxy ? corsProxy + encodageHash : encodageHash;
 			const response = await fetch(encodageHash);
 			mindmapData = await response.text();
 			markdownSource.update(n => mindmapData);
