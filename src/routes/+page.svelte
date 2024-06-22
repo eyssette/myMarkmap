@@ -33,12 +33,19 @@
 			}
 		}
 		if (encodageHash.startsWith('http')) {
+			// Gestion des fichiers hébergés sur github
 			if (encodageHash.startsWith('https://github.com')) {
 				encodageHash = encodageHash.replace('https://github.com', 'https://raw.githubusercontent.com');
 				encodageHash = encodageHash.replace('/blob/', '/');
 			}
-			if (encodageHash.startsWith('https://codimd') && encodageHash.indexOf('download')=== -1 ) {
-				encodageHash = encodageHash.replace('?edit','').replace('?both','').replace('?view','').replace(/#$/,'')+'/download';
+			// gestion des fichiers hébergés sur codiMD / hedgedoc / digipage
+			if (encodageHash.startsWith('https://codimd') || encodageHash.includes("hedgedoc") || encodageHash.includes("digipage")) {
+				encodageHash = encodageHash.replace('?edit','').replace('?both','').replace('?view','').replace(/#$/,'').replace(/\/$/,'');
+				encodageHash = encodageHash.indexOf("download") === -1 ? encodageHash + "/download" : encodageHash;
+			}
+			// gestion des fichiers hébergés sur framapad
+			if (encodageHash.includes('framapad') && !encodageHash.endsWith('/export/txt')) {
+				encodageHash = encodageHash.replace(/\?.*/,'') + '/export/txt';
 			}
 			const response = await fetch(encodageHash);
 			mindmapData = await response.text();
