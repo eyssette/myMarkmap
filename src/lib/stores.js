@@ -11,8 +11,8 @@ maxWidth: 600
 
 ## Un outil libre \\\\  et gratuit
 
-### [Sources](https://forge.aeif.fr/eyssette/myMarkmap/) sur la Forge des\\\\Communs Numériques Éducatifs
-### _Auteur_ : [Cédric Eyssette](https://eyssette.github.io/)
+### [Sources](https://forge.apps.education.fr/myMarkmap/myMarkmap.forge.apps.education.fr) sur la Forge des\\\\Communs Numériques Éducatifs
+### _Auteur_ : [Cédric Eyssette](https://eyssette.forge.apps.education.fr/)
 ### Créé à partir du \\\\  logiciel [markmap](https://markmap.js.org/)
 
 ## Pour faire des \\\\  cartes mentales
@@ -50,7 +50,7 @@ maxWidth: 600
 
 - \`**texte**\` : pour mettre en **gras**
 - \`_texte_\` : pour mettre en _italiques_
-- \`[lien](URL)\` : pour insérer un [lien](https://eyssette.github.io/)
+- \`[lien](URL)\` : pour insérer un [lien](https://eyssette.forge.apps.education.fr/)
 - \`![](URL)\` : pour insérer une image
 	- \`![h-25](URL)\` : pour spécifier la hauteur  \\\\de l'image (de h-25, h-50 … à h-200)
 - \`\`\` \`code\` \`\`\` : Pour insérer du \`code\` 
