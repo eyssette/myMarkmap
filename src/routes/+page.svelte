@@ -29,7 +29,7 @@
 			encodageHash = $url.hash.slice(1);
 			baseURL.update(n => $url.protocol + '//' + $url.host);
 			baseURL.update(n => $baseURL.replace("#", ""));
-			if ($baseURL.includes('github') || $baseURL.includes('forge')) {
+			if ($baseURL.includes('github') || $baseURL.includes('eyssette.forge')) {
 				baseURL.update(n =>$baseURL + '/myMarkmap');
 			}
 		}
