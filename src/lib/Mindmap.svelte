@@ -32,12 +32,15 @@
 	let nodeTitle;
 	let description;
 	$: description = $markdownSource;
+	let automaticResize = true;
 
-	const isMobile =
+	onMount(() => {
+		const isMobile =
 	/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
 		navigator.userAgent
-	);
-	let automaticResize = isMobile ? false : true;
+		);
+		automaticResize = isMobile ? false : true;
+	})
 	let mm;
 
 	$: if (maxWidth<250) {
