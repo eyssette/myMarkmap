@@ -8,14 +8,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<link href="./_app/immutable/assets/2.674e04a4.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.1641175b.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.bf157497.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.84111acf.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.76f794e8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.05df4a32.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.cf520272.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.628c927c.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.ec3ef302.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.a4192956.js">
 		<link rel="modulepreload" href="./_app/immutable/nodes/0.c5f46d57.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.d44ddd68.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.2b935970.js">
 	</head>
 	<body>
 		<div style="display: contents">
@@ -107,6 +107,9 @@ maxWidth: 600
 	- ```colorFreezeLevel: 2```  \\ (pour que chaque branche \\ait sa propre couleur)
 - Pour ajouter des styles \\CSS spécifiques
 	- ```style: strong{color:red}```
+- Pour ajouter un \\thème spécifique
+	- ```theme: focus```
+  - Seul le thème `focus` est \\disponible pour le moment
 - Pour ajouter un titre
 	- ```title: Mon titre```
 - Pour masquer par défaut \\les sous-branches à partir\\ d'un certain niveau
@@ -127,7 +130,7 @@ maxWidth: 600
 			
 			<script>
 				{
-					__sveltekit_oi06ye = {
+					__sveltekit_hqbx3 = {
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -137,8 +140,8 @@ maxWidth: 600
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.1641175b.js"),
-						import("./_app/immutable/entry/app.628c927c.js")
+						import("./_app/immutable/entry/start.bf157497.js"),
+						import("./_app/immutable/entry/app.ec3ef302.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2],
