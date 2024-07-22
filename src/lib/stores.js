@@ -78,6 +78,9 @@ maxWidth: 600
 	- \`\`\`colorFreezeLevel: 2\`\`\`  \\\\ (pour que chaque branche \\\\ait sa propre couleur)
 - Pour ajouter des styles \\\\CSS spécifiques
 	- \`\`\`style: strong{color:red}\`\`\`
+- Pour ajouter un \\\\thème spécifique
+	- \`\`\`theme: focus\`\`\`
+  - Seul le thème \`focus\` est \\\\disponible pour le moment
 - Pour ajouter un titre
 	- \`\`\`title: Mon titre\`\`\`
 - Pour masquer par défaut \\\\les sous-branches à partir\\\\ d'un certain niveau

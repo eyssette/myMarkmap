@@ -22,7 +22,9 @@
 	let colorFreezeLevel = 0;
 	let initialExpandLevel = -1;
 	let openLinksInNewTab = false;
+	let theme = '';
 	const corsProxy = "https://corsproxy.io/?"
+	const focusStyle = 'line, path, circle{stroke-width:3} g[data-depth="0"] circle, g[data-depth="1"] circle{r:7} g[data-depth="2"] circle{r:3} circle {r:1} g[data-depth="0"] line, g[data-depth="1"] line, path[data-depth="1"], circle{stroke-width:10} g[data-depth="0"] circle {fill:rgb(31, 119, 180)} g[data-depth="2"] line,  path[data-depth="2"], g[data-depth="1"] circle{stroke-width:6} div{padding-bottom:0.2em!important; padding-top:0.2em; font-family:Arial} g[data-depth="0"] div{border:2px solid rgb(31, 119, 180);border-radius:5px; padding-left:0.5em; margin-left:-1.3em; padding-top:0.35em}  g[data-depth="1"] div{background-color:#EEE; padding:0.5em; margin-left:-1em; margin-top:-0.85em; border-radius:5px} div{font-family:Arial, sans-serif;} g[data-depth="2"] div{margin-left:-1em;} img{height:4em; display:block;}'
 
 	onMount(async () => {
 		if ($url) {
@@ -119,6 +121,13 @@
 			colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 0;
 			initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : -1;
 			openLinksInNewTab = yamlData.hasOwnProperty('openLinksInNewTab') ? yamlData.openLinksInNewTab : false;
+			theme = yamlData.hasOwnProperty('theme') ? yamlData.theme : '';
+			if(theme == 'focus') {
+				maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 250;
+				initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : 2;
+				colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 2;
+				style = style + ' ' + focusStyle;
+			}
 		} catch (e) {
 
 		}
