@@ -116,10 +116,7 @@
 	$: if ($markdownSource.split("---").length > 2) {
 		try {
 			yamlData = yaml.load($markdownSource.split("---")[1]);
-			maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 500;
 			style = yamlData.hasOwnProperty('style') ? yamlData.style : '';
-			colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 0;
-			initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : -1;
 			openLinksInNewTab = yamlData.hasOwnProperty('openLinksInNewTab') ? yamlData.openLinksInNewTab : false;
 			theme = yamlData.hasOwnProperty('theme') ? yamlData.theme : '';
 			if(theme == 'focus') {
@@ -127,6 +124,11 @@
 				initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : 2;
 				colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 2;
 				style = style + ' ' + focusStyle;
+			} else {
+				maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 500;
+				initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : -1;
+				colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 0;
+				style = style;
 			}
 		} catch (e) {
 
