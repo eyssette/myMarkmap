@@ -9,6 +9,7 @@
 	} from 'markmap-lib';
 	import * as markmap from 'markmap-view';
 	import {deriveOptions} from 'markmap-view';
+	import { saveAs } from 'file-saver-es';
 	import {
 		mindmapSaveAsSvg,
 		mindmapSaveAsHtml,
