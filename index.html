@@ -8,14 +8,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<link href="./_app/immutable/assets/2.674e04a4.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.8ba8d5fc.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.d3e67386.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.84111acf.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.2e049870.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.f685136f.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.cf520272.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.2a7b2f88.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.7de0f5d1.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.a4192956.js">
 		<link rel="modulepreload" href="./_app/immutable/nodes/0.c5f46d57.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.53d49965.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.5ddec736.js">
 	</head>
 	<body>
 		<div style="display: contents">
@@ -110,6 +110,8 @@ maxWidth: 600
 - Pour ajouter un \\thème spécifique
 	- ```theme: focus```
   - Thèmes disponibles : \\ `focus` et `nolines`
+- Pour avoir des lignes droites \\plutôt que des courbes
+	- ```curves: false```
 - Pour ajouter un titre
 	- ```title: Mon titre```
 - Pour masquer par défaut \\les sous-branches à partir\\ d'un certain niveau
@@ -130,7 +132,7 @@ maxWidth: 600
 			
 			<script>
 				{
-					__sveltekit_1yfp451 = {
+					__sveltekit_12vbwph = {
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -140,8 +142,8 @@ maxWidth: 600
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.8ba8d5fc.js"),
-						import("./_app/immutable/entry/app.2a7b2f88.js")
+						import("./_app/immutable/entry/start.d3e67386.js"),
+						import("./_app/immutable/entry/app.7de0f5d1.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 2],
