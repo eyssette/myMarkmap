@@ -27,6 +27,7 @@
 	const corsProxy = "https://corsproxy.io/?"
 	const focusStyle = 'line, path, circle{stroke-width:3} g[data-depth="0"] circle, g[data-depth="1"] circle{r:7} g[data-depth="2"] circle{r:3} circle {r:1} g[data-depth="0"] line, g[data-depth="1"] line, path[data-depth="1"], circle{stroke-width:10} g[data-depth="0"] circle {fill:rgb(31, 119, 180)} g[data-depth="2"] line,  path[data-depth="2"], g[data-depth="1"] circle{stroke-width:6} div{padding-bottom:0.2em!important; padding-top:0.2em; font-family:Arial} g[data-depth="0"] div{border:2px solid rgb(31, 119, 180);border-radius:5px; padding-left:0.5em; margin-left:-1.3em; padding-top:0.35em}  g[data-depth="1"] div{background-color:#EEE; padding:0.3em 0.5em; margin-top:-0.35em; margin-left:-1em; border-radius:5px} div{font-family:Arial, sans-serif;} g[data-depth="2"] div{margin-left:-1em;} img{height:4em; display:block;} g[data-depth="1"] span{padding:0!important}'
 	const nolinesStyle = 'line {stroke:transparent} g[data-depth="0"] line{stroke:#002D62; stroke-width:4} g div{margin-top:10px;} g[data-depth="0"] div{border:#002D62 2px solid; margin-left:-1.4em; background-color:white; margin-top:3px; padding:0.5em; text-align:center; border-radius:7px} g[data-depth="0"] span {display:inline!important;} circle{r:4} g[data-depth="0"] circle{r:0} circle:not([fill="rgb(255, 255, 255)"]){stroke:transparent} path{stroke-width:2.5;} path[data-depth="0"],path[data-depth="1"]{stroke-width:4;}'
+	const blackStyle = 'line, path, circle{stroke:black} g[data-depth="0"] line{stroke-width:8} g[data-depth="1"] line, path[data-depth="1"]{stroke-width:4} g[data-depth="2"] line, path[data-depth="2"]{stroke-width:2} circle{r:4} g[data-depth="0"] circle{r:6} circle:not([fill="rgb(255, 255, 255)"]){fill:black; stroke:transparent;}'
 
 	onMount(async () => {
 		if ($url) {
@@ -124,20 +125,27 @@
 			openLinksInNewTab = yamlData.hasOwnProperty('openLinksInNewTab') ? yamlData.openLinksInNewTab : false;
 			curves = yamlData.hasOwnProperty('curves') ? yamlData.curves : true;
 			theme = yamlData.hasOwnProperty('theme') ? yamlData.theme : '';
-			if(theme == 'focus' || theme == 'nolines') {
-				maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 250;
-				initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : 2;
-				colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 2;
+			if(theme == 'focus' || theme == 'nolines' || theme == 'black') {
+				if(theme == 'focus' || theme == 'nolines') {
+					maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 250;
+					initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : 2;
+					colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 2;
+				}
 				if(theme == 'focus') {
 					style = focusStyle + ' ' + style;
 				}
 				if(theme == 'nolines') {
 					style = nolinesStyle + ' ' + style;
 				}
+				if(theme =='black') {
+					style = blackStyle + ' ' + style;
+					curves = yamlData.hasOwnProperty('curves') ? yamlData.curves : false;
+				}
 			} else {
 				maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 500;
 				initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : -1;
 				colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 0;
+				curves = yamlData.hasOwnProperty('curves') ? yamlData.curves : true;
 				style = style;
 			}
 		} catch (e) {

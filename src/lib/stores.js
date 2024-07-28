@@ -80,7 +80,7 @@ maxWidth: 600
 	- \`\`\`style: strong{color:red}\`\`\`
 - Pour ajouter un \\\\thème spécifique
 	- \`\`\`theme: focus\`\`\`
-  - Thèmes disponibles : \\\\ \`focus\` et \`nolines\`
+  - Thèmes disponibles : \\\\ \`focus\`, \`nolines\` et \`black\`
 - Pour avoir des lignes droites \\\\plutôt que des courbes
 	- \`\`\`curves: false\`\`\`
 - Pour ajouter un titre
