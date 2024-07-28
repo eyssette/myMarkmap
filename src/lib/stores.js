@@ -80,7 +80,7 @@ maxWidth: 600
 	- \`\`\`style: strong{color:red}\`\`\`
 - Pour ajouter un \\\\thème spécifique
 	- \`\`\`theme: focus\`\`\`
-  - Seul le thème \`focus\` est \\\\disponible pour le moment
+  - Thèmes disponibles : \\\\ \`focus\` et \`nolines\`
 - Pour ajouter un titre
 	- \`\`\`title: Mon titre\`\`\`
 - Pour masquer par défaut \\\\les sous-branches à partir\\\\ d'un certain niveau
