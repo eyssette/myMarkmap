@@ -81,6 +81,8 @@ maxWidth: 600
 - Pour ajouter un \\\\thème spécifique
 	- \`\`\`theme: focus\`\`\`
   - Thèmes disponibles : \\\\ \`focus\` et \`nolines\`
+- Pour avoir des lignes droites \\\\plutôt que des courbes
+	- \`\`\`curves: false\`\`\`
 - Pour ajouter un titre
 	- \`\`\`title: Mon titre\`\`\`
 - Pour masquer par défaut \\\\les sous-branches à partir\\\\ d'un certain niveau
