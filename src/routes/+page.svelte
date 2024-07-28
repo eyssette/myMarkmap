@@ -111,6 +111,8 @@
 		md = md.replace(/@accolade_D/g, '}');
 		// Espaces insécables
 		md = md.replace(/ /g, '&nbsp;');
+		// Gestion des images : définition possible de la hauteur dans le alt
+		md = md.replace(/\!\[h-(.*?)\]\((.*?)\)/g, '<img src="$2" height=$1 />')
 		return md;
 	}
 

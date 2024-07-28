@@ -52,7 +52,7 @@ maxWidth: 600
 - \`_texte_\` : pour mettre en _italiques_
 - \`[lien](URL)\` : pour insérer un [lien](https://eyssette.forge.apps.education.fr/)
 - \`![](URL)\` : pour insérer une image
-	- \`![h-25](URL)\` : pour spécifier la hauteur  \\\\de l'image (de h-25, h-50 … à h-200)
+	- \`![h​-25](URL)\` : pour spécifier \\\\la hauteur de l'image (en pixels)
 - \`\`\` \`code\` \`\`\` : Pour insérer du \`code\` 
 - \`==texte==\`: Pour surligner du ==texte==
 - \`++texte++\`: Pour souligner du ++texte++
