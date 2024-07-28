@@ -83,6 +83,7 @@
 			});
 		}
 	}
+	const debouncedCurvesToLines = debounce(curvesToLines, 500);
 
 	afterUpdate(() => {
 		const transformer = new Transformer();
@@ -131,7 +132,6 @@
 
 		mm=Markmap.create('#markmap', optionsFull, root);
 
-		const debouncedCurvesToLines = debounce(curvesToLines, 500);
 
 		if (curves === false) {
 			debouncedCurvesToLines();
@@ -156,6 +156,12 @@
 			if (elementType == 'SVG') {
 				return
 			} else {
+				if(elementType =='circle') {
+					// On gère à nouveau la conversion en lignes droites si besoin
+					if (curves === false) {
+						debouncedCurvesToLines();
+					}
+				}
 				if (elementType =='circle' && event.altKey) {
 					const parentElement = targetElement.parentElement
 					const depth = parentElement.getAttribute('data-depth');
