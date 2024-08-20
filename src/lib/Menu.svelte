@@ -3,7 +3,9 @@
 		show,
 		baseURL,
 		mindmapSaveAsSvg,
-		mindmapSaveAsHtml
+		mindmapSaveAsHtml,
+		markdownSource,
+		defaultTemplate,
 	} from './stores.js'
 	export let source;
 	import url from './url.js';
@@ -50,6 +52,10 @@
 		encodageHash = encodeURI(source);
 		urlToShare = $baseURL + '/#' + encodageHash
 		navigator.clipboard.writeText(urlToShare);
+	}
+
+	function menuReset() {
+		markdownSource.update(content => defaultTemplate)
 	}
 
 	function handleKeydown(event) {
@@ -101,7 +107,7 @@
 
 {#if showMenu}
 	<nav id="menu" bind:this={menu}>
-		{#if $show}<a href="#edit" on:click|preventDefault={menuView}>👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
+			{#if $show}<a href="#edit" on:click|preventDefault={menuView}>👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
 			<a href="#saveHTML" on:click|preventDefault={menuSaveAsHtml}>🌐</a>
 			<a href="#saveSVG" on:click|preventDefault={menuSaveAsSvg}>💾</a>
 			<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
@@ -109,6 +115,7 @@
 			<div id="shareNotification" in:fly="{{ y: 50, duration: 1000 }}" out:fade>Lien copié dans le presse-papier !</div>
 			{/if}
 			<a href="{$baseURL}" target="_blank" rel="noreferrer">❓</a>
+			{#if $show}<a href="#reset" on:click|preventDefault={menuReset}>🧹</a>{/if}
 	</nav>
 {/if}
 

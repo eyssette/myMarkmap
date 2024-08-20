@@ -3,6 +3,13 @@ import {
 } from 'svelte/store';
 
 export const show = writable(false);
+export const defaultTemplate = `---
+maxWidth: 300
+---
+
+# Titre
+`;
+
 export const markdownSource = writable(decodeURI(`---
 maxWidth: 600
 ---
