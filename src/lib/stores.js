@@ -52,7 +52,7 @@ maxWidth: 600
 - \`_texte_\` : pour mettre en _italiques_
 - \`[lien](URL)\` : pour insérer un [lien](https://eyssette.forge.apps.education.fr/)
 - \`![](URL)\` : pour insérer une image
-	- \`![h-25](URL)\` : pour spécifier la hauteur  \\\\de l'image (de h-25, h-50 … à h-200)
+	- \`![h​-25](URL)\` : pour spécifier \\\\la hauteur de l'image (en pixels)
 - \`\`\` \`code\` \`\`\` : Pour insérer du \`code\` 
 - \`==texte==\`: Pour surligner du ==texte==
 - \`++texte++\`: Pour souligner du ++texte++
@@ -78,6 +78,11 @@ maxWidth: 600
 	- \`\`\`colorFreezeLevel: 2\`\`\`  \\\\ (pour que chaque branche \\\\ait sa propre couleur)
 - Pour ajouter des styles \\\\CSS spécifiques
 	- \`\`\`style: strong{color:red}\`\`\`
+- Pour ajouter un \\\\thème spécifique
+	- \`\`\`theme: focus\`\`\`
+  - Thèmes disponibles : \\\\ \`focus\`, \`nolines\` et \`black\`
+- Pour avoir des lignes droites \\\\plutôt que des courbes
+	- \`\`\`curves: false\`\`\`
 - Pour ajouter un titre
 	- \`\`\`title: Mon titre\`\`\`
 - Pour masquer par défaut \\\\les sous-branches à partir\\\\ d'un certain niveau

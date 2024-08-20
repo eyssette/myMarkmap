@@ -23,6 +23,7 @@
 	export let colorFreezeLevel;
 	export let initialExpandLevel;
 	export let openLinksInNewTab;
+	export let curves;
 
 	let mindmap;
 	let w;
@@ -32,12 +33,15 @@
 	let nodeTitle;
 	let description;
 	$: description = $markdownSource;
+	let automaticResize = true;
 
-	const isMobile =
+	onMount(() => {
+		const isMobile =
 	/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
 		navigator.userAgent
-	);
-	let automaticResize = isMobile ? false : true;
+		);
+		automaticResize = isMobile ? false : true;
+	})
 	let mm;
 
 	$: if (maxWidth<250) {
@@ -51,6 +55,35 @@
 
 	$: wValue.update(n => w)
 	$: hValue.update(n => h)
+
+	// Fonction debounce pour gérer l'update de la carte avec un délai
+	// fonction utilisée pour changer les lignes en courbe après affichage
+	// et afin d'éviter un clignotement à chaque touche appuyée
+	function debounce(func, wait) {
+		let timeout;
+		return function(...args) {
+			const later = () => {
+				clearTimeout(timeout);
+				func(...args);
+			};
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+		};
+	}
+
+	function curvesToLines() {
+		if(mindmap && !curves) {
+			const paths = mindmap.querySelectorAll('path');
+			paths.forEach(path => {
+				const d = path.getAttribute('d');
+				if (d && d.includes('C')) {
+					const newD = d.replace('C','L')
+					path.setAttribute('d', newD);
+				}
+			});
+		}
+	}
+	const debouncedCurvesToLines = debounce(curvesToLines, 500);
 
 	afterUpdate(() => {
 		const transformer = new Transformer();
@@ -96,7 +129,14 @@
 		const styleElement = document.createElement("style")
 		styleElement.innerHTML=styleCSS;
 		mindmap.appendChild(styleElement);
+
 		mm=Markmap.create('#markmap', optionsFull, root);
+
+
+		if (curves === false) {
+			debouncedCurvesToLines();
+			document.body.addEventListener("keyup", debouncedCurvesToLines);
+		}
 
 		if(openLinksInNewTab) { 
 			const links = mindmap.querySelectorAll('a');
@@ -104,6 +144,8 @@
 				link.setAttribute('target', '_blank');
 			});
 		}
+
+		
 
 	})
 
@@ -114,6 +156,12 @@
 			if (elementType == 'SVG') {
 				return
 			} else {
+				if(elementType =='circle') {
+					// On gère à nouveau la conversion en lignes droites si besoin
+					if (curves === false) {
+						debouncedCurvesToLines();
+					}
+				}
 				if (elementType =='circle' && event.altKey) {
 					const parentElement = targetElement.parentElement
 					const depth = parentElement.getAttribute('data-depth');

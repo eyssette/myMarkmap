@@ -9,6 +9,9 @@
 	import url from './url.js';
 	
 	import { fade, fly } from 'svelte/transition';
+	import {
+		saveAs
+	} from 'file-saver-es';
 
 	let urlToShare;
 	let encodageHash;
