@@ -126,6 +126,11 @@
 		position: absolute;
 		font-size: 1.4em
 	}
+	@media screen and (max-width:500px) {
+		#menu {
+			font-size:1.2em;
+		}
+	}
 
 	#menu a {
 		margin-left: 1em;

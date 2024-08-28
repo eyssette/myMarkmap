@@ -88,6 +88,11 @@
 		z-index: 1;
 		background-color: white;
 	}
+	@media screen and (max-width:500px) {
+		textarea,:global(.editor) {
+			width:75vw;
+		}
+	}
 
 	textarea,
 	:global(.hidden) {
