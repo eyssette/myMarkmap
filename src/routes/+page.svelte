@@ -12,6 +12,8 @@
 		markdownSource,
 		baseURL
 	} from '../lib/stores.js'
+
+	let showMenu = true;
 	let encodageHash;
 	let yamlData;
 	let mindmapData;
@@ -127,6 +129,7 @@
 			openLinksInNewTab = yamlData.hasOwnProperty('openLinksInNewTab') ? yamlData.openLinksInNewTab : false;
 			focusOnBranch = yamlData.hasOwnProperty('focusOnBranch') ? yamlData.focusOnBranch : false;
 			automaticResize = yamlData.hasOwnProperty('automaticResize') ? yamlData.automaticResize : true;
+			showMenu = yamlData.hasOwnProperty('showMenu')? yamlData.showMenu : true;
 			curves = yamlData.hasOwnProperty('curves') ? yamlData.curves : true;
 			theme = yamlData.hasOwnProperty('theme') ? yamlData.theme : '';
 			if(theme == 'focus' || theme == 'nolines' || theme == 'black') {
@@ -162,7 +165,7 @@
 </script>
 
 
-<Menu source={$markdownSource} />
+<Menu source={$markdownSource} {showMenu}/>
 
 <main>
 

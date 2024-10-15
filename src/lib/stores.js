@@ -99,6 +99,7 @@ maxWidth: 600
 - Pour contrôler l'interactivité
   - \`\`\`automaticResize: false\`\`\` \\\\pour supprimer le \\\\redimensionnement automatique
   - \`\`\`focusOnBranch: true\`\`\` \\\\pour focaliser sur la branche \\\\sur laquelle on clique et fermer\\\\automatiquement les autres
+  - \`\`\`showMenu: false\`\`\` \\\\pour cacher le menu
 `));
 export const baseURL = writable('');
 export const mindmapSaveAsSvg = writable(false);

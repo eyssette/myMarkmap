@@ -15,10 +15,10 @@
 		saveAs
 	} from 'file-saver-es';
 
+	export let showMenu;
+
 	let urlToShare;
 	let encodageHash;
-	let showMenu = false;
-
 	let menu;
 
 	function menuEdit() {
@@ -43,8 +43,6 @@
 	}
 	if($url && $url.searchParams && $url.searchParams.get('m')==0) {
 		showMenu = false;
-	} else {
-		showMenu = true;
 	}
 
 	function menuShare() {
