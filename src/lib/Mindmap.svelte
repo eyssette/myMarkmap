@@ -24,6 +24,8 @@
 	export let initialExpandLevel;
 	export let openLinksInNewTab;
 	export let curves;
+	export let focusOnBranch;
+	export let automaticResize;
 
 	let mindmap;
 	let w;
@@ -33,7 +35,6 @@
 	let nodeTitle;
 	let description;
 	$: description = $markdownSource;
-	let automaticResize = true;
 
 	onMount(() => {
 		const isMobile =
@@ -149,6 +150,11 @@
 
 	})
 
+	function trimFromLastDot(str) {
+		const lastDotIndex = str.lastIndexOf('.');
+		return lastDotIndex !== -1 ? str.substring(0, lastDotIndex) : str;
+}
+
 	function handleHide(event) {
 			let targetElement = event.target
 			const elementType = targetElement.tagName
@@ -162,15 +168,24 @@
 						debouncedCurvesToLines();
 					}
 				}
-				if (elementType =='circle' && event.altKey) {
-					const parentElement = targetElement.parentElement
-					const depth = parentElement.getAttribute('data-depth');
-					const unfoldedBranches = mindmap.querySelectorAll('g[data-depth="'+depth+'"]:not(.markmap-fold)')
+				if (elementType =='circle' && (event.altKey || focusOnBranch)) {
+					const parentElement = targetElement.parentElement;
+					const dataPathParentElement = parentElement.getAttribute('data-path');
+					const sameLevelBranches = trimFromLastDot(dataPathParentElement)
+					const unfoldedBranches = mindmap.querySelectorAll('g[data-path^="'+sameLevelBranches+'."]:not(.markmap-fold)')
+					const circleFill = targetElement.getAttribute('fill')
 					for (const branch of unfoldedBranches) {
 						const circle = branch.querySelector('circle');
-						if (circle) {circle.dispatchEvent(new MouseEvent("click"));}
+						if (circle) {
+							circle.dispatchEvent(new MouseEvent("click"));
+						}
 					}
+					if(!focusOnBranch || circleFill != 'rgb(255, 255, 255)') {
 						targetElement.dispatchEvent(new MouseEvent("click"));
+					}
+					if(automaticResize) {
+						mm.fit();
+					}
 					return
 				}
 				while (targetElement && targetElement.tagName !== 'DIV' && searchDivCount < 5) {
