@@ -181,7 +181,9 @@
 						}
 					}
 					if(!focusOnBranch || circleFill != 'rgb(255, 255, 255)') {
-						targetElement.dispatchEvent(new MouseEvent("click"));
+						if(dataPathParentElement != "1") {
+							targetElement.dispatchEvent(new MouseEvent("click"));
+						}
 					}
 					if(automaticResize) {
 						mm.fit();
