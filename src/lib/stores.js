@@ -96,6 +96,9 @@ maxWidth: 600
 	- \`\`\`initialExpandLevel: 1\`\`\`
 - Pour forcer l'ouverture des \\\\liens dans un nouvel onglet
   - \`\`\`openLinksInNewTab: true\`\`\`
+- Pour contrôler l'interactivité
+  - \`\`\`automaticResize: false\`\`\` \\\\pour supprimer le \\\\redimensionnement automatique
+  - \`\`\`focusOnBranch: true\`\`\` \\\\pour focaliser sur la branche \\\\sur laquelle on clique et fermer\\\\automatiquement les autres
 `));
 export const baseURL = writable('');
 export const mindmapSaveAsSvg = writable(false);

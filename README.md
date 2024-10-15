@@ -1,8 +1,8 @@
 # myMarkmap
 
-[myMarkmap](https://mymarkmap.netlify.app/) is a custom editor for [Markmap](https://github.com/gera2ld/markmap), built with [Svelte Kit](https://kit.svelte.dev/).
+[myMarkmap](https://mymarkmap.forge.apps.education.fr) is a custom editor for [Markmap](https://github.com/gera2ld/markmap), built with [Svelte Kit](https://kit.svelte.dev/).
 
-[![](https://raw.githubusercontent.com/eyssette/myMarkmap/main/myMarkmap-explications.png)](https://mymarkmap.vercel.app/#https://raw.githubusercontent.com/eyssette/mindmap/main/mindmap-default-mymarkmap.md)
+[![](https://raw.githubusercontent.com/eyssette/myMarkmap/main/myMarkmap-explications.png)](https://mymarkmap.forge.apps.education.fr/#https://raw.githubusercontent.com/eyssette/mindmap/main/mindmap-default-mymarkmap.md)
 
 ## TODO
 
