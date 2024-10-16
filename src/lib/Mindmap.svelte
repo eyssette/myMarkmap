@@ -86,6 +86,13 @@
 	}
 	const debouncedCurvesToLines = debounce(curvesToLines, 500);
 
+	function setLinksToOpenInNewTab() {
+		const links = mindmap.querySelectorAll('a');
+		links.forEach(link => {
+			link.setAttribute('target', '_blank');
+		});
+	}
+
 	afterUpdate(() => {
 		const transformer = new Transformer();
 
@@ -139,11 +146,8 @@
 			document.body.addEventListener("keyup", debouncedCurvesToLines);
 		}
 
-		if(openLinksInNewTab) { 
-			const links = mindmap.querySelectorAll('a');
-			links.forEach(link => {
-				link.setAttribute('target', '_blank');
-			});
+		if(openLinksInNewTab) {
+			setLinksToOpenInNewTab()
 		}
 
 		
@@ -163,6 +167,10 @@
 				return
 			} else {
 				if(elementType =='circle') {
+					// On gère à nouveau l'ouverture des liens dans un autre onglet si on utilise cette option dans le yaml
+					if(openLinksInNewTab) {
+						setLinksToOpenInNewTab()
+					}
 					// On gère à nouveau la conversion en lignes droites si besoin
 					if (curves === false) {
 						debouncedCurvesToLines();
