@@ -51,7 +51,7 @@
 				encodageHash = encodageHash.replace('/blob/', '/');
 			}
 			// gestion des fichiers hébergés sur codiMD / hedgedoc / digipage
-			if (encodageHash.startsWith('https://codimd') || encodageHash.includes("hedgedoc") || encodageHash.includes("digipage")) {
+			if (encodageHash.startsWith('https://codimd') || encodageHash.startsWith("https://pad.numerique.gouv.fr/") || encodageHash.includes("hedgedoc") || encodageHash.includes("digipage")) {
 				addCorsProxy = false;
 				encodageHash = encodageHash.replace('?edit','').replace('?both','').replace('?view','').replace(/#$/,'').replace(/\/$/,'');
 				encodageHash = encodageHash.indexOf("download") === -1 ? encodageHash + "/download" : encodageHash;
