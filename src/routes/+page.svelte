@@ -24,6 +24,7 @@
 	let colorFreezeLevel = 0;
 	let initialExpandLevel = -1;
 	let openLinksInNewTab = false;
+	let disableWarningMessage = false;
 	let theme = '';
 	let curves = true;
 	const corsProxy = "https://corsproxy.io/?"
@@ -132,6 +133,7 @@
 			showMenu = yamlData.hasOwnProperty('showMenu')? yamlData.showMenu : true;
 			curves = yamlData.hasOwnProperty('curves') ? yamlData.curves : true;
 			theme = yamlData.hasOwnProperty('theme') ? yamlData.theme : '';
+			disableWarningMessage = yamlData.hasOwnProperty('disableWarningMessage') ? yamlData.disableWarningMessage : false;
 			if(theme == 'focus' || theme == 'nolines' || theme == 'black') {
 				if(theme == 'focus' || theme == 'nolines') {
 					maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 250;
@@ -165,7 +167,7 @@
 </script>
 
 
-<Menu source={$markdownSource} {showMenu}/>
+<Menu source={$markdownSource} {showMenu} {disableWarningMessage}/>
 
 <main>
 

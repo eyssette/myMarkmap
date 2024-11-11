@@ -96,6 +96,8 @@ maxWidth: 600
 	- \`\`\`initialExpandLevel: 1\`\`\`
 - Pour forcer l'ouverture des \\\\liens dans un nouvel onglet
   - \`\`\`openLinksInNewTab: true\`\`\`
+- Pour permettre l'ouverture automatique\\\\des liens et empêcher l'affichage du message\\\\ de confirmation pour quitter la page
+  - \`\`\`disableWarningMessage: true\`\`\`
 - Pour contrôler l'interactivité
   - \`\`\`automaticResize: false\`\`\` \\\\pour supprimer le \\\\redimensionnement automatique
   - \`\`\`focusOnBranch: true\`\`\` \\\\pour focaliser sur la branche \\\\sur laquelle on clique et fermer\\\\automatiquement les autres

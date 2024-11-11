@@ -8,6 +8,7 @@
 		defaultTemplate,
 	} from './stores.js'
 	export let source;
+	export let disableWarningMessage;
 	import url from './url.js';
 	
 	import { fade, fly } from 'svelte/transition';
@@ -87,8 +88,10 @@
 	}
 
 	function beforeunload(event) {
-		event.preventDefault();
+		if(!disableWarningMessage) {
+			event.preventDefault();
 		return event.returnValue = '';
+		}
 	}
 
 	let showNotification = false;
