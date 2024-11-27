@@ -134,10 +134,10 @@
 			curves = yamlData.hasOwnProperty('curves') ? yamlData.curves : true;
 			theme = yamlData.hasOwnProperty('theme') ? yamlData.theme : '';
 			disableWarningMessage = yamlData.hasOwnProperty('disableWarningMessage') ? yamlData.disableWarningMessage : false;
+			initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : -1;
 			if(theme == 'focus' || theme == 'nolines' || theme == 'black') {
 				if(theme == 'focus' || theme == 'nolines') {
 					maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 250;
-					initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : 2;
 					colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 2;
 				}
 				if(theme == 'focus') {
@@ -152,7 +152,6 @@
 				}
 			} else {
 				maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 500;
-				initialExpandLevel = yamlData.hasOwnProperty('initialExpandLevel') ? yamlData.initialExpandLevel : -1;
 				colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 0;
 				curves = yamlData.hasOwnProperty('curves') ? yamlData.curves : true;
 				style = style;
