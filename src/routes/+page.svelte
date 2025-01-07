@@ -179,10 +179,3 @@
 	{/if}
 
 </main>
-
-<style>
-	:global(body) {
-		margin:0;
-		padding:7px;
-	}
-</style>

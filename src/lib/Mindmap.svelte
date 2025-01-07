@@ -268,7 +268,7 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div bind:clientWidth={w} bind:clientHeight={h} style="width:98vw; height:98vh">
+<div bind:clientWidth={w} bind:clientHeight={h} style="width:96vw; height:96vh">
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<svg id="markmap" bind:this={mindmap} xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 		style="width:100%; height:100%" on:click={handleHide}>
