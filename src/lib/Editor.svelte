@@ -46,17 +46,23 @@
 
 
 	let CodeJar;
-
+	let firefoxVersion = 0;
+	
 	onMount(async () => {
 		({
 			CodeJar
 		} = await import("codejar"))
 		jar = await CodeJar(editor, my, {history:true});
+		const matchFirefoxVersion = window.navigator.userAgent.match(/Firefox\/([0-9]+)\./);
+		firefoxVersion = matchFirefoxVersion ? parseInt(matchFirefoxVersion[1]) : 0;
 	})
 
 	$: if ($show == true) {		
 		setTimeout(function () {
 			textArea.firstChild.focus();
+			if(firefoxVersion >= 136) {
+				textArea.firstChild.setAttribute("contenteditable","true");
+			}
 		}, 0);
 	}
  
