@@ -1,8 +1,16 @@
 # myMarkmap
 
-[myMarkmap](https://mymarkmap.forge.apps.education.fr/) est un outil libre et gratuit qui permet de créer et partager facilement des cartes mentales interactives.
+[myMarkmap](https://mymarkmap.forge.apps.education.fr/) est un outil libre et gratuit qui permet de créer et partager facilement des cartes mentales interactives, à partir d'un texte en Markdown.
 
 [![](https://raw.githubusercontent.com/eyssette/myMarkmap/main/myMarkmap-explications.png)](https://mymarkmap.forge.apps.education.fr/)
+
+## ⚙️ Pourquoi utiliser le markdown ?
+
+L'utilisation du Markdown pour créer des cartes mentales présente plusieurs avantages :
+1. **Simplicité :** le Markdown est une syntaxe simple et intuitive qui ne nécessite pas de compétences techniques avancées, on peut rapidement [apprendre les bases](https://docs.forge.apps.education.fr/modeles/tutoriels/tutomd/).
+2. **Focalisation sur le contenu :** contrairement aux outils graphiques traditionnels où l'on peut passer du temps à ajuster visuellement les éléments, on écrit ici simplement ses idées et la hiérarchie de la carte mentale se forme naturellement avec les niveaux de titre
+3. **Efficacité et rapidité :** si on est à l'aise avec la saisie au clavier, créer une carte mentale en Markdown est beaucoup plus rapide qu'avec une interface graphique traditionnelle, et on peut facilement la modifier, la reconfigurer avec des copier-coller. On peut aussi facilement créer une carte mentale à partir d'un document texte qu'on a déjà à disposition (les IA peuvent d'ailleurs faciliter la conversion).
+4. **Format léger et ouvert :** votre carte mentale est simplement du texte, ce qui signifie qu'elle sera très légère, qu'elle restera toujours lisible, sans dépendre d'un logiciel spécifique et que vous pourrez aussi convertir votre carte mentale pour l'utiliser dans d'autres contextes.
 
 ## ✨ Fonctionnalités principales
 
