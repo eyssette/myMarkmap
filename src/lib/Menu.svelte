@@ -108,15 +108,15 @@
 
 {#if showMenu}
 	<nav id="menu" bind:this={menu}>
-			{#if $show}<a href="#edit" on:click|preventDefault={menuView}>👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit}>✒️</a>{/if}
-			<a href="#saveHTML" on:click|preventDefault={menuSaveAsHtml}>🌐</a>
-			<a href="#saveSVG" on:click|preventDefault={menuSaveAsSvg}>💾</a>
-			<a href="#share" on:click|preventDefault={menuShare}>🔗</a>
+			{#if $show}<a href="#edit" on:click|preventDefault={menuView} title="Afficher seulement la carte">👓</a>{:else}<a href="#edit" on:click|preventDefault={menuEdit} title="Afficher l'éditeur">✒️</a>{/if}
+			<a href="#saveHTML" on:click|preventDefault={menuSaveAsHtml} title="Sauvegarder au format HTML (interactif)">🌐</a>
+			<a href="#saveSVG" on:click|preventDefault={menuSaveAsSvg} title="Sauvegarder au format SVG (image fixe)">💾</a>
+			<a href="#share" on:click|preventDefault={menuShare} title="Créer un lien de partage rapide">🔗</a>
 			{#if showNotification}
 			<div id="shareNotification" in:fly="{{ y: 50, duration: 1000 }}" out:fade>Lien copié dans le presse-papier !</div>
 			{/if}
-			<a href="{$baseURL}" target="_blank" rel="noreferrer">❓</a>
-			{#if $show}<a href="#reset" on:click|preventDefault={menuReset}>🧹</a>{/if}
+			<a href="{$baseURL}" target="_blank" rel="noreferrer" title="Afficher le tutoriel">❓</a>
+			{#if $show}<a href="#reset" on:click|preventDefault={menuReset} title="Supprimer le contenu de cette carte">🧹</a>{/if}
 	</nav>
 {/if}
 
