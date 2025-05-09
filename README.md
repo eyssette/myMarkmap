@@ -1,41 +1,54 @@
 # myMarkmap
 
-[myMarkmap](https://mymarkmap.forge.apps.education.fr) is a custom editor for [Markmap](https://github.com/gera2ld/markmap), built with [Svelte Kit](https://kit.svelte.dev/).
+[myMarkmap](https://mymarkmap.forge.apps.education.fr/) est un outil libre et gratuit qui permet de créer et partager facilement des cartes mentales interactives.
 
-[![](https://raw.githubusercontent.com/eyssette/myMarkmap/main/myMarkmap-explications.png)](https://mymarkmap.forge.apps.education.fr/#https://raw.githubusercontent.com/eyssette/mindmap/main/mindmap-default-mymarkmap.md)
+[![](https://raw.githubusercontent.com/eyssette/myMarkmap/main/myMarkmap-explications.png)](https://mymarkmap.forge.apps.education.fr/)
 
-## TODO
+## ✨ Fonctionnalités principales
 
-[TODO](https://github.com/eyssette/myMarkmap/projects/1)
+### Éditeur intégré
+- Éditez votre carte en cliquant sur ✒️ en haut à gauche (ou avec la touche "e")
+- Visualisez uniquement la carte en cliquant sur 👓 (ou avec la touche "Escape")
 
-## Developing
+### Organisation des idées
+- Utilisez les titres Markdown pour créer des niveaux
+  - `# Titre` (niveau 1)
+  - `## Sous-titre` (niveau 2)
+- Ou des listes à puces pour organiser votre carte
+  - Pour les sous-niveaux, ajoutez deux espaces avant le tiret
 
-Install
+### Enregistrement et partage
+- Enregistrement au format SVG ou HTML, ou création d'un lien de partage
+- Partage possible d'une carte mentale à partir d'un fichier en Markdown sur [CodiMD](codimd.apps.education.fr) ou un autre service, en mettant l'URL de votre fichier dans le `hash` : `https://mymarkmap.forge.apps.education.fr/#URL_DU_FICHIER_MARKDOWN`
 
-```bash
-npm install
+### Navigation dans la carte
+- Possibilité d'afficher ou de masquer des branches
+- Possibilité d'afficher ou de masquer des parties du texte
+- Redimensionnement automatique
 
-```
-
-Start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-Deploy
-
-```bash
-
-npm run deploy
-```
+### Options de configuration plus avancées
+- Personnalisation de l'affichage avec des thèmes : `focus`, `nolines`, ou avec des styles CSS
+- Contrôle de l'interactivité : focalisation automatique sur la branche actuelle, suppression du redimensionnement …
 
 
-Push to different remotes
+Pour plus d'informations, voir la [carte mentale affichée par défaut](https://mymarkmap.forge.apps.education.fr/) sur l'application.
 
-1. Checkout to `gh-pages` branch
-2. Pull
-3. Push --all
+## 🙋‍♀️ Contribuer
+
+Si vous souhaitez contribuer ou tout simplement discuter de ce projet pour participer à l'améliorer, merci de lire le fichier [CONTRIBUTING.md](https://forge.apps.education.fr/myMarkmap/myMarkmap.forge.apps.education.fr/-/blob/main/CONTRIBUTING.md?ref_type=heads).
+
+
+## 👩‍⚖️ Licence
+
+[myMarkmap](https://mymarkmap.forge.apps.education.fr/) est distribué sous licence MIT.
+
+Les sources sont disponibles sur la [Forge des Communs Numériques Éducatifs](https://forge.apps.education.fr/myMarkmap/myMarkmap.forge.apps.education.fr).
+
+
+## 🙏 Crédits
+
+[myMarkmap](https://mymarkmap.forge.apps.education.fr/) est avant tout fondé sur le logiciel [markmap](https://markmap.js.org/).
+
+Le développement repose sur le framework [SvelteKit](https://svelte.dev/).
+
+D'autres packages sont mobilisés : voir la [liste des dépendances](https://forge.apps.education.fr/myMarkmap/myMarkmap.forge.apps.education.fr/-/blob/main/package.json?ref_type=heads).
