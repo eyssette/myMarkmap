@@ -1,5 +1,9 @@
 # myMarkmap
 
+Translations :
+
+[![](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7_README-EN-A1C)](https://github.com/eyssette/myMarkmap/blob/main/README.en.md)
+
 [myMarkmap](https://mymarkmap.forge.apps.education.fr/) est un outil libre et gratuit qui permet de créer et partager facilement des cartes mentales interactives, à partir d'un texte en Markdown.
 
 [![](https://raw.githubusercontent.com/eyssette/myMarkmap/main/myMarkmap-explications.png)](https://mymarkmap.forge.apps.education.fr/)
