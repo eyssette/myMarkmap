@@ -179,3 +179,9 @@
 	{/if}
 
 </main>
+
+<style>
+	:global(body) {
+		overflow:hidden;
+	}
+</style>
