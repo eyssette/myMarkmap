@@ -18,6 +18,8 @@
 
 	export let showMenu;
 
+	const disableMenu = !showMenu; 
+
 	let urlToShare;
 	let encodageHash;
 	let menu;
@@ -88,8 +90,8 @@
 	}
 
 	function beforeunload(event) {
-		// Si on a le paramètre disableWarningMessage à "true" dans le YAML ou le paramètre m=0 dans l'URL, on n'affiche pas de message de confirmation avant de quitter
-		if(disableWarningMessage === true || ($url && $url.searchParams && $url.searchParams.get('m')==0)) return
+		// Si on a le paramètre disableWarningMessage à "true" ou le paramètre showMenu à "false" dans le YAML ou le paramètre m=0 dans l'URL, on n'affiche pas de message de confirmation avant de quitter
+		if(disableWarningMessage === true || disableMenu || ($url && $url.searchParams && $url.searchParams.get('m')==0)) return
 		
 		// Sinon on affiche un message de confirmation avant de quitter
 		event.preventDefault();
