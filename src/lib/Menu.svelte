@@ -88,10 +88,12 @@
 	}
 
 	function beforeunload(event) {
-		if(!disableWarningMessage) {
-			event.preventDefault();
+		// Si on a le paramètre disableWarningMessage à "true" dans le YAML ou le paramètre m=0 dans l'URL, on n'affiche pas de message de confirmation avant de quitter
+		if(disableWarningMessage === true || ($url && $url.searchParams && $url.searchParams.get('m')==0)) return
+		
+		// Sinon on affiche un message de confirmation avant de quitter
+		event.preventDefault();
 		return event.returnValue = '';
-		}
 	}
 
 	let showNotification = false;
