@@ -128,18 +128,27 @@
 			colorFreezeLevel: colorFreezeLevel,
 		})
 		const optionsFull = colorFreezeLevel > 0 ? {...options, ...optionsJSON} : options
-		mindmap.innerHTML = "";
 		mindmapRoot = root;
-		nodeTitle = document.createElement("title")
-		nodeTitle.innerHTML=title;
-		mindmap.appendChild(nodeTitle);
-		const styleCSS = 'svg div{margin-top:-4px;} svg a {text-decoration:none} svg foreignObject {overflow:visible;} svg strong{color:#333; font-size:0.95em!important; font-weight:600!important;} svg .hide, svg .hide *{color:transparent!important} svg .hide {background-color:#FFFFEC} svg .hide img {opacity:0} svg img[alt=h-25]{height:25px} svg img[alt=h-50]{height:50px} svg img[alt=h-75]{height:75px} svg img[alt=h-100]{height:100px} svg img[alt=h-125]{height:125px} svg img[alt=h-150]{height:150px} svg img[alt=h-175]{height:175px} svg img[alt=h-200]{height:200px} svg blockquote {width:'+widthBlockquote+'px!important; white-space: normal; text-align:justify; font-size:0.8em; line-height:1em; border:1px solid #aaa; padding:10px; border-radius:4px;'+marginLeftBlockquote+'} svg aside{font-size: 0.8em; display: inline-block!important; font-weight:normal;vertical-align: top} svg cite {font-style:inherit; font-family:serif; font-size:0.97em}'+ style;
-		const styleElement = document.createElement("style")
-		styleElement.innerHTML=styleCSS;
-		mindmap.appendChild(styleElement);
+		
+		const styleCSS = 'svg div{margin-top:-2px;} svg a {text-decoration:none} svg foreignObject {overflow:visible;} svg strong{color:#333; font-size:0.95em!important; font-weight:600!important;} svg .hide, svg .hide *{color:transparent!important} svg .hide {background-color:#FFFFEC} svg .hide img {opacity:0} svg img[alt=h-25]{height:25px} svg img[alt=h-50]{height:50px} svg img[alt=h-75]{height:75px} svg img[alt=h-100]{height:100px} svg img[alt=h-125]{height:125px} svg img[alt=h-150]{height:150px} svg img[alt=h-175]{height:175px} svg img[alt=h-200]{height:200px} svg blockquote {width:'+widthBlockquote+'px!important; white-space: normal; text-align:justify; font-size:0.8em; line-height:1em; border:1px solid #aaa; padding:10px; border-radius:4px;'+marginLeftBlockquote+'} svg aside{font-size: 0.8em; display: inline-block!important; font-weight:normal;vertical-align: top} svg cite {font-style:inherit; font-family:serif; font-size:0.97em}.markmap-foreign>div {width: max-content!important;max-width: var(--markmap-max-width)!important;}'+ style;
+		
+		const styleElement = document.querySelector("#mindmap-style") || document.createElement("style")
+		
 
-		mm=Markmap.create('#markmap', optionsFull, root);
-
+		if (mm) {
+			// Si la mindmap existe déjà, on met juste à jour les données
+			mm.setData(root, optionsFull);
+			styleElement.innerHTML = styleCSS;
+		} else {
+			// Sinon on crée la mindmap
+			nodeTitle = document.createElement("title")
+			nodeTitle.innerHTML=title;
+			mindmap.appendChild(nodeTitle);
+			styleElement.id="mindmap-style";
+			mindmap.appendChild(styleElement);
+			styleElement.innerHTML=styleCSS;
+			mm=Markmap.create('#markmap', optionsFull, root);
+		}
 
 		if (curves === false) {
 			debouncedCurvesToLines();
@@ -150,6 +159,9 @@
 			setLinksToOpenInNewTab()
 		}
 
+		setTimeout(() => {
+			mm.fit();
+		}, 10);
 		
 
 	})
@@ -181,20 +193,21 @@
 					const dataPathParentElement = parentElement.getAttribute('data-path');
 					const sameLevelBranches = trimFromLastDot(dataPathParentElement)
 					const unfoldedBranches = mindmap.querySelectorAll('g[data-path^="'+sameLevelBranches+'."]:not(.markmap-fold)')
-					const circleFill = targetElement.getAttribute('fill')
 					for (const branch of unfoldedBranches) {
 						const circle = branch.querySelector('circle');
 						if (circle) {
 							circle.dispatchEvent(new MouseEvent("click"));
 						}
 					}
-					if(!focusOnBranch || circleFill != 'rgb(255, 255, 255)') {
+					if(!focusOnBranch || unfoldedBranches.length > 0) {
 						if(dataPathParentElement != "1") {
 							targetElement.dispatchEvent(new MouseEvent("click"));
 						}
 					}
 					if(automaticResize) {
-						mm.fit();
+						setTimeout(() => {
+							mm.fit();
+						}, 10);
 					}
 					return
 				}
@@ -211,7 +224,9 @@
 				}
 			}
 			if(automaticResize) {
-				mm.fit();
+				setTimeout(() => {
+					mm.fit();
+				}, 10);
 			}
 	}
 
@@ -258,9 +273,9 @@
 	function handleKeydown(event) {
 		if (!$show && event.key === 'r') {
 			automaticResize = automaticResize ? false : true;
-			if(automaticResize) {
-				mm.fit();
-			}
+			setTimeout(() => {
+					mm.fit();
+				}, 10);
 		}
 	}
 

@@ -71,7 +71,7 @@ maxWidth: 600
   
 #### **Autres \\\\ balises** <!--fold-->
 
-- \`<!--fold-->\` en fin de ligne pour que les \\\\ sous-branches soient cachées par défaut : \\\\ il faut cliquer sur le cercle pour afficher la suite<!-- fold-->
+- \`<!--fold-->\` en fin de ligne pour que les \\\\ sous-branches soient cachées par défaut : \\\\ il faut cliquer sur le cercle pour afficher la suite<!--fold-->
     - Cette branche est cachée par défaut !
     - Cette branche aussi !
 - \`:code_emoji:\` : pour insérer un code pour un emoji [:link:](https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json)

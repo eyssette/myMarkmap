@@ -21,9 +21,9 @@
     "gh-pages": "^5.0.0",
     "highlight.js": "^11.9.0",
     "js-yaml": "^4.1.0",
-    "markmap-common": "^0.15.6",
-    "markmap-lib": "^0.15.8",
-    "markmap-view": "^0.15.8",
+    "markmap-common": "^0.18.9",
+    "markmap-lib": "^0.18.12",
+    "markmap-view": "^0.18.12",
     "node-emoji": "^1.11.0"
   }
 }
