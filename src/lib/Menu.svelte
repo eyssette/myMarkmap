@@ -15,6 +15,7 @@
 	import {
 		saveAs
 	} from 'file-saver-es';
+	import HelpModal from './HelpModal.svelte';
 
 	export let showMenu;
 
@@ -99,6 +100,7 @@
 	}
 
 	let showNotification = false;
+	let showHelp = false;
 
 	function toastNotification() {
 		showNotification= true
@@ -119,10 +121,11 @@
 			{#if showNotification}
 			<div id="shareNotification" in:fly="{{ y: 50, duration: 1000 }}" out:fade>Lien copié dans le presse-papier !</div>
 			{/if}
-			<a href="{$baseURL}" target="_blank" rel="noreferrer" title="Afficher le tutoriel">❓</a>
+			<button class="menu-button" on:click={() => showHelp = true} title="Afficher le tutoriel">❓</button>
 			{#if $show}<a href="#reset" on:click|preventDefault={menuReset} title="Supprimer le contenu de cette carte">🧹</a>{/if}
 	</nav>
 {/if}
+	<HelpModal bind:open={showHelp} />
 
 <style>
 	#menu {
@@ -140,6 +143,16 @@
 	#menu a {
 		margin-left: 1em;
 		text-decoration: none;
+	}
+
+	#menu .menu-button {
+		margin-left: 1em;
+		background: transparent;
+		border: none;
+		padding: 0;
+		font: inherit;
+		cursor: pointer;
+		color: inherit;
 	}
 
 	#shareNotification {
