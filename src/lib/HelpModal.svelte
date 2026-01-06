@@ -123,6 +123,11 @@
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 		overflow: hidden;
 	}
+	@media screen and (max-width: 600px) {
+		.modal {
+			font-size:18px;
+		}
+	}
 
 	.modal-header {
 		display: flex;
@@ -157,6 +162,7 @@
 		display: flex;
 		gap: 0.5rem;
 		margin-bottom: 0.75rem;
+		overflow-x: auto;
 	}
 
 	.tab-button {
