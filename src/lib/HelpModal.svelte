@@ -123,12 +123,12 @@
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 		overflow: hidden;
 	}
-	@media screen and (max-width: 600px) {
+	@media (max-width: 600px) or (max-height: 700px) {
 		.modal {
 			font-size:18px;
 		}
 	}
-	@media screen and (min-width: 601px) and (max-width: 1000px) {
+	@media screen and (min-width: 601px) and (max-width: 1000px) and (min-height: 701px) {
 		.modal {
 			font-size:20px;
 		}
@@ -140,6 +140,11 @@
 		gap: 0.5rem;
 		padding: 0.75rem 1rem;
 		border-bottom: 1px solid #eee;
+	}
+	@media (max-height: 700px){
+		#help-modal-title {
+			font-size: 1em;
+		}
 	}
 
 	.header-row {
@@ -168,6 +173,11 @@
 		gap: 0.5rem;
 		margin-bottom: 0.75rem;
 		overflow-x: auto;
+	}
+	@media (max-height: 700px){
+		.tab-buttons {
+			margin-bottom: 0;
+		}
 	}
 
 	.tab-button {
