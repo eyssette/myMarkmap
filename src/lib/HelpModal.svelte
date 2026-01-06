@@ -128,6 +128,11 @@
 			font-size:18px;
 		}
 	}
+	@media screen and (min-width: 601px) and (max-width: 1000px) {
+		.modal {
+			font-size:20px;
+		}
+	}
 
 	.modal-header {
 		display: flex;
