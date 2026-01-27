@@ -174,11 +174,7 @@
 
 	<Editor />
 
-	{#if mindmapFromURL}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} {openLinksInNewTab} {curves} {focusOnBranch} {automaticResize} />
-	{:else}
-		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} {openLinksInNewTab} {curves} {focusOnBranch} {automaticResize} />
-	{/if}
+	<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} {openLinksInNewTab} {curves} {focusOnBranch} {automaticResize} />
 
 </main>
 
