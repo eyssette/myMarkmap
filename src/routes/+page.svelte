@@ -28,8 +28,8 @@
 	let theme = '';
 	let curves = true;
 	const corsProxy = "https://corsproxy.io/?url="
-	const focusStyle = 'line, path, circle{stroke-width:3} g[data-depth="1"] circle, g[data-depth="2"] circle{r:7} g[data-depth="3"] circle{r:3} circle {r:1} g[data-depth="1"] line, g[data-depth="2"] line, path[data-depth="2"], circle{stroke-width:10} g[data-depth="1"] circle {fill:rgb(31, 119, 180)} g[data-depth="3"] line,  path[data-depth="3"], g[data-depth="2"] circle{stroke-width:6} div{padding-bottom:0.2em!important; padding-top:0.2em; font-family:Arial} g[data-depth="1"] div div{border:2px solid rgb(31, 119, 180);border-radius:5px; padding-left:0.5em; margin-left:-1.3em; padding-top:0.35em;padding-right:0.75em}  g[data-depth="2"] span {background-color:#EEE; padding:0.3em 0.5em; margin-top:-0.35em; margin-left:-1em; border-radius:5px; ;} div{font-family:Arial, sans-serif;} g[data-depth="3"] div{margin-left:-0.25em;} svg div{margin-top:-4px}'
-	const nolinesStyle = 'line {stroke:transparent} g[data-depth="1"] line{stroke:#002D62; stroke-width:4} g div div {margin-top:12px;} g[data-depth="1"] div div{border:#002D62 2px solid; margin-left:-1.4em; background-color:white; margin-top:12px; padding:0.5em; text-align:center; border-radius:7px} g[data-depth="1"] span {display:inline!important;} circle{r:4} g[data-depth="1"]:not(.markmap-fold) circle{r:0} path{stroke-width:2.5;} path[data-depth="2"],path[data-depth="2"]{stroke-width:4;}'
+	const focusStyle = 'line, path, circle{stroke-width:3} g[data-depth="1"] circle, g[data-depth="2"] circle{r:7} g[data-depth="3"] circle{r:3} circle {r:1} g[data-depth="1"] line, g[data-depth="2"] line, path[data-depth="2"], circle{stroke-width:10} g[data-depth="1"] circle {fill:rgb(31, 119, 180)} g[data-depth="3"] line,  path[data-depth="3"], g[data-depth="2"] circle{stroke-width:6} div{padding-bottom:0.2em!important; padding-top:0.2em; font-family:Arial} g[data-depth="1"] div div{border:2px solid rgb(31, 119, 180);border-radius:5px; padding-left:0.5em; margin-left:-1.3em; padding-top:0.35em;padding-right:0.75em}  g[data-depth="2"] div > span {background-color:#EEE; padding:0.3em 0.5em; margin-top:-0.35em; margin-left:-1em; border-radius:5px; ;} div{font-family:Arial, sans-serif;} g[data-depth="3"] div{margin-left:-0.25em;} svg div{margin-top:-4px}'
+	const nolinesStyle = 'line {stroke:transparent} g[data-depth="1"] line{stroke:#002D62; stroke-width:4} g div div {margin-top:12px;} g[data-depth="1"] div div{border:#002D62 2px solid; margin-left:-1.4em; background-color:white; margin-top:12px; padding:0.5em; text-align:center; border-radius:7px} g[data-depth="1"] div > span {display:inline!important;} circle{r:4} g[data-depth="1"]:not(.markmap-fold) circle{r:0} path{stroke-width:2.5;} path[data-depth="2"],path[data-depth="2"]{stroke-width:4;}'
 	const blackStyle = 'line, path, circle{stroke:black} g[data-depth="1"] line{stroke-width:8} g[data-depth="2"] line, path[data-depth="2"]{stroke-width:4} g[data-depth="3"] line, path[data-depth="3"]{stroke-width:2} circle{r:4} g[data-depth="1"] circle{r:6} circle:not([fill="var(--markmap-circle-open-bg)"]){fill:black; stroke:transparent;}'
 	let focusOnBranch = false;
 	let automaticResize = true;
@@ -100,11 +100,11 @@
 		md = md.replace(/\n\n### /g, '\n\n@hash@hash@hash <br>');
 		md = md.replace(/\n### /g, '\n\n@hash@hash@hash ');
 		// Gestion Titre niveau 2
-		md = md.replace(/## (\\\\+)*(.*)$/g, '@hash@hash $1<span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.3em">$2</span>\n');
-		md = md.replace(/## (\\\\+)*(.*)\n/g, '@hash@hash $1<span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.3em">$2</span>\n');
+		md = md.replace(/## (\\\\+)*(.*)$/g, '@hash@hash $1<span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.3em"><br>$2</span>\n');
+		md = md.replace(/## (\\\\+)*(.*)\n/g, '@hash@hash $1<span style="font-weight:bold; font-size:1em; display:block; padding-bottom:0.3em"><br>$2</span>\n');
 		// Gestion Titre niveau 1
-		md = md.replace(/# (.*)$/g, '@hash <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
-		md = md.replace(/# (.*)\n/g, '@hash <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em">$1</span>\n');
+		md = md.replace(/# (.*)$/g, '@hash <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em"><br>$1</span>\n');
+		md = md.replace(/# (.*)\n/g, '@hash <span style="font-weight:bold; font-size:1.3em; display:block; padding-bottom:0.6em"><br>$1</span>\n');
 		// Gestion Listes à puces
 		md = md.replace(/\n\n- /g, '\n\n- <br>');
 		md = md.replace(/\n\n\* /g, '\n\n\* <br>');
