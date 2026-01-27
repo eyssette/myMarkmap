@@ -93,7 +93,7 @@
 		});
 	}
 
-	afterUpdate(() => {
+	afterUpdate(async () => {
 		const transformer = new Transformer();
 
 		const {
@@ -110,8 +110,8 @@
 			loadJS
 		} = markmap;
 
-		if (styles) loadCSS(styles);
-		if (scripts) loadJS(scripts, {
+		if (styles) await loadCSS(styles);
+		if (scripts) await loadJS(scripts, {
 			getMarkmap: () => markmap
 		});
 
