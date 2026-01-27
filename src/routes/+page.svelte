@@ -34,6 +34,13 @@
 	let focusOnBranch = false;
 	let automaticResize = true;
 
+	
+	// Permet d'éviter d'afficher la mindmap initiale lorsque l'on charge une mindmap depuis une URL
+	if($url && $url.hash) {
+		markdownSource.update(n => '');
+	}
+	
+
 	onMount(async () => {
 		if ($url) {
 			encodageHash = $url.hash.slice(1);
