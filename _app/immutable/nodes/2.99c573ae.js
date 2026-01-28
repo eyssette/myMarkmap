@@ -157,7 +157,7 @@ Vous pouvez aussi :
 
 ### Cacher le menu
 
-On peut cacher le menu en ajoutant le paramètre \`?m=0\` dans l'URL : \`https://mymarkmap.forge.apps.education.fr/#URL?m=0\`
+On peut cacher le menu en ajoutant le paramètre \`?m=0\` dans l'URL : \`https://mymarkmap.forge.apps.education.fr/?m=0#URL_DE_VOTRE_FICHIER\`
 
 On peut aussi configurer cette option par défaut dans son fichier Markdown, dans l'en-tête YAML avec la ligne suivante : \`showMenu: false\`
 
