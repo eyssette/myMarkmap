@@ -154,20 +154,24 @@
 				}
 				if(theme == 'nolines') {
 					style = nolinesStyle + ' ' + style;
+					style = $markdownSource.includes("$") ? 'div{padding-bottom:0.2em!important;}'  + ' ' + style : style;
 				}
 				if(theme =='black') {
 					style = blackStyle + ' ' + style;
+					style = $markdownSource.includes("$") ? 'div{padding-bottom:0.2em!important;}'  + ' ' + style : style;
 					curves = yamlData.hasOwnProperty('curves') ? yamlData.curves : false;
 				}
 			} else {
 				maxWidthFromYAML = yamlData.hasOwnProperty('maxWidth') ? yamlData.maxWidth : 500;
 				colorFreezeLevel = yamlData.hasOwnProperty('colorFreezeLevel') ? yamlData.colorFreezeLevel : 100;
 				curves = yamlData.hasOwnProperty('curves') ? yamlData.curves : true;
-				style = style;
+				style = $markdownSource.includes("$") ? 'div{padding-bottom:0.2em!important;}'  : style;
 			}
 		} catch (e) {
 
 		}
+	} else {
+		style = $markdownSource.includes("$") ? 'div{padding-bottom:0.2em!important;}'  : style;
 	}
 
 	$: mindmapSource = replaceMarkdown(emoji.emojify($markdownSource))
