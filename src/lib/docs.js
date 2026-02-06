@@ -8,7 +8,7 @@ for (const path in mdModules) {
   // path looks like '../../doc/filename.md'
   const name = path.split('/').pop().replace(/\.md$/, '');
   const md = mdModules[path];
-  docs[name] = marked.parse(md);
+  docs[name] = marked.parse(md, {headerIds: false, mangle: false});
 }
 
 export default docs;
