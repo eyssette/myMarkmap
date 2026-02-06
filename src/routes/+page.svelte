@@ -78,7 +78,7 @@
 			if (encodageHash != '') {
 				mindmapData = decodeURI(encodageHash);
 				markdownSource.update(n => mindmapData);
-				history.pushState(null, null, $baseURL);	
+				history.pushState(null, null, $baseURL);
 				mindmapFromURL=true;
 			}
 		}
@@ -185,7 +185,11 @@
 
 	<Editor />
 
-	<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} {openLinksInNewTab} {curves} {focusOnBranch} {automaticResize} />
+	{#if mindmapFromURL}
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} {openLinksInNewTab} {curves} {focusOnBranch} {automaticResize} />
+	{:else}
+		<Mindmap source={mindmapSource} maxWidth={maxWidthFromYAML} style={style} title={title} colorFreezeLevel={colorFreezeLevel} initialExpandLevel={initialExpandLevel} {openLinksInNewTab} {curves} {focusOnBranch} {automaticResize} />
+	{/if}
 
 </main>
 
