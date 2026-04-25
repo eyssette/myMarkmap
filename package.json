@@ -16,10 +16,10 @@
   "type": "module",
   "dependencies": {
     "@sveltejs/adapter-static": "^1.0.6",
-    "codejar": "^3.7.0",
+    "codejar": "^4.3.0",
     "file-saver-es": "^2.0.5",
     "gh-pages": "^5.0.0",
-    "highlight.js": "^11.9.0",
+    "highlight.js": "^11.11.1",
     "js-yaml": "^4.1.0",
     "markmap-common": "^0.18.9",
     "markmap-lib": "^0.18.12",
