@@ -12,12 +12,12 @@
 	import {
 		onMount,
 	} from 'svelte';
+	import { get } from 'svelte/store';
 
 	import {
 		show,
 		markdownSource
 	} from './stores.js'
-	import url from './url.js';
 
 	let textArea;
 	let editor;
@@ -47,14 +47,59 @@
 
 	let CodeJar;
 	let firefoxVersion = 0;
+	let unsubscribeFromMarkdownSource = () => {};
+	let syncingFromJar = false;
+	let fallbackValue = '';
 	
-	onMount(async () => {
-		({
-			CodeJar
-		} = await import("codejar"))
-		jar = await CodeJar(editor, my, {history:true});
-		const matchFirefoxVersion = window.navigator.userAgent.match(/Firefox\/([0-9]+)\./);
-		firefoxVersion = matchFirefoxVersion ? parseInt(matchFirefoxVersion[1]) : 0;
+	onMount(() => {
+		let mounted = true;
+		fallbackValue = get(markdownSource);
+
+		(async () => {
+			({
+				CodeJar
+			} = await import("codejar"))
+
+			if (!mounted) {
+				return;
+			}
+
+			editor.textContent = get(markdownSource);
+			jar = CodeJar(editor, my, {history:true});
+			jar.onUpdate(code => {
+				if (code != get(markdownSource)) {
+					syncingFromJar = true;
+					markdownSource.set(code);
+					syncingFromJar = false;
+				}
+			});
+
+			unsubscribeFromMarkdownSource = markdownSource.subscribe(code => {
+				if (!jar) {
+					if (code != fallbackValue) {
+						fallbackValue = code;
+					}
+					return;
+				}
+
+				if (!jar || syncingFromJar || code == jar.toString()) {
+					return;
+				}
+
+				jar.updateCode(code, false);
+			});
+
+			const matchFirefoxVersion = window.navigator.userAgent.match(/Firefox\/([0-9]+)\./);
+			firefoxVersion = matchFirefoxVersion ? parseInt(matchFirefoxVersion[1]) : 0;
+		})();
+
+		return () => {
+			mounted = false;
+			unsubscribeFromMarkdownSource();
+			if (jar) {
+				jar.destroy();
+			}
+		};
 	})
 
 	$: if ($show == true) {		
@@ -66,19 +111,15 @@
 		}, 0);
 	}
  
-	$: if(jar) {jar.onUpdate(code=>
-		{if (jar.toString() != $markdownSource) {markdownSource.update(n=>code)}}
-	)}
-
 </script>
 
 <div bind:this={textArea}>
 	{#await CodeJar}
 		<div>Éditeur en cours de chargement</div>
 	{:then}
-		<pre bind:this={editor} contenteditable="true" bind:textContent={$markdownSource} class:hidden={!$show} class="editor"></pre>
+		<div bind:this={editor} contenteditable="true" spellcheck="false" class:hidden={!$show} class="editor"></div>
 	{:catch error}
-		<textarea bind:value={$markdownSource} rows="20" cols="50" class:hidden={!$show}></textarea>
+		<textarea value={fallbackValue} on:input={(event) => markdownSource.set(event.currentTarget.value)} rows="20" cols="50" class:hidden={!$show}></textarea>
 	{/await}
 </div>
 
@@ -113,6 +154,9 @@
 		font-size: 14px;
 		letter-spacing: normal;
 		line-height: 20px;
+		white-space: pre-wrap;
+		overflow-wrap: normal;
+		overflow-x: auto;
 		padding: 10px;
 		tab-size: 2;
 		resize: both!important;
