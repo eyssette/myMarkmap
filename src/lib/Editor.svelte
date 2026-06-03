@@ -67,7 +67,8 @@
 			}
 
 			editor.textContent = get(markdownSource);
-			jar = CodeJar(editor, my, {history:true});
+			jar = CodeJar(editor, my, {history:true, autoclose: {open: `(["`,
+    close: `)]"`}});
 			jar.onUpdate(code => {
 				if (code != get(markdownSource)) {
 					syncingFromJar = true;
