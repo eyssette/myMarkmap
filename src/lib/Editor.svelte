@@ -32,6 +32,8 @@
 			language: 'markdown',
 			ignoreUnescapedHTML: false
 		}).value;
+		// gestion des propriétés dans le YAML
+		code = code.replace(/(theme:|maxWidth:|initialExpandLevel:|focusOnBranch:|automaticResize:)/g, '<span class="hljs-yaml-property">$1</span>');
 		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--(.*?)--&gt;/g,'<span class="hljs-comment">&lt;!--$1--&gt;</span>').replace(/&lt;!--(\s*?)fold(\s*?)--&gt;/g, '<span class="language-xml"><span class="hljs-special-tag">&lt;!--$1fold$2--&gt;</span></span>');
 		// .replace(/@hash@hash\s(.*?)\n/g,'<span class="hljs-section hljs-header-2">## $1</span>\n')
 		code = code.replace(/@underscore/g,'_')
@@ -210,6 +212,11 @@
 		font-weight:100;
 		font-size:0.96em;
 		
+	}
+
+	:global(.hljs-yaml-property) {
+		color: darkgreen;
+		font-weight: bold;
 	}
 
 	/* :global(.hljs-header-2) {
