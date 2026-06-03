@@ -4,7 +4,12 @@ import {
 
 export const show = writable(false);
 export const defaultTemplate = `---
+theme: nolines
 maxWidth: 300
+initialExpandLevel: 100
+focusOnBranch: false
+automaticResize: true
+
 ---
 
 # Titre
@@ -12,6 +17,11 @@ maxWidth: 300
 
 export const markdownSource = writable(decodeURI(`---
 theme: nolines
+maxWidth: 300
+initialExpandLevel: 100
+focusOnBranch: false
+automaticResize: true
+
 ---
 
 # myMarkmap

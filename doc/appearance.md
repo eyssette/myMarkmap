@@ -2,7 +2,7 @@ On peut dans l'en-tête YAML de son fichier Markdown configurer l'apparence de s
 
 ### Thèmes et styles
 
-Plusieurs thèmes sont disponibles : `focus`, `nolines`, `black`.
+Plusieurs thèmes sont disponibles : `nolines`, `focus`, `default`, `black`.
 On active un thème avec l'option `theme: nom_du_thème`.
 
 On peut aussi ajouter des styles CSS spécifiques avec l'option `style: code_CSS`, ou en multilignes avec le bloc `style: |` suivi du code CSS indenté à partir de la ligne suivante.
