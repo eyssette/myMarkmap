@@ -1,75 +1,82 @@
 <script context="module">
-    import hljs from "highlight.js/lib/core";
-    import markdown from "highlight.js/lib/languages/markdown";
-    import xml from "highlight.js/lib/languages/xml";
-    import 'highlight.js/styles/github.css';
+	import hljs from "highlight.js/lib/core";
+	import markdown from "highlight.js/lib/languages/markdown";
+	import xml from "highlight.js/lib/languages/xml";
+	import "highlight.js/styles/github.css";
 
-    hljs.registerLanguage("markdown", markdown);
-    hljs.registerLanguage("xml", xml);
+	hljs.registerLanguage("markdown", markdown);
+	hljs.registerLanguage("xml", xml);
 </script>
 
 <script>
-	import {
-		onMount,
-	} from 'svelte';
-	import { get } from 'svelte/store';
+	import { onMount } from "svelte";
+	import { get } from "svelte/store";
 
-	import {
-		show,
-		markdownSource
-	} from './stores.js'
+	import { show, markdownSource } from "./stores.js";
 
 	let textArea;
 	let editor;
 
-	const my = editor => {
+	const my = (editor) => {
 		let code = editor.textContent;
 		// code = code.replace(/\n##\s/g,'\n@hash@hash ')
-		code = code.replace(/:(.*)_(.*?):/g,':$1@underscore$2:')
-		code = code.replace(/:(.*)_(.*?):/g,':$1@underscore$2:')
-		code = code.replace(/:(.*)_(.*?):/g,':$1@underscore$2:')
+		code = code.replace(/:(.*)_(.*?):/g, ":$1@underscore$2:");
+		code = code.replace(/:(.*)_(.*?):/g, ":$1@underscore$2:");
+		code = code.replace(/:(.*)_(.*?):/g, ":$1@underscore$2:");
 		code = hljs.highlight(code, {
-			language: 'markdown',
-			ignoreUnescapedHTML: false
+			language: "markdown",
+			ignoreUnescapedHTML: false,
 		}).value;
 		// gestion des propriétés dans le YAML
-		code = code.replace(/(theme:|maxWidth:|initialExpandLevel:|focusOnBranch:|automaticResize:)/g, '<span class="hljs-yaml-property">$1</span>');
-		code = code.replace(/\\\\/g, '<span class="language-xml"><span class="hljs-tag">\\\\</span></span>').replace(/&lt;!--(.*?)--&gt;/g,'<span class="hljs-comment">&lt;!--$1--&gt;</span>').replace(/&lt;!--(\s*?)fold(\s*?)--&gt;/g, '<span class="language-xml"><span class="hljs-special-tag">&lt;!--$1fold$2--&gt;</span></span>');
-		// .replace(/@hash@hash\s(.*?)\n/g,'<span class="hljs-section hljs-header-2">## $1</span>\n')
-		code = code.replace(/@underscore/g,'_')
+		code = code
+			.replace(
+				/(theme:|maxWidth:|initialExpandLevel:|focusOnBranch:|automaticResize:)/g,
+				'<span class="hljs-yaml-property">$1</span>',
+			)
+			.replace(
+				/\\\\/g,
+				'<span class="language-xml"><span class="hljs-tag">\\\\</span></span>',
+			)
+			.replace(
+				/&lt;!--(.*?)--&gt;/g,
+				'<span class="hljs-comment">&lt;!--$1--&gt;</span>',
+			)
+			.replace(
+				/&lt;!--(\s*?)fold(\s*?)--&gt;/g,
+				'<span class="language-xml"><span class="hljs-special-tag">&lt;!--$1fold$2--&gt;</span></span>',
+			);
+		code = code.replace(/@underscore/g, "_");
 		editor.innerHTML = code;
 	};
 
 	let jar;
 
-
-	let hidden
-	$: $show ? hidden = "" : hidden = "hidden";
-
+	let hidden;
+	$: $show ? (hidden = "") : (hidden = "hidden");
 
 	let CodeJar;
 	let firefoxVersion = 0;
 	let unsubscribeFromMarkdownSource = () => {};
 	let syncingFromJar = false;
-	let fallbackValue = '';
-	
+	let fallbackValue = "";
+
 	onMount(() => {
 		let mounted = true;
 		fallbackValue = get(markdownSource);
 
 		(async () => {
-			({
-				CodeJar
-			} = await import("codejar"))
+			({ CodeJar } = await import("codejar"));
 
 			if (!mounted) {
 				return;
 			}
 
 			editor.textContent = get(markdownSource);
-			jar = CodeJar(editor, my, {history:true, autoclose: {open: `(["`,
-    close: `)]"`}});
-			jar.onUpdate(code => {
+			jar = CodeJar(editor, my, {
+				history: true,
+				autoclose: { open: `(["`, close: `)]"` },
+			});
+			jar.onUpdate((code) => {
 				if (code != get(markdownSource)) {
 					syncingFromJar = true;
 					markdownSource.set(code);
@@ -77,7 +84,7 @@
 				}
 			});
 
-			unsubscribeFromMarkdownSource = markdownSource.subscribe(code => {
+			unsubscribeFromMarkdownSource = markdownSource.subscribe((code) => {
 				if (!jar) {
 					if (code != fallbackValue) {
 						fallbackValue = code;
@@ -92,8 +99,11 @@
 				jar.updateCode(code, false);
 			});
 
-			const matchFirefoxVersion = window.navigator.userAgent.match(/Firefox\/([0-9]+)\./);
-			firefoxVersion = matchFirefoxVersion ? parseInt(matchFirefoxVersion[1]) : 0;
+			const matchFirefoxVersion =
+				window.navigator.userAgent.match(/Firefox\/([0-9]+)\./);
+			firefoxVersion = matchFirefoxVersion
+				? parseInt(matchFirefoxVersion[1])
+				: 0;
 		})();
 
 		return () => {
@@ -103,26 +113,36 @@
 				jar.destroy();
 			}
 		};
-	})
+	});
 
-	$: if ($show == true) {		
+	$: if ($show == true) {
 		setTimeout(function () {
 			textArea.firstChild.focus();
-			if(firefoxVersion >= 136) {
-				textArea.firstChild.setAttribute("contenteditable","true");
+			if (firefoxVersion >= 136) {
+				textArea.firstChild.setAttribute("contenteditable", "true");
 			}
 		}, 0);
 	}
- 
 </script>
 
 <div bind:this={textArea}>
 	{#await CodeJar}
 		<div>Éditeur en cours de chargement</div>
 	{:then}
-		<div bind:this={editor} contenteditable="true" spellcheck="false" class:hidden={!$show} class="editor"></div>
+		<div
+			bind:this={editor}
+			contenteditable="true"
+			spellcheck="false"
+			class:hidden={!$show}
+			class="editor">
+		</div>
 	{:catch error}
-		<textarea value={fallbackValue} on:input={(event) => markdownSource.set(event.currentTarget.value)} rows="20" cols="50" class:hidden={!$show}></textarea>
+		<textarea
+			value={fallbackValue}
+			on:input={(event) => markdownSource.set(event.currentTarget.value)}
+			rows="20"
+			cols="50"
+			class:hidden={!$show}></textarea>
 	{/await}
 </div>
 
@@ -138,9 +158,10 @@
 		z-index: 1;
 		background-color: white;
 	}
-	@media screen and (max-width:500px) {
-		textarea,:global(.editor) {
-			width:75vw;
+	@media screen and (max-width: 500px) {
+		textarea,
+		:global(.editor) {
+			width: 75vw;
 		}
 	}
 
@@ -152,8 +173,11 @@
 	:global(.editor) {
 		border: 1px solid rgba(0, 0, 0, 0.2);
 		border-radius: 6px;
-		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-		font-family: 'Lucida Grande', 'Arial', 'Source Code Pro', monospace;
+		box-shadow:
+			0 2px 2px 0 rgba(0, 0, 0, 0.14),
+			0 1px 5px 0 rgba(0, 0, 0, 0.12),
+			0 3px 1px -2px rgba(0, 0, 0, 0.2);
+		font-family: "Lucida Grande", "Arial", "Source Code Pro", monospace;
 		font-size: 14px;
 		letter-spacing: normal;
 		line-height: 20px;
@@ -162,7 +186,7 @@
 		overflow-x: auto;
 		padding: 10px;
 		tab-size: 2;
-		resize: both!important;
+		resize: both !important;
 	}
 
 	:global(.language-xml *) {
@@ -171,13 +195,11 @@
 	}
 
 	:global(.hljs-strong) {
-		font-size: 0.95em
+		font-size: 0.95em;
 	}
 
-
-
 	:global(.hljs-section .hljs-strong) {
-		color:#032f62;
+		color: #032f62;
 	}
 
 	:global(.hljs-link),
@@ -197,39 +219,25 @@
 	}
 
 	:global(.hljs-special-tag) {
-		color:#A52A2A!important;
+		color: #a52a2a !important;
 	}
 
 	:global(.hljs-code) {
-		color: #333!important;
-		background-color: #EDEDED;
+		color: #333 !important;
+		background-color: #ededed;
 	}
 	:global(.hljs-code *) {
-		color: #333!important;
+		color: #333 !important;
 	}
 
 	:global(.hljs-comment) {
-		color: #777!important;
-		font-weight:100;
-		font-size:0.96em;
-		
+		color: #777 !important;
+		font-weight: 100;
+		font-size: 0.96em;
 	}
 
 	:global(.hljs-yaml-property) {
 		color: darkgreen;
 		font-weight: bold;
 	}
-
-	/* :global(.hljs-header-2) {
-		display:inline-block;
-		width:100%;
-		background-color:#F8F8FF;
-	}
-
-	:global(.hljs-header-3) {
-		display:inline-block;
-		width:100%;
-		background-color:#F8F8FF;
-	} */
-
 </style>
