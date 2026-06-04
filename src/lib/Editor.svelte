@@ -187,6 +187,7 @@
 		padding: 10px;
 		tab-size: 2;
 		resize: both !important;
+		opacity: 0.9;
 	}
 
 	:global(.language-xml *) {
