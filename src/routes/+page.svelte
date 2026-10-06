@@ -69,6 +69,10 @@
 				addCorsProxy = false;
 				encodageHash = encodageHash.replace(/\?.*/,'') + '/export/txt';
 			}
+			// gestion des fichiers hébergés sur la Forge
+			if (encodageHash.includes('.forge.apps.education.fr')) {
+				addCorsProxy = false;
+			}
 			encodageHash = addCorsProxy ? corsProxy + encodageHash : encodageHash;
 			const response = await fetch(encodageHash);
 			mindmapData = await response.text();
